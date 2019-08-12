@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './componets/header/header.component';
-import { MenuComponent } from './componets/menu/menu.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ListabienesComponent } from './components/listabienes/listabienes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    ListabienesComponent
   ],
   imports: [
     BrowserModule,
