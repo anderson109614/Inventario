@@ -9,6 +9,7 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import { BienesService } from './servicios/bienes.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,

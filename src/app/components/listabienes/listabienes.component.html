@@ -1,7 +1,4 @@
-
-<div id="main-wrapper">
-
-        <div class="page-wrapper">
+<div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -10,6 +7,11 @@
                     <div class="col-12 d-flex no-block align-items-center">
                         <h4 class="page-title">Tables</h4>
                         <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <a routerLink="/bienesnuevo"><button type="button" class="btn btn-primary">Nuevo</button></a>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -55,8 +57,9 @@
                                           <td>{{bien.marca}}</td>
                                           <td>{{bien.color}}</td>
                                           <td>{{bien.material}}</td>
-                                      </tr>
-                                 
+                                          <td><a [routerLink]="['/bienesactualizar/',bien.id]"><i class="fas fa-pencil-alt"></i></a></td>
+                                          <td><a routerLink=""><i class="fas fa-times"></i></a></td>
+                                      </tr>                              
                                         </tbody>
                                     </table>
                                 </div>
@@ -74,8 +77,12 @@
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
+
+
+            
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-    </div>
+        
