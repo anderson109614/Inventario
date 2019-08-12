@@ -1,1 +1,86 @@
-<p>listabienes works!</p>
+<div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+</div>
+<div id="main-wrapper">
+
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Tables</h4>
+                        <div class="ml-auto text-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">   
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Basic Datatable</h5>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Codigo</th>
+                                                <th>Identificador</th>
+                                                <th>Tipo Bien</th>
+                                                <th>Serie</th>
+                                                <th>Modelo</th>
+                                                <th>Marca</th>
+                                                <th>Color</th>
+                                                <th>Material</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                      <tr *ngFor="let bien of bienes">
+                                          <td>{{bien.id}}</td>
+                                          <td>{{bien.codigo}}</td>
+                                          <td>{{bien.identificador}}</td>
+                                          <td>{{bien.nombre}}</td>
+                                          <td>{{bien.serie_identificacion}}</td>
+                                          <td>{{bien.modelo}}</td>
+                                          <td>{{bien.marca}}</td>
+                                          <td>{{bien.color}}</td>
+                                          <td>{{bien.material}}</td>
+                                      </tr>
+                                 
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
