@@ -95,5 +95,14 @@ export class BienesnuevoComponent implements OnInit {
     this.clickMessageBodega = id.toString();
   }
 
+  
+  onClickGuardar() {
+    
+    var unit = (<HTMLInputElement>document.getElementById("txt_Codigo")).value; 
+    var unitC = (<HTMLInputElement>document.getElementById("cbx_TipoBien")).value; 
+    console.log(unit);
+    console.log(unitC);
+  }
+
 }
 
