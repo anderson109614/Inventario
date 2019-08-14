@@ -19,7 +19,7 @@ export class BienesnuevoComponent implements OnInit {
   encargados: any = [];
   bodegas: any = [];
 
-  bien: Bien
+  
 
   constructor(private bienesService:BienesService) { }
 
@@ -69,9 +69,7 @@ export class BienesnuevoComponent implements OnInit {
 
   }
 
-  guardarNuevoBien(){
-    this.bienesService.guardarBiene(this.bien)
-  }
+
 
 
   clickMessage = '';
@@ -96,12 +94,51 @@ export class BienesnuevoComponent implements OnInit {
   }
 
   
-  onClickGuardar() {
+  onClickGuardar() {   
+    var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
+    var codigoO = (<HTMLInputElement>document.getElementById("txt_Codigo")).value;  
+    var tipoBienO = (<HTMLInputElement>document.getElementById("cbx_TipoBien")).value;
+    var serieO = (<HTMLInputElement>document.getElementById("txt_Serie")).value; 
+    var modeloO = (<HTMLInputElement>document.getElementById("txt_Modelo")).value;  
+    var marcaO = (<HTMLInputElement>document.getElementById("txt_Marca")).value; 
+    var colorO = (<HTMLInputElement>document.getElementById("txt_Color")).value;
+    var materialO = (<HTMLInputElement>document.getElementById("txt_Material")).value; 
+    var dimensionesO = (<HTMLInputElement>document.getElementById("txt_Dimensiones")).value; 
+    var criticoO = (<HTMLInputElement>document.getElementById("cbx_Critico")).value; 
+    var valorCompraO = (<HTMLInputElement>document.getElementById("txt_ValorCompra")).value; 
+    var tipoMonedaO = (<HTMLInputElement>document.getElementById("cbx_TipoMoneda")).value; 
+    var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
+    var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
+    var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
+    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;  
+    var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
+    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
+   
+    let bien: Bien = {
+      identificador: Number.parseInt(identificadorO),
+      id_tipo_bien: Number.parseInt(tipoBienO),
+      serie_identificacion: serieO,
+      modelo: modeloO,
+      marca: marcaO,
+      critico: criticoO,
+      id_moneda: Number.parseInt(tipoMonedaO),
+      valor_compra: Number.parseFloat(valorCompraO),
+      recompra: recompraO,
+      color: colorO,
+      material: materialO,
+      dimensiones: dimensionesO,
+      id_bodega: Number.parseInt(BodegaO),
+      id_acta: Number.parseInt(actaO),
+      fecha_ingreso: fechaIngresoO,
+      id_bien_padre: Number.parseInt(bienO),
+     
+      codigo: Number.parseInt(codigoO),
+      id_Encargardo: Number.parseInt(encargadoO),
+
+    };
+ 
+      this.bienesService.guardarBiene(bien);
     
-    var unit = (<HTMLInputElement>document.getElementById("txt_Codigo")).value; 
-    var unitC = (<HTMLInputElement>document.getElementById("cbx_TipoBien")).value; 
-    console.log(unit);
-    console.log(unitC);
   }
 
 }

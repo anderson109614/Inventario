@@ -13,10 +13,9 @@ export interface Bien{
     dimensiones: string,
     id_bodega: number,
     id_acta: number,
-    fecha_ingreso: Date,
-    id_categoria: number,
+    fecha_ingreso: string,
     id_bien_padre: number,
-    habilitado: "SI",
+    
     codigo: number,
     id_Encargardo: number,
 }
