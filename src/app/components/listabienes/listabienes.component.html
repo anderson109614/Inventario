@@ -1,4 +1,8 @@
 <div class="col-lg-12">
+    <br>
+    <div class="ml-auto text-right">
+        <a routerLink="/bienesnuevo"><button type="button" class="btn btn-primary">Nuevo</button></a>
+    </div>
     <div class="card">
         <div class="card-header">
             <h4>Striped table with hover effect</h4>
@@ -34,9 +38,10 @@
                             <td>{{bien.material}}</td>
                             <td>{{bien.cedula}}</td>
                             <td>{{bien.nombres + " " + bien.apellidos}}</td>
-                            <td><button [routerLink]="['/bienesactualizar/',bien.id]"><i class="fa fa-pencil"></i></button></td>
+                            <td><button [routerLink]="['/bienesactualizar/',bien.id]"><i
+                                        class="fa fa-pencil"></i></button></td>
                             <td><button><i class="fa fa-times"></i></button></td>
-                        </tr>                         
+                        </tr>
                     </tbody>
                 </table>
             </div>

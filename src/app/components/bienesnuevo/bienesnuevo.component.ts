@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BienesService} from '../../servicios/bienes.service';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienesnuevoComponent implements OnInit {
 
-  constructor() { }
+  tipobienes: any = [];
+  monedas: any = [];
+  actas: any = [];
+
+  constructor(private bienesService:BienesService) { }
 
   ngOnInit() {
+    this.bienesService.getTipoBienes().subscribe(
+      res => {
+        this.tipobienes = res;
+      },
+      err => console.log(err)
+    );
+
+    this.bienesService.getTipoMoneda().subscribe(
+      res => {
+        this.monedas = res;
+      },
+      err => console.log(err)
+    );
+
+    this.bienesService.getActa().subscribe(
+      res => {
+        this.actas = res;
+      },
+      err => console.log(err)
+    );
   }
 
 }

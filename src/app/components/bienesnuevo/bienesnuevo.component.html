@@ -1,1 +1,380 @@
-<p>bienesnuevo works!</p>
+<section class="forms">
+    <div class="container-fluid">
+        <header>
+            <h1 class="h3 display">Ingreso de Bienes</h1>
+        </header>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Datos del Bien</h5>
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Indentificador</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalSuccess" type="text" placeholder="Indentificador"
+                                        class="form-control form-control-success">
+                                    <!--                                        
+                                        <small class="form-text">Example help
+                                        text
+                                        that
+                                        remains unchanged.</small>
+                                        -->
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Código</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Código"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Tipo de Bien</label>
+                                <div class="col-sm-9 mb-3">
+                                    <select name="account" class="form-control">
+                                        <option *ngFor="let tipo of tipobienes">{{tipo.id + " - " + tipo.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Serie</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Serie"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Modelo</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Modelo"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Marca</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Marca"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Color</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Color"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Material</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Material"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Dimensiones</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="text" placeholder="Dimesiones"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Crítico</label>
+                                <div class="col-sm-9 mb-3">
+                                    <select name="account" class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Información Adicional</h5>
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Valor de Compra</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalSuccess" type="text" placeholder="Valor de Compra"
+                                        class="form-control form-control-success">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Tipo de Moneda</label>
+                                <div class="col-sm-9 mb-3">
+                                    <select name="account" class="form-control">
+                                        <option *ngFor="let moneda of monedas">{{moneda.id + " - " + moneda.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Recompra</label>
+                                <div class="col-sm-9 mb-3">
+                                    <select name="account" class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Nro Acta</label>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target=".modalActa">Seleccionar</button>
+                                                <div class="modal fade modalActa" tabindex="-1" role="dialog"
+                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Lista de
+                                                                    Actas</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="card">
+                                                                        <!--
+                                                                                <div class="card-header">
+                                                                                    <h4>Lista de Actas</h4>
+                                                                                </div>
+                                                                                -->
+                                                                        <div class="card-body">
+                                                                            <div class="table-responsive">
+                                                                                <table
+                                                                                    class="table table-striped table-hover">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Id</th>
+                                                                                            <th>Nro Acta</th>
+                                                                                            <th>Origen</th>
+                                                                                            <th>Nro Compromiso</th>
+                                                                                            <th>Descripcion</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr *ngFor="let acta of actas">
+                                                                                            <td>{{acta.id}}</td>
+                                                                                            <td>{{acta.nro_acta}}</td>
+                                                                                            <td>{{acta.origen}}</td>
+                                                                                            <td>{{acta.nro_compromiso}}
+                                                                                            </td>
+                                                                                            <td>{{acta.descripcion}}
+                                                                                            </td>
+                                                                                            <td><button type="button"><i
+                                                                                                        class="fa fa-check-circle"></i></button>
+                                                                                            </td>                                                        
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Fecha de Ingreso</label>
+                                <div class="col-sm-9">
+                                    <input id="inputHorizontalWarning" type="date"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Bienes</label>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-append">
+                                                <button type="button" data-toggle="modal" data-target="#myModal"
+                                                    class="btn btn-primary">Seleccionar</button>
+                                                <div id="myModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                    class="modal fade text-left">
+                                                    <div role="document" class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Signin
+                                                                    Modal</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input type="email" placeholder="Email Address"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Password</label>
+                                                                        <input type="password" placeholder="Password"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="submit" value="Signin"
+                                                                            class="btn btn-primary">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" data-dismiss="modal"
+                                                                    class="btn btn-secondary">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Encargado</label>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" readonly="true">
+                                            <div class="input-group-append">
+                                                <button type="button" data-toggle="modal" data-target="#myModal"
+                                                    class="btn btn-primary">Seleccionar</button>
+                                                <div id="myModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                    class="modal fade text-left">
+                                                    <div role="document" class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Signin
+                                                                    Modal</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input type="email" placeholder="Email Address"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Password</label>
+                                                                        <input type="password" placeholder="Password"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="submit" value="Signin"
+                                                                            class="btn btn-primary">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" data-dismiss="modal"
+                                                                    class="btn btn-secondary">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Bodega</label>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-append">
+                                                <button type="button" data-toggle="modal" data-target="#myModal"
+                                                    class="btn btn-primary">Seleccionar</button>
+                                                <div id="myModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                                    class="modal fade text-left">
+                                                    <div role="document" class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Signin
+                                                                    Modal</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input type="email" placeholder="Email Address"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Password</label>
+                                                                        <input type="password" placeholder="Password"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="submit" value="Signin"
+                                                                            class="btn btn-primary">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" data-dismiss="modal"
+                                                                    class="btn btn-secondary">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" style="text-align: right">
+                <button class="btn btn-secondary" style="margin-right: 15px">Cancelar</button>
+                <button class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</section>
