@@ -24,4 +24,13 @@ export class BienesService {
   getActa(){
     return this.http.get(this.ip+'Bienes/Actas.php')
   }
+
+  getEncargado(){
+    return this.http.get(this.ip+'Bienes/Encargados.php')
+  }
+
+  getBodega(){
+    return this.http.get(this.ip+'Bienes/Bodegas.php')
+  }
+
 }
