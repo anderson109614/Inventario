@@ -12,7 +12,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Indentificador</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalSuccess" type="text" placeholder="Indentificador"
+                                    <input id="txt_Identificador" [(ngModel)]="bien.identificador" type="text" placeholder="Indentificador"
                                         class="form-control form-control-success">
                                     <!--                                        
                                         <small class="form-text">Example help
@@ -25,14 +25,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Código</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Código"
+                                    <input id="txt_Codigo" [(ngModel)]="bien.Codigo" type="text" placeholder="Código"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Tipo de Bien</label>
                                 <div class="col-sm-9 mb-3">
-                                    <select name="account" class="form-control">
+                                    <select id="cbx_TipoBien" name="account" class="form-control">
                                         <option>Seleccionar</option>
                                         <option *ngFor="let tipo of tipobienes" value="{{tipo.id}}">{{tipo.id + " - " + tipo.nombre}}
                                         </option>
@@ -42,49 +42,49 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Serie</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Serie"
+                                    <input id="txt_Serie" type="text" placeholder="Serie"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Modelo</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Modelo"
+                                    <input id="txt_Modelo" type="text" placeholder="Modelo"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Marca</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Marca"
+                                    <input id="txt_Marca" type="text" placeholder="Marca"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Color</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Color"
+                                    <input id="txt_Color" type="text" placeholder="Color"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Material</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Material"
+                                    <input id="txt_Material" type="text" placeholder="Material"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Dimensiones</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="text" placeholder="Dimesiones"
+                                    <input id="txt_Dimensiones" type="text" placeholder="Dimesiones"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Crítico</label>
                                 <div class="col-sm-9 mb-3">
-                                    <select name="account" class="form-control">
+                                    <select id="cbx_Critico" name="account" class="form-control">
                                         <option>Seleccionar</option>
                                         <option value="Si">Sí</option>
                                         <option value="No">No</option>
@@ -103,14 +103,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Valor de Compra</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalSuccess" type="text" placeholder="Valor de Compra"
+                                    <input id="txt_ValorCompra" type="text" placeholder="Valor de Compra"
                                         class="form-control form-control-success">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Tipo de Moneda</label>
                                 <div class="col-sm-9 mb-3">
-                                    <select name="account" class="form-control">
+                                    <select id="cbx_TipoMoneda" name="account" class="form-control">
                                         <option>Seleccionar</option>
                                         <option *ngFor="let moneda of monedas" value="{{moneda.id}}">{{moneda.id + " - " + moneda.nombre}}
                                         </option>
@@ -120,7 +120,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Recompra</label>
                                 <div class="col-sm-9 mb-3">
-                                    <select name="account" class="form-control">
+                                    <select id="cbx_Recompra" name="account" class="form-control">
                                         <option>Seleccionar</option>
                                         <option value="Si">Sí</option>
                                         <option value="No">No</option>
@@ -132,7 +132,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{clickMessage}}" readonly="true">
+                                            <input id="txt_NroActa" type="text" class="form-control" value="{{clickMessage}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalActa">Seleccionar</button>
@@ -205,7 +205,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Fecha de Ingreso</label>
                                 <div class="col-sm-9">
-                                    <input id="inputHorizontalWarning" type="date"
+                                    <input id="txt_FechaIngreso" type="date"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -214,7 +214,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{clickMessageBien}}" readonly="true">
+                                            <input id="txt_Bien" type="text" class="form-control" value="{{clickMessageBien}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBienes">Seleccionar</button>
@@ -292,7 +292,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{clickMessageEncargado}}" readonly="true">
+                                            <input id="txt_Encargado" type="text" class="form-control" value="{{clickMessageEncargado}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalEncargados">Seleccionar</button>
@@ -364,7 +364,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{clickMessageBodega}}" readonly="true">
+                                            <input id="Bodega" type="text" class="form-control" value="{{clickMessageBodega}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBodegas">Seleccionar</button>

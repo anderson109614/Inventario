@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
+import { Bien } from '../../models/Bien';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -17,6 +18,8 @@ export class BienesnuevoComponent implements OnInit {
   actas: any = [];
   encargados: any = [];
   bodegas: any = [];
+
+  bien: Bien
 
   constructor(private bienesService:BienesService) { }
 
@@ -65,6 +68,11 @@ export class BienesnuevoComponent implements OnInit {
     );
 
   }
+
+  guardarNuevoBien(){
+    this.bienesService.guardarBiene(this.bien)
+  }
+
 
   clickMessage = '';
   onClickMe(id:string) {

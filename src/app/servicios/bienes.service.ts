@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Bien } from '../models/Bien';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,11 @@ export class BienesService {
 
   getBodega(){
     return this.http.get(this.ip+'Bienes/Bodegas.php')
+  }
+
+
+  guardarBiene(bien: Bien){
+    return this.http.post(this.ip+'Bienes/Bienes.php', bien)
   }
 
 }
