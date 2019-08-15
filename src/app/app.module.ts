@@ -8,6 +8,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { MenuComponent } from './components/menu/menu.component';
 
 import { BienesService } from './servicios/bienes.service';
+import { SuministrosComponent } from './components/suministros/suministros.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BienesService } from './servicios/bienes.service';
     AppComponent,
     NavComponent,
     MenuComponent,
-    routingComponents
+    routingComponents,
+    SuministrosComponent
   ],
   imports: [
     BrowserModule,
