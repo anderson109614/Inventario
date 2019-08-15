@@ -9,7 +9,7 @@ export class BienesService {
 
   constructor(private http:HttpClient) { }
 
-  ip = 'http://10.7.2.39/servicios/';
+  ip = 'http://10.7.3.197/servicios/';
   getData(){
     return this.http.get(this.ip + 'Bienes/Bienes.php')
   }
