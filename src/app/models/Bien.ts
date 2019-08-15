@@ -17,5 +17,5 @@ export interface Bien{
     id_bien_padre: number,
     
     codigo: number,
-    id_Encargardo: number,
+    id_encargado: number,
 }

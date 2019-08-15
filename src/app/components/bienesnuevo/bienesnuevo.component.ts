@@ -133,7 +133,7 @@ export class BienesnuevoComponent implements OnInit {
       id_bien_padre: Number.parseInt(bienO),
      
       codigo: Number.parseInt(codigoO),
-      id_Encargardo: Number.parseInt(encargadoO),
+      id_encargado: Number.parseInt(encargadoO),
 
     };
  
