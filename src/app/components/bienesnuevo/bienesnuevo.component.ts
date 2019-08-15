@@ -137,7 +137,11 @@ export class BienesnuevoComponent implements OnInit {
 
     };
  
-      this.bienesService.guardarBiene(bien);
+    console.log(bien);
+    this.bienesService.guardarBiene(bien).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
     
   }
 
