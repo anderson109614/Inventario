@@ -9,9 +9,13 @@ export class BienesService {
 
   constructor(private http:HttpClient) { }
 
-  ip = 'http://localhost/servicios/';
+  ip = 'http://10.7.2.39/servicios/';
   getData(){
     return this.http.get(this.ip + 'Bienes/Bienes.php')
+  }
+
+  getBienId(id:number){
+    return this.http.get(this.ip + 'Bienes/Bienes.php?id='+id)
   }
 
   getTipoBienes(){
@@ -37,6 +41,11 @@ export class BienesService {
 
   guardarBiene(bien: Bien){
     return this.http.post<Bien>(this.ip+'Bienes/Bienes.php', bien)   
+  }
+
+  actualizarBien(bien: Bien)
+  {
+    return this.http.put<Bien>(this.ip+'Bienes/Bienes.php', bien) 
   }
 
 }
