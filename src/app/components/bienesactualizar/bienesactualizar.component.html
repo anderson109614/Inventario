@@ -89,8 +89,9 @@
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_Critico" name="account" class="form-control">
                                         <option>Seleccionar</option>
-                                        <option value="Si">Sí</option>
-                                        <option value="No">No</option>
+                                        <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.critico" value="{{opcion}}">
+                                            {{opcion}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -126,8 +127,9 @@
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_Recompra" name="account" class="form-control">
                                         <option>Seleccionar</option>
-                                        <option value="Si">Sí</option>
-                                        <option value="No">No</option>
+                                        <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.recompra" value="{{opcion}}">
+                                            {{opcion}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -444,7 +446,7 @@
         <div class="row">
             <div class="col-lg-12" style="text-align: right">
                 <button class="btn btn-secondary" style="margin-right: 15px">Cancelar</button>
-                <button class="btn btn-primary" (click)="onClickGuardar()">Guardar</button>
+                <button class="btn btn-primary" (click)="onClickActualizar()">Actualizar</button>
             </div>
         </div>
     </div>

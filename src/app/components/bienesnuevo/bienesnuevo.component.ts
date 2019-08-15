@@ -71,7 +71,6 @@ export class BienesnuevoComponent implements OnInit {
 
 
 
-
   clickMessage = '';
   onClickMe(id:string) {
     this.clickMessage = id.toString();
@@ -115,6 +114,7 @@ export class BienesnuevoComponent implements OnInit {
     var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
    
     let bien: Bien = {
+      id: 0,
       identificador: Number.parseInt(identificadorO),
       id_tipo_bien: Number.parseInt(tipoBienO),
       serie_identificacion: serieO,
@@ -130,8 +130,7 @@ export class BienesnuevoComponent implements OnInit {
       id_bodega: Number.parseInt(BodegaO),
       id_acta: Number.parseInt(actaO),
       fecha_ingreso: fechaIngresoO,
-      id_bien_padre: Number.parseInt(bienO),
-     
+      id_bien_padre: Number.parseInt(bienO), 
       codigo: Number.parseInt(codigoO),
       id_encargado: Number.parseInt(encargadoO),
 
@@ -139,10 +138,36 @@ export class BienesnuevoComponent implements OnInit {
  
     console.log(bien);
     this.bienesService.guardarBiene(bien).subscribe(
-      res => console.log(res),
+      //res => console.log(res),
+      res => {
+        this.limpiartxt();
+        console.log(res)
+      },
       err => console.log(err)
     );
     
+  }
+
+  
+  limpiartxt(){
+    (<HTMLInputElement>document.getElementById("txt_Identificador")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_Codigo")).value = "";  
+    (<HTMLSelectElement>document.getElementById("cbx_TipoBien")).options[0].selected = true;
+    (<HTMLInputElement>document.getElementById("txt_Serie")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_Modelo")).value = "";  
+    (<HTMLInputElement>document.getElementById("txt_Marca")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_Color")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_Material")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_Dimensiones")).value = ""; 
+    (<HTMLSelectElement>document.getElementById("cbx_Critico")).options[0].selected = true;
+    (<HTMLInputElement>document.getElementById("txt_ValorCompra")).value = ""; 
+    (<HTMLSelectElement>document.getElementById("cbx_TipoMoneda")).options[0].selected = true;
+    (<HTMLSelectElement>document.getElementById("cbx_Recompra")).options[0].selected = true;
+    (<HTMLInputElement>document.getElementById("txt_NroActa")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_Bien")).value = "";  
+    (<HTMLInputElement>document.getElementById("txt_Encargado")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_Bodega")).value = ""; 
   }
 
 }
