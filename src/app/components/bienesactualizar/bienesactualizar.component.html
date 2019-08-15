@@ -32,18 +32,20 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Tipo de Bien</label>
                                 <div class="col-sm-9 mb-3">
-                                    <select id="cbx_TipoBien" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let tipo of tipobienes" value="{{tipo.id}}">
+                                    <select id="cbx_TipoBien" name="cbx_TipoBien" class="form-control">
+                                       <option>Seleccionar</option>
+                                        <!--<option>{{bienesA.id_tipo_bien}}</option>-->
+                                       <option *ngFor="let tipo of tipobienes" [selected]="tipo.id === bienesA.id_tipo_bien" value="{{tipo.id}}">
                                             {{tipo.id + " - " + tipo.nombre}}
                                         </option>
+                                        
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Serie</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Serie" type="text" placeholder="Serie"
+                                    <input id="txt_Serie" value="{{bienesA.serie_identificacion}}" type="text" placeholder="Serie"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -113,7 +115,7 @@
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_TipoMoneda" name="account" class="form-control">
                                         <option>Seleccionar</option>
-                                        <option *ngFor="let moneda of monedas" value="{{moneda.id}}">
+                                        <option *ngFor="let moneda of monedas" [selected]="moneda.id === bienesA.id_moneda" value="{{moneda.id}}">
                                             {{moneda.id + " - " + moneda.nombre}}
                                         </option>
                                     </select>
@@ -134,8 +136,8 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_NroActa" type="text" class="form-control"
-                                                value="{{clickMessage}}" readonly="true">
+                                            <input id="txt_NroActa" value="{{bienesA.id_acta}}" type="text" class="form-control"
+                                                 readonly="true"> 
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalActa">Seleccionar</button>
@@ -209,7 +211,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Fecha de Ingreso</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_FechaIngreso" type="date" class="form-control form-control-warning">
+                                    <input id="txt_FechaIngreso" value="{{bienesA.fecha_ingreso}}" type="date" class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -218,7 +220,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input id="txt_Bien" type="text" class="form-control"
-                                                value="{{clickMessageBien}}" readonly="true">
+                                                value="{{bienesA.id_bien_padre}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBienes">Seleccionar</button>
@@ -297,7 +299,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input id="txt_Encargado" type="text" class="form-control"
-                                                value="{{clickMessageEncargado}}" readonly="true">
+                                                value="{{bienesA.id_encargado}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalEncargados">Seleccionar</button>
@@ -370,7 +372,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input id="txt_Bodega" type="text" class="form-control"
-                                                value="{{clickMessageBodega}}" readonly="true">
+                                                value="{{bienesA.id_bodega}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBodegas">Seleccionar</button>

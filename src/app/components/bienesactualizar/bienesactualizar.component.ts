@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
 import { ActivatedRoute } from '@angular/router';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-bienesactualizar',
@@ -73,6 +74,36 @@ export class BienesactualizarComponent implements OnInit {
       err => console.log(err)
     );
    
+
+  }
+
+  //clickMessage = '';
+  onClickMe(id:string) {
+    //this.clickMessage = id.toString();
+    var nroActa = (<HTMLInputElement>document.getElementById("txt_NroActa"));
+    nroActa.value = id.toString();
+
+  }
+
+  onClickCombo(){
+    var cTipo = (<HTMLSelectElement>document.getElementById("cbx_TipoBien"));
+    cTipo.options.item(2).selected = true;
+    //cTipo.options[0] = new Option("1");
+  }
+  
+  onClickMeBien(id:string) {
+    var idBien = (<HTMLInputElement>document.getElementById("txt_Bien"));
+    idBien.value = id.toString();
+  }
+
+  onClickMeEncargado(id:string) {
+    var idEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
+    idEncargado.value = id.toString();
+  }
+
+  onClickMeBodega(id:string) {
+    var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
+    idBodega.value = id.toString();
   }
 
 }
