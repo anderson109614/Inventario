@@ -170,5 +170,9 @@ export class BienesnuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_Bodega")).value = ""; 
   }
 
+  confirmar() {
+    confirm();
+  }
+
 }
 
