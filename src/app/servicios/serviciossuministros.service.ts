@@ -43,4 +43,8 @@ export class ServiciossuministrosService {
   guardarDetalleSuministro(det:DetalleSuministro){
     return this.http.post<DetalleSuministro>(this.ip+'Suministros/DetalleMovimiento.php', det)   
   }
+  actualizarSuministro(sun: Suministro){
+    return this.http.put<Suministro>(this.ip+'Suministros/Suministros.php', sun)   
+  }
+
 }
