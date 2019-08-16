@@ -386,6 +386,44 @@ export class SuministrosComponent implements OnInit {
 
   }
 
+  onClickEditarsuministros(nombre:string,id:string){
+    //console.log(nombre +' '+id);
+    (<HTMLSelectElement>document.getElementById("txt_NombreAS")).value=nombre;
+    (<HTMLSelectElement>document.getElementById("txt_idAS")).value=id;
+  }
+  onClickGUardarActializarSuministro(){
+   
+    let sum:Suministro={
+    id:(<HTMLInputElement>document.getElementById("txt_idAS")).value,
+    nombre: (<HTMLInputElement>document.getElementById("txt_NombreAS")).value,
+    id_tipo_unidad:'1',
+    cantidad:1,
+    existencia:1,
+    id_persona:'aa' ,
+
+    };
+    if(this.verificarSuministro(sum)){
+      this.siministrosService.actualizarSuministro(sum).subscribe(
+        res => {
+          this.limpiadoSuministr();
+          console.log(res);
+          this.cargarSuministros();
+          this.cargarDEtalleTodo();
+
+  
+        },
+        err => {
+          alert('Error al actializar los datos del Suministro... intentelo nuevamente');
+          console.log(err)
+        }
+  
+      );
+    }
+  }
+  limpiarActualizarSuministros(){
+    (<HTMLSelectElement>document.getElementById("txt_NombreAS")).value='';
+    (<HTMLSelectElement>document.getElementById("txt_idAS")).value='';
+  }
 
 
 }
