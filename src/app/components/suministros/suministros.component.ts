@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import { Persona } from '../../models/Persona';
 import { Suministro} from '../../models/Suministro';
+import { Unidad } from '../../models/Unidad';
+import { DetalleSuministro} from '../../models/DetalleSuministro';
+
 @Component({
   selector: 'app-suministros',
   templateUrl: './suministros.component.html',
@@ -15,6 +18,7 @@ export class SuministrosComponent implements OnInit {
   unidades:any=[];
   constructor(private siministrosService: ServiciossuministrosService) { }
   idSuministroSeleccionado: string = '-1';
+  existenciaAnterior:string='';
   ngOnInit() {
     this.cargarSuministros();
     this.cargarPersonas();
@@ -58,7 +62,9 @@ export class SuministrosComponent implements OnInit {
     );
   }
 
-  onClickSuministro(id: string) {
+  onClickSuministro(id: string,existencia:string) {
+    this.idSuministroSeleccionado=id;
+    this.existenciaAnterior=existencia;
     this.siministrosService.getDetallesId(id).subscribe(
       res => {
         //console.log(res);
@@ -73,6 +79,7 @@ export class SuministrosComponent implements OnInit {
   onClickSelecPersona(id: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = id;
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value =id;
   }
   onClickGuardarPersona() {
 
@@ -91,6 +98,7 @@ export class SuministrosComponent implements OnInit {
           console.log(res);
           var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
           persona.value = res.id;
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value =res.id;
           this.cargarPersonas();
         },
         err => {
@@ -157,10 +165,11 @@ export class SuministrosComponent implements OnInit {
     if(this.verificarSuministro(sum)){
       this.siministrosService.guardarSuministro(sum).subscribe(
         res => {
-          this.limpiarPersona();
+          this.limpiadoSuministr();
           console.log(res);
           this.cargarSuministros();
           this.cargarDEtalleTodo();
+
   
         },
         err => {
@@ -177,7 +186,7 @@ export class SuministrosComponent implements OnInit {
       alert('Ingrese un nombre para el suministro');
       return false;
     }
-    
+
     if (sum.cantidad == 0 || sum.cantidad== null) {
       alert('Ingrese una cantidad');
       return false;
@@ -196,6 +205,98 @@ export class SuministrosComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value="";
 
   }
+
+  onClickGUardarUnidad(){
+     let unid:Unidad={
+      id: '',
+      nombre: (<HTMLInputElement>document.getElementById("txt_NombreNU")).value,
+      cantidad:Number.parseInt((<HTMLInputElement>document.getElementById("txt_CantidadNU")).value),
+      descripcion:  (<HTMLInputElement>document.getElementById("txt_DescripcionNU")).value
+     };
+     if(this.VerificarUnidad(unid)){
+      this.siministrosService.guardarUnidad(unid).subscribe(
+        res => {
+          console.log(res);
+          this.cargarUnidades();
+
+  
+        },
+        err => {
+          alert('Error al guardar los datos de la Unidad... intentelo nuevamente');
+          console.log(err)
+        }
+  
+      );
+     }
+
+  }
+  VerificarUnidad(uni: Unidad){
+    if(uni.nombre.length==0){
+      alert('Ingrese un nombre de unidad');
+      return false;
+    }
+    if(uni.descripcion.length==0){
+      alert('Ingrese una descripcion para la unidad');
+      return false;
+    }
+    if(uni.cantidad.toString().length==0 || uni.cantidad==0){
+      alert('Ingrese una cantidad valida');
+      return false;
+    }
+
+    return true;
+  }
+  limpiarUnidad(){
+    (<HTMLInputElement>document.getElementById("txt_NombreNU")).value="";
+    (<HTMLInputElement>document.getElementById("txt_CantidadNU")).value="";
+    (<HTMLInputElement>document.getElementById("txt_DescripcionNU")).value="";
+
+  }
+
+  onClickGuardarDetalleSuministros(){
+    var movi=(<HTMLSelectElement>document.getElementById("cbx_MovimientoND")).value;
+
+
+    var c=Number.parseInt((<HTMLInputElement>document.getElementById("txt_CantidadND")).value);
+    let uni=(<HTMLSelectElement>document.getElementById("cbx_UnidadNuevoND")).value;
+    let sep= uni.split(':');
+    let can=Number.parseInt(sep[1]);
+    let exisA=Number.parseInt(this.existenciaAnterior);
+    let uniAu=c*can;
+    let exis=0;
+
+    if(movi=='Ingreso'){
+      exis=exisA+uniAu;
+    }else{
+      if(exisA>=uniAu){
+        exis=exisA-uniAu;
+      }else{
+      alert('Cantidad de Objetos insuficiente');
+      }
+    }
+
+    let detSun:DetalleSuministro={
+      id_suministro:this.idSuministroSeleccionado,
+      fecha:(<HTMLSelectElement>document.getElementById("txt_FechaND")).value,
+      detalle:(<HTMLSelectElement>document.getElementById("txt_delatalleND")).value,
+      tipo_movimiento:movi,
+      id_tipo_unidad:sep[0],
+      cantidad:c,
+      existencia:exis,
+      id_persona:(<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value 
+    };
+    console.log(detSun);
+
+  }
+  verificarSeleccion(){
+    if(this.idSuministroSeleccionado!='-1'){
+      (<HTMLButtonElement>document.getElementById("btn_GuarDetalleSumi")).disabled=false;
+    }else{
+      alert('Recuerde Seleccionar un suministro');
+    }
+  }
+
+
 
 
 }

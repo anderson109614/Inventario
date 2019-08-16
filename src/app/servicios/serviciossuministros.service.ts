@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Persona} from '../models/Persona';
 import {Suministro} from '../models/Suministro';
+import {Unidad} from '../models/Unidad';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,7 @@ export class ServiciossuministrosService {
 
   constructor(private http:HttpClient) {  }
 
-  ip = 'http://10.7.3.197/servicios/';
+  ip = 'http://10.7.2.210/servicios/';
   getSuministro(){
     return this.http.get(this.ip + 'Suministros/Suministros.php')
   }
@@ -34,5 +35,8 @@ export class ServiciossuministrosService {
   }
   guardarSuministro(sun: Suministro){
     return this.http.post<Suministro>(this.ip+'Suministros/Suministros.php', sun)   
+  }
+  guardarUnidad(uni: Unidad){
+    return this.http.post<Unidad>(this.ip+'Suministros/Unidades.php', uni)   
   }
 }
