@@ -38,7 +38,7 @@ export class SuministrosComponent implements OnInit {
     this.suministros=this.suministroAuxs;
     
     let value = (<HTMLInputElement>event.target).value;
-    const result = this.suministros.filter(suministro => suministro.nombre.search(value)==0);
+    const result = this.suministros.filter(suministro => suministro.nombre.toUpperCase().search(value.toUpperCase())==0);
     this.suministros=result;
 
   }
