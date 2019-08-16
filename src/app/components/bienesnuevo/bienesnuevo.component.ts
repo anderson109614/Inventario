@@ -116,6 +116,10 @@ export class BienesnuevoComponent implements OnInit {
     var NombresE = (<HTMLInputElement>document.getElementById("txt_NombreNE")).value;
     var ApellidosE = (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value;
 
+    if(CedulaE.toString()==""){
+      alert("Ingresar Nro de Cédula");
+    }else{
+      
     let encargado: Persona = {
       id: "",
       cedula: CedulaE,
@@ -136,6 +140,8 @@ export class BienesnuevoComponent implements OnInit {
       },
       err => console.log(err)
     );
+    }
+
   }
 
   onClickGuardarActa(){
@@ -146,55 +152,72 @@ export class BienesnuevoComponent implements OnInit {
     var bien_contabilizadoN = (<HTMLInputElement>document.getElementById("cbx_BienContabilizadoNA")).value;
     var descripcionN = (<HTMLInputElement>document.getElementById("txt_DescripcionNA")).value;
 
-    let acta:Acta = {
-      id: 0,
-      nro_acta: Number.parseInt(nroActaN), 
-      origen: origenN, 
-      nro_compromiso: Number.parseInt(nro_compromisoN),      
-      acta_contabilizada: acta_contabilizadaN, 
-      bien_contabilizado: bien_contabilizadoN, 
-      descripcion: descripcionN
+    if(nroActaN.toString()==""){
+      alert("Ingresar Nro de Acta");
+    }else if(origenN.toString() == ""){
+      alert("Ingresar Origen");
+    }else if(nro_compromisoN.toString() == ""){
+      alert("Ingresar Nro de Compromiso");
+    }else if(descripcionN.toString() == ""){
+      alert("Ingrear descripción");
+    }else{
+      let acta:Acta = {
+        id: 0,
+        nro_acta: Number.parseInt(nroActaN), 
+        origen: origenN, 
+        nro_compromiso: Number.parseInt(nro_compromisoN),      
+        acta_contabilizada: acta_contabilizadaN, 
+        bien_contabilizado: bien_contabilizadoN, 
+        descripcion: descripcionN
+      }
+  
+      console.log(acta);
+      this.bienesService.guardarNuevaActa(acta).subscribe(
+        //res => console.log(res),
+        res => {
+          //this.limpiartxt();
+          //console.log(res)
+          this.clickMessage = res.id.toString();
+          this.cargarActas();
+          alert("Se guardo con éxito");
+          this.limpiarTxtActa();
+        },
+        err => console.log(err)
+      );
     }
 
-    console.log(acta);
-    this.bienesService.guardarNuevaActa(acta).subscribe(
-      //res => console.log(res),
-      res => {
-        //this.limpiartxt();
-        //console.log(res)
-        this.clickMessage = res.id.toString();
-        this.cargarActas();
-        alert("Se guardo con éxito");
-        this.limpiarTxtActa();
-      },
-      err => console.log(err)
-    );
   }
 
   onClickGuardarBodega(){
     var nombreBodegaN = (<HTMLInputElement>document.getElementById("txt_NombreBodegaNB")).value;
     var ubicacionN =(<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value;
 
-    let bodega:Bodega={
-      id: 0,
-      nombre: nombreBodegaN,
-      ubicacion: ubicacionN
+    if(nombreBodegaN.toString() == ""){
+      alert("Ingresar Nombre de Bodega");
+    }else if(ubicacionN.toString() == ""){
+      alert("Ingresar Ubicación");
+    }else{
+      let bodega:Bodega={
+        id: 0,
+        nombre: nombreBodegaN,
+        ubicacion: ubicacionN
+      }
+  
+      console.log(bodega);
+      this.bienesService.guardarNuevaBodega(bodega).subscribe(
+        res => {
+          //this.limpiartxt();
+          console.log(res);
+          this.cargarBodegas();
+          this.clickMessageBodega = res.id.toString();
+          alert("Se guardo con éxito");
+          this.limpiarTxtBodega();
+          
+        },
+        err => console.log(err)
+      );
     }
 
-    console.log(bodega);
-    this.bienesService.guardarNuevaBodega(bodega).subscribe(
-      res => {
-        //this.limpiartxt();
-        console.log(res);
-        this.cargarBodegas();
-        this.clickMessageBodega = res.id.toString();
-        alert("Se guardo con éxito");
-        this.limpiarTxtBodega();
-        
-      },
-      err => console.log(err)
-    );
-    
   }
   
   onClickGuardar() {
