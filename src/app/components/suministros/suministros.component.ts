@@ -40,7 +40,8 @@ export class SuministrosComponent implements OnInit {
     this.suministros=this.suministroAuxs;
     
     let value = (<HTMLInputElement>event.target).value;
-    const result = this.suministros.filter(suministro => suministro.nombre.toUpperCase().search(value.toUpperCase())==0 || suministro.existencia==value);
+    const result = this.suministros.filter(suministro => suministro.nombre.toUpperCase().search(value.toUpperCase())==0 
+                                                      || suministro.existencia==value);
     this.suministros=result;
 
   }
@@ -55,7 +56,19 @@ export class SuministrosComponent implements OnInit {
 
   }
   checkPinDetalle($event: KeyboardEvent){
-
+    this.detalles=this.detallesAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.detalles.filter(detalle => detalle.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                                || detalle.apellidos.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.nombre.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.fecha.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.detalle.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.tipo_movimiento.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.NombreUnidad.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.cantidad.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.existencia.toUpperCase().search(value.toUpperCase())==0
+                                                 );
+    this.detalles=result;
   }
 
   /////7
