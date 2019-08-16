@@ -115,7 +115,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Nombre</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_NombreNuevo" type="text" placeholder="Nombre"
+                                    <input id="txt_NombreNS" type="text" placeholder="Nombre"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -123,15 +123,14 @@
                                 <label class="col-sm-3 form-control-label">Unidad</label>
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_UnidadNuevo" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-
+                                        <option *ngFor="let unidad of unidades" value="{{unidad.id+':'+unidad.cantidad}}">{{unidad.nombre}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Cantidad</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Cantidad" type="number" placeholder="CAntidad"
+                                    <input id="txt_CantidadNS" type="number" placeholder="CAntidad"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -140,7 +139,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_IdPersona_sun" type="text" class="form-control" value=""
+                                            <input id="txt_IdPersonaNS" type="text" class="form-control" value=""
                                                 readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -156,6 +155,10 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="onClickGuardarSuministros()" >Guardar</button>
             </div>
         </div>
     </div>
