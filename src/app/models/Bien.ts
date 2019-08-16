@@ -1,4 +1,5 @@
 export interface Bien{
+    id: number;
     identificador: number,
     id_tipo_bien: number,
     serie_identificacion: string,
@@ -14,8 +15,7 @@ export interface Bien{
     id_bodega: number,
     id_acta: number,
     fecha_ingreso: string,
-    id_bien_padre: number,
-    
+    id_bien_padre: number, 
     codigo: number,
     id_encargado: number,
 }

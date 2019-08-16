@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
@@ -18,8 +18,9 @@ export class BienesactualizarComponent implements OnInit {
   actas: any = [];
   encargados: any = [];
   bodegas: any = [];
+  opciones: string[] = ["Si", "No"];
 
-  constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute) { }
+  constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     //var l= this.rutaActiva.snapshot.params.id;
@@ -104,6 +105,67 @@ export class BienesactualizarComponent implements OnInit {
   onClickMeBodega(id:string) {
     var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
     idBodega.value = id.toString();
+  }
+
+  onClickActualizar() {
+    var idBien = this.rutaActiva.snapshot.params.id;
+    var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
+    var codigoO = (<HTMLInputElement>document.getElementById("txt_Codigo")).value;  
+    var tipoBienO = (<HTMLInputElement>document.getElementById("cbx_TipoBien")).value;
+    var serieO = (<HTMLInputElement>document.getElementById("txt_Serie")).value; 
+    var modeloO = (<HTMLInputElement>document.getElementById("txt_Modelo")).value;  
+    var marcaO = (<HTMLInputElement>document.getElementById("txt_Marca")).value; 
+    var colorO = (<HTMLInputElement>document.getElementById("txt_Color")).value;
+    var materialO = (<HTMLInputElement>document.getElementById("txt_Material")).value; 
+    var dimensionesO = (<HTMLInputElement>document.getElementById("txt_Dimensiones")).value; 
+    var criticoO = (<HTMLInputElement>document.getElementById("cbx_Critico")).value; 
+    var valorCompraO = (<HTMLInputElement>document.getElementById("txt_ValorCompra")).value; 
+    var tipoMonedaO = (<HTMLInputElement>document.getElementById("cbx_TipoMoneda")).value; 
+    var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
+    var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
+    var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
+    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;  
+    var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
+    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
+   
+    let bien: Bien = {
+      id: idBien,
+      identificador: Number.parseInt(identificadorO),
+      id_tipo_bien: Number.parseInt(tipoBienO),
+      serie_identificacion: serieO,
+      modelo: modeloO,
+      marca: marcaO,
+      critico: criticoO,
+      id_moneda: Number.parseInt(tipoMonedaO),
+      valor_compra: Number.parseFloat(valorCompraO),
+      recompra: recompraO,
+      color: colorO,
+      material: materialO,
+      dimensiones: dimensionesO,
+      id_bodega: Number.parseInt(BodegaO),
+      id_acta: Number.parseInt(actaO),
+      fecha_ingreso: fechaIngresoO,
+      id_bien_padre: Number.parseInt(bienO),     
+      codigo: Number.parseInt(codigoO),
+      id_encargado: Number.parseInt(encargadoO),
+
+    };
+ 
+    console.log(bien);
+    this.bienesService.actualizarBien(bien).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+    
+  }
+
+  confirmar() {
+    if (confirm("¿Desea cancelar?")) {
+      this.router.navigate(['/listabienes']);
+    } else {
+      
+    }
+    
   }
 
 }

@@ -12,7 +12,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Indentificador</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Identificador"  type="text" placeholder="Indentificador"
+                                    <input id="txt_Identificador" type="number" placeholder="Indentificador"
                                         class="form-control form-control-success">
                                     <!--                                        
                                         <small class="form-text">Example help
@@ -25,7 +25,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Código</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Codigo"  type="text" placeholder="Código"
+                                    <input id="txt_Codigo" type="number" placeholder="Código"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -33,8 +33,8 @@
                                 <label class="col-sm-3 form-control-label">Tipo de Bien</label>
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_TipoBien" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let tipo of tipobienes" value="{{tipo.id}}">{{tipo.id + " - " + tipo.nombre}}
+                                        <option value="">Seleccionar</option>
+                                        <option *ngFor="let tipo of tipobienes" value="{{tipo.id}}">{{tipo.nombre}}
                                         </option>
                                     </select>
                                 </div>
@@ -111,8 +111,8 @@
                                 <label class="col-sm-3 form-control-label">Tipo de Moneda</label>
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_TipoMoneda" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let moneda of monedas" value="{{moneda.id}}">{{moneda.id + " - " + moneda.nombre}}
+                                        <option value="">Seleccionar</option>
+                                        <option *ngFor="let moneda of monedas" value="{{moneda.id}}">{{moneda.nombre}}
                                         </option>
                                     </select>
                                 </div>
@@ -121,7 +121,7 @@
                                 <label class="col-sm-3 form-control-label">Recompra</label>
                                 <div class="col-sm-9 mb-3">
                                     <select id="cbx_Recompra" name="account" class="form-control">
-                                        <option>Seleccionar</option>
+                                        <option value="">Seleccionar</option>
                                         <option value="Si">Sí</option>
                                         <option value="No">No</option>
                                     </select>
@@ -132,12 +132,14 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_NroActa" type="text" class="form-control" value="{{clickMessage}}" readonly="true">
+                                            <input id="txt_NroActa" type="text" class="form-control"
+                                                value="{{clickMessage}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalActa">Seleccionar</button>
                                                 <div class="modal fade modalActa" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true" style="overflow-y: auto">
+                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                    style="overflow-y: auto">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -205,8 +207,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Fecha de Ingreso</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_FechaIngreso" type="date"
-                                        class="form-control form-control-warning">
+                                    <input id="txt_FechaIngreso" type="date" class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -214,7 +215,8 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_Bien" type="text" class="form-control" value="{{clickMessageBien}}" readonly="true">
+                                            <input id="txt_Bien" type="text" class="form-control"
+                                                value="{{clickMessageBien}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBienes">Seleccionar</button>
@@ -292,7 +294,8 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_Encargado" type="text" class="form-control" value="{{clickMessageEncargado}}" readonly="true">
+                                            <input id="txt_Encargado" type="text" class="form-control"
+                                                value="{{clickMessageEncargado}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalEncargados">Seleccionar</button>
@@ -364,7 +367,8 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_Bodega" type="text" class="form-control" value="{{clickMessageBodega}}" readonly="true">
+                                            <input id="txt_Bodega" type="text" class="form-control"
+                                                value="{{clickMessageBodega}}" readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBodegas">Seleccionar</button>
@@ -435,7 +439,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12" style="text-align: right">
-                <button class="btn btn-secondary" style="margin-right: 15px">Cancelar</button>
+                <button class="btn btn-secondary" (click)="confirmar()" style="margin-right: 15px">Cancelar</button>
                 <button class="btn btn-primary" (click)="onClickGuardar()">Guardar</button>
             </div>
         </div>
