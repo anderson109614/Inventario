@@ -16,7 +16,9 @@ export class SuministrosComponent implements OnInit {
   suministros: any = [];
   suministroAuxs: any = [];
   detalles: any = [];
+  detallesAux: any = [];
   personas: any = [];
+  personasAux: any = [];
   unidades:any=[];
   constructor(private siministrosService: ServiciossuministrosService) { }
   idSuministroSeleccionado: string = '-1';
@@ -38,8 +40,21 @@ export class SuministrosComponent implements OnInit {
     this.suministros=this.suministroAuxs;
     
     let value = (<HTMLInputElement>event.target).value;
-    const result = this.suministros.filter(suministro => suministro.nombre.toUpperCase().search(value.toUpperCase())==0);
+    const result = this.suministros.filter(suministro => suministro.nombre.toUpperCase().search(value.toUpperCase())==0 || suministro.existencia==value);
     this.suministros=result;
+
+  }
+  checkPinPersona($event: KeyboardEvent){
+    this.personas=this.personasAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.personas.filter(persona => persona.cedula.toUpperCase().search(value.toUpperCase())==0 
+                                                || persona.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                                || persona.apellidos.toUpperCase().search(value.toUpperCase())==0
+                                                || persona.telefono.toUpperCase().search(value.toUpperCase())==0 );
+    this.personas=result;
+
+  }
+  checkPinDetalle($event: KeyboardEvent){
 
   }
 
@@ -58,6 +73,7 @@ export class SuministrosComponent implements OnInit {
     this.siministrosService.getDetalles().subscribe(
       res => {
         this.detalles = res;
+        this.detallesAux=res;
       },
       err => console.log(err)
     );
@@ -75,6 +91,7 @@ export class SuministrosComponent implements OnInit {
     this.siministrosService.getPersonas().subscribe(
       res => {
         this.personas = res;
+        this.personasAux=res;
       },
       err => console.log(err)
     );
@@ -87,7 +104,8 @@ export class SuministrosComponent implements OnInit {
       res => {
         //console.log(res);
         this.detalles = res;
-
+        this.detallesAux=res;
+        
       },
       err => console.log(err)
     );
