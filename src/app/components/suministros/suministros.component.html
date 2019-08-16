@@ -15,30 +15,35 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Existencia U</th>
+                        <input id="bb" type="search" (keyup)="checkPin($event)" >
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table id="tt" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Existencia U</th>
 
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let suministro of suministros">
-                                    <td>{{suministro.id}}</td>
-                                    <td>{{suministro.nombre}}</td>
-                                    <td>{{suministro.existencia}}</td>
-                                    <td>
-                                        <button type="button" (click)="onClickSuministro(suministro.id,suministro.existencia)">
-                                            <i class="fa fa-check-circle">
-                                            </i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let suministro of suministros">
+                                        <td>{{suministro.id}}</td>
+                                        <td>{{suministro.nombre}}</td>
+                                        <td>{{suministro.existencia}}</td>
+                                        <td>
+                                            <button type="button"
+                                                (click)="onClickSuministro(suministro.id,suministro.existencia)">
+                                                <i class="fa fa-check-circle">
+                                                </i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
 
                 </div>
@@ -50,7 +55,7 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <h4>Destalle Suminstros</h4>
+                            <h4>Detalle Suministros</h4>
                         </div>
                         <div class="col-lg-6 text-right">
                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -61,36 +66,39 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Suministro</th>
-                                    <th>Fecha</th>
-                                    <th>Detalle</th>
-                                    <th>Movimiento</th>
-                                    <th>Tipo Unidad</th>
-                                    <th>Cantidad</th>
-                                    <th>Existencia</th>
-                                    <th>Nombres</th>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table id="t2" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Suministro</th>
+                                        <th>Fecha</th>
+                                        <th>Detalle</th>
+                                        <th>Movimiento</th>
+                                        <th>Tipo Unidad</th>
+                                        <th>Cantidad</th>
+                                        <th>Existencia</th>
+                                        <th>Nombres</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let detalleO of detalles">
-                                    <td>{{detalleO.id}}</td>
-                                    <td>{{detalleO.nombre}}</td>
-                                    <td>{{detalleO.fecha}}</td>
-                                    <td>{{detalleO.detalle}}</td>
-                                    <td>{{detalleO.tipo_movimiento}}</td>
-                                    <td>{{detalleO.NombreUnidad}}</td>
-                                    <td>{{detalleO.cantidad}}</td>
-                                    <td>{{detalleO.existencia}}</td>
-                                    <td>{{detalleO.nombres + detalleO.apellidos}}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detalleO of detalles">
+                                        <td>{{detalleO.id}}</td>
+                                        <td>{{detalleO.nombre}}</td>
+                                        <td>{{detalleO.fecha}}</td>
+                                        <td>{{detalleO.detalle}}</td>
+                                        <td>{{detalleO.tipo_movimiento}}</td>
+                                        <td>{{detalleO.NombreUnidad}}</td>
+                                        <td>{{detalleO.cantidad}}</td>
+                                        <td>{{detalleO.existencia}}</td>
+                                        <td>{{detalleO.nombres + detalleO.apellidos}}</td>
 
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 
@@ -237,7 +245,7 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input id="txt_IdPersonaNS" type="text" class="form-control" value=""
+                                            <input id="txt_IdPersonaNDS" type="text" class="form-control" value=""
                                                 readonly="true">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"

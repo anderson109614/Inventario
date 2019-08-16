@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Persona} from '../models/Persona';
 import {Suministro} from '../models/Suministro';
 import {Unidad} from '../models/Unidad';
+import {DetalleSuministro} from '../models/DetalleSuministro';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,5 +39,8 @@ export class ServiciossuministrosService {
   }
   guardarUnidad(uni: Unidad){
     return this.http.post<Unidad>(this.ip+'Suministros/Unidades.php', uni)   
+  }
+  guardarDetalleSuministro(det:DetalleSuministro){
+    return this.http.post<DetalleSuministro>(this.ip+'Suministros/DetalleMovimiento.php', det)   
   }
 }

@@ -4,7 +4,8 @@ import { Persona } from '../../models/Persona';
 import { Suministro} from '../../models/Suministro';
 import { Unidad } from '../../models/Unidad';
 import { DetalleSuministro} from '../../models/DetalleSuministro';
-
+declare var jQuery:any;
+declare var $:any;
 @Component({
   selector: 'app-suministros',
   templateUrl: './suministros.component.html',
@@ -13,20 +14,36 @@ import { DetalleSuministro} from '../../models/DetalleSuministro';
 export class SuministrosComponent implements OnInit {
 
   suministros: any = [];
+  suministroAuxs: any = [];
   detalles: any = [];
   personas: any = [];
   unidades:any=[];
   constructor(private siministrosService: ServiciossuministrosService) { }
   idSuministroSeleccionado: string = '-1';
   existenciaAnterior:string='';
+  
   ngOnInit() {
     this.cargarSuministros();
     this.cargarPersonas();
     this.cargarDEtalleTodo();
     this.cargarUnidades();
+   // $('#bb').quicksearch('#tt ');
+     
+   // $('input#bb').quicksearch('table tbody tr');
 
   }
   ///////////77
+  checkPin($event: KeyboardEvent) {
+
+    this.suministros=this.suministroAuxs;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.suministros.filter(suministro => suministro.nombre.search(value)==0);
+    this.suministros=result;
+
+  }
+
+  /////7
   cargarUnidades(){
     this.siministrosService.getUnidades().subscribe(
       res => {
@@ -49,6 +66,7 @@ export class SuministrosComponent implements OnInit {
     this.siministrosService.getSuministro().subscribe(
       res => {
         this.suministros = res;
+        this.suministroAuxs=res;
       },
       err => console.log(err)
     );
@@ -79,7 +97,7 @@ export class SuministrosComponent implements OnInit {
   onClickSelecPersona(id: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = id;
-    (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value =id;
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =id;
   }
   onClickGuardarPersona() {
 
@@ -98,7 +116,7 @@ export class SuministrosComponent implements OnInit {
           console.log(res);
           var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
           persona.value = res.id;
-          (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value =res.id;
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =res.id;
           this.cargarPersonas();
         },
         err => {
@@ -272,6 +290,7 @@ export class SuministrosComponent implements OnInit {
         exis=exisA-uniAu;
       }else{
       alert('Cantidad de Objetos insuficiente');
+      return
       }
     }
 
@@ -283,9 +302,27 @@ export class SuministrosComponent implements OnInit {
       id_tipo_unidad:sep[0],
       cantidad:c,
       existencia:exis,
-      id_persona:(<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value 
+      id_persona:(<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value 
     };
     console.log(detSun);
+    if(this.VerificarDetalle(detSun)){
+      this.siministrosService.guardarDetalleSuministro(detSun).subscribe(
+        res => {
+          this.limpiarDetalle();
+          this.limpiadoSuministr();
+          console.log(res);
+          this.cargarSuministros();
+          this.onClickSuministro(res.id_suministro,res.existencia.toString());
+          
+  
+        },
+        err => {
+          alert('Error al guardar los datos del Suministro... intentelo nuevamente');
+          console.log(err)
+        }
+  
+      );
+    }
 
   }
   verificarSeleccion(){
@@ -295,7 +332,28 @@ export class SuministrosComponent implements OnInit {
       alert('Recuerde Seleccionar un suministro');
     }
   }
+  VerificarDetalle(det:DetalleSuministro){
+    if(det.detalle.length==0){
+      alert('Ingrese un nombre de unidad');
+      return false;
+    }
+    if(det.id_persona.length==0){
+      alert('Seleccione una persona');
+      return false;
+    }
+    if(det.cantidad.toString().length==0 || det.cantidad<0){
+      alert('Ingrese una cantidad valida');
+      return false;
+    }
 
+    return true;
+  }
+  limpiarDetalle(){
+    (<HTMLSelectElement>document.getElementById("txt_delatalleND")).value="";
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value ="";
+    (<HTMLInputElement>document.getElementById("txt_CantidadND")).value ="";
+
+  }
 
 
 
