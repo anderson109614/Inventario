@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 
+
 @Component({
   selector: 'app-listabienes',
   templateUrl: './listabienes.component.html',
@@ -21,5 +22,6 @@ export class ListabienesComponent implements OnInit {
       err => console.log(err)
     );
   }
+
 
 }

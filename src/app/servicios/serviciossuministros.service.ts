@@ -9,7 +9,7 @@ export class ServiciossuministrosService {
 
   constructor(private http:HttpClient) {  }
 
-  ip = 'http://10.7.3.197/servicios/';
+  ip = 'http://10.7.2.210/servicios/';
   getSuministro(){
     return this.http.get(this.ip + 'Suministros/Suministros.php')
   }
