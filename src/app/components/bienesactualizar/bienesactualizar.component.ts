@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
@@ -20,7 +20,7 @@ export class BienesactualizarComponent implements OnInit {
   bodegas: any = [];
   opciones: string[] = ["Si", "No"];
 
-  constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute) { }
+  constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     //var l= this.rutaActiva.snapshot.params.id;
@@ -156,6 +156,15 @@ export class BienesactualizarComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     );
+    
+  }
+
+  confirmar() {
+    if (confirm("¿Desea cancelar?")) {
+      this.router.navigate(['/listabienes']);
+    } else {
+      
+    }
     
   }
 

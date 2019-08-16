@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -21,7 +22,7 @@ export class BienesnuevoComponent implements OnInit {
 
   
 
-  constructor(private bienesService:BienesService) { }
+  constructor(private bienesService:BienesService, public router: Router) { }
 
   ngOnInit() {
     
@@ -171,7 +172,12 @@ export class BienesnuevoComponent implements OnInit {
   }
 
   confirmar() {
-    confirm();
+    if (confirm("¿Desea cancelar?")) {
+      this.router.navigate(['/listabienes']);
+    } else {
+      
+    }
+    
   }
 
 }
