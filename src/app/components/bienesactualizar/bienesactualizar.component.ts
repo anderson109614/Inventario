@@ -124,7 +124,14 @@ export class BienesactualizarComponent implements OnInit {
     var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
     var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
     var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
-    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;  
+    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;
+    var idBienPadre; 
+    if(bienO == ""){
+    idBienPadre = "null";
+    }else{
+    idBienPadre = bienO;
+    }
+     
     var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
     var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
    
@@ -145,7 +152,7 @@ export class BienesactualizarComponent implements OnInit {
       id_bodega: Number.parseInt(BodegaO),
       id_acta: Number.parseInt(actaO),
       fecha_ingreso: fechaIngresoO,
-      id_bien_padre: Number.parseInt(bienO),     
+      id_bien_padre: Number.parseInt(idBienPadre),     
       codigo: Number.parseInt(codigoO),
       id_encargado: Number.parseInt(encargadoO),
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
 import { RouterLink, Router } from '@angular/router';
+import { Persona } from 'src/app/models/Persona';
+import { Acta } from 'src/app/models/Acta';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -47,19 +49,9 @@ export class BienesnuevoComponent implements OnInit {
       err => console.log(err)
     );
 
-    this.bienesService.getActa().subscribe(
-      res => {
-        this.actas = res;
-      },
-      err => console.log(err)
-    );
+    this.cargarActas();
     
-    this.bienesService.getEncargado().subscribe(
-      res => {
-        this.encargados = res;
-      },
-      err => console.log(err)
-    );
+    this.cargarEncargados();
 
     this.bienesService.getBodega().subscribe(
       res => {
@@ -70,6 +62,25 @@ export class BienesnuevoComponent implements OnInit {
 
   }
 
+  cargarEncargados()
+  {
+    this.bienesService.getEncargado().subscribe(
+      res => {
+        this.encargados = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  cargarActas()
+  {
+    this.bienesService.getActa().subscribe(
+      res => {
+        this.actas = res;
+      },
+      err => console.log(err)
+    );
+  }
 
 
   clickMessage = '';
@@ -93,6 +104,65 @@ export class BienesnuevoComponent implements OnInit {
     this.clickMessageBodega = id.toString();
   }
 
+ 
+  onClickGuardarEncargado(){
+    var CedulaE = (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value;
+    var NombresE = (<HTMLInputElement>document.getElementById("txt_NombreNE")).value;
+    var ApellidosE = (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value;
+
+    let encargado: Persona = {
+      id: "",
+      cedula: CedulaE,
+      nombres: NombresE,
+      apellidos: ApellidosE,
+      telefono: "",
+      direccion: ""
+    };
+
+    console.log(encargado);
+    this.bienesService.guardarNuevoEncargado(encargado).subscribe(
+      res => {
+        //console.log(res);
+        this.cargarEncargados();
+        alert("Se guardo con éxito");
+        this.clickMessageEncargado = res.id.toString();
+        
+      },
+      err => console.log(err)
+    );
+  }
+
+  onClickGuardarActa(){
+    var nroActaN = (<HTMLInputElement>document.getElementById("txt_NroActaNA")).value;
+    var origenN = (<HTMLInputElement>document.getElementById("txt_OrigenNA")).value;
+    var nro_compromisoN = (<HTMLInputElement>document.getElementById("txt_NroCompromisoNA")).value;
+    var acta_contabilizadaN = (<HTMLInputElement>document.getElementById("cbx_ActaContabilizadaNA")).value;
+    var bien_contabilizadoN = (<HTMLInputElement>document.getElementById("cbx_BienContabilizadoNA")).value;
+    var descripcionN = (<HTMLInputElement>document.getElementById("txt_DescripcionNA")).value;
+
+    let acta:Acta = {
+      id: 0,
+      nro_acta: Number.parseInt(nroActaN), 
+      origen: origenN, 
+      nro_compromiso: Number.parseInt(nro_compromisoN),      
+      acta_contabilizada: acta_contabilizadaN, 
+      bien_contabilizado: bien_contabilizadoN, 
+      descripcion: descripcionN
+    }
+
+    console.log(acta);
+    this.bienesService.guardarNuevaActa(acta).subscribe(
+      //res => console.log(res),
+      res => {
+        //this.limpiartxt();
+        //console.log(res)
+        this.clickMessage = res.id.toString();
+        this.cargarActas();
+        alert("Se guardo con éxito");
+      },
+      err => console.log(err)
+    );
+  }
   
   onClickGuardar() {   
     var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
@@ -133,7 +203,7 @@ export class BienesnuevoComponent implements OnInit {
       fecha_ingreso: fechaIngresoO,
       id_bien_padre: Number.parseInt(bienO), 
       codigo: Number.parseInt(codigoO),
-      id_encargado: Number.parseInt(encargadoO),
+      id_encargado: Number.parseInt(encargadoO)
 
     };
  
@@ -143,6 +213,7 @@ export class BienesnuevoComponent implements OnInit {
       res => {
         this.limpiartxt();
         console.log(res)
+        alert("Se guardo con éxito");
       },
       err => console.log(err)
     );
@@ -170,6 +241,8 @@ export class BienesnuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_Encargado")).value = ""; 
     (<HTMLInputElement>document.getElementById("txt_Bodega")).value = ""; 
   }
+
+
 
   confirmar() {
     if (confirm("¿Desea cancelar?")) {
