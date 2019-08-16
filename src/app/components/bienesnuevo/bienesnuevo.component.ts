@@ -4,6 +4,7 @@ import { Bien } from '../../models/Bien';
 import { RouterLink, Router } from '@angular/router';
 import { Persona } from 'src/app/models/Persona';
 import { Acta } from 'src/app/models/Acta';
+import { Bodega } from 'src/app/models/Bodega';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -53,12 +54,7 @@ export class BienesnuevoComponent implements OnInit {
     
     this.cargarEncargados();
 
-    this.bienesService.getBodega().subscribe(
-      res => {
-        this.bodegas = res;
-      },
-      err => console.log(err)
-    );
+      this.cargarBodegas();
 
   }
 
@@ -77,6 +73,16 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.getActa().subscribe(
       res => {
         this.actas = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  cargarBodegas()
+  {
+    this.bienesService.getBodega().subscribe(
+      res => {
+        this.bodegas = res;
       },
       err => console.log(err)
     );
@@ -123,10 +129,10 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
-        this.cargarEncargados();
-        alert("Se guardo con éxito");
         this.clickMessageEncargado = res.id.toString();
-        
+        this.cargarEncargados();      
+        alert("Se guardo con éxito");       
+        this.limpiarTxtEncargado();
       },
       err => console.log(err)
     );
@@ -159,12 +165,40 @@ export class BienesnuevoComponent implements OnInit {
         this.clickMessage = res.id.toString();
         this.cargarActas();
         alert("Se guardo con éxito");
+        this.limpiarTxtActa();
       },
       err => console.log(err)
     );
   }
+
+  onClickGuardarBodega(){
+    var nombreBodegaN = (<HTMLInputElement>document.getElementById("txt_NombreBodegaNB")).value;
+    var ubicacionN =(<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value;
+
+    let bodega:Bodega={
+      id: 0,
+      nombre: nombreBodegaN,
+      ubicacion: ubicacionN
+    }
+
+    console.log(bodega);
+    this.bienesService.guardarNuevaBodega(bodega).subscribe(
+      res => {
+        //this.limpiartxt();
+        console.log(res);
+        this.cargarBodegas();
+        this.clickMessageBodega = res.id.toString();
+        alert("Se guardo con éxito");
+        this.limpiarTxtBodega();
+        
+      },
+      err => console.log(err)
+    );
+    
+  }
   
-  onClickGuardar() {   
+  onClickGuardar() {
+
     var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
     var codigoO = (<HTMLInputElement>document.getElementById("txt_Codigo")).value;  
     var tipoBienO = (<HTMLInputElement>document.getElementById("cbx_TipoBien")).value;
@@ -180,43 +214,82 @@ export class BienesnuevoComponent implements OnInit {
     var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
     var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
     var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
-    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;  
+    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;
+    var idBienPadre; 
+    if(bienO.toString() == ""){
+    idBienPadre = "null";
+    }else{
+    idBienPadre = bienO;
+    }  
     var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
     var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
    
-    let bien: Bien = {
-      id: 0,
-      identificador: Number.parseInt(identificadorO),
-      id_tipo_bien: Number.parseInt(tipoBienO),
-      serie_identificacion: serieO,
-      modelo: modeloO,
-      marca: marcaO,
-      critico: criticoO,
-      id_moneda: Number.parseInt(tipoMonedaO),
-      valor_compra: Number.parseFloat(valorCompraO),
-      recompra: recompraO,
-      color: colorO,
-      material: materialO,
-      dimensiones: dimensionesO,
-      id_bodega: Number.parseInt(BodegaO),
-      id_acta: Number.parseInt(actaO),
-      fecha_ingreso: fechaIngresoO,
-      id_bien_padre: Number.parseInt(bienO), 
-      codigo: Number.parseInt(codigoO),
-      id_encargado: Number.parseInt(encargadoO)
+    if(identificadorO.toString() == ""){
+      (<HTMLInputElement>document.getElementById("txt_Identificador")).required;
+      alert("Ingresar Identificador");
+    }else if(codigoO.toString() == ""){
+      (<HTMLInputElement>document.getElementById("txt_Codigo")).required;
+      alert("Ingresar Código");
+    }else if(serieO.toString() == ""){
+      alert("Ingresar Serie");
+    }else if(modeloO.toString() == ""){
+      alert("Ingresar Modelo");
+    }else if(marcaO.toString() == ""){
+      alert("Ingresar Marca");
+    }else if(colorO.toString() ==""){
+      alert("Ingresar Color");
+    }else if(materialO.toString()==""){
+      alert("Ingresar Material");
+    }else if(dimensionesO.toString() == ""){
+      alert("Ingresar Dimensiones")
+    }else if(valorCompraO.toString() == ""){
+      alert("Ingresar Valor de Compra")
+    }else if(actaO.toString()== ""){
+      alert("Seleccionar el Nro de Acta")
+    }else if(fechaIngresoO.toString()==""){
+      alert("Seleccionar Fecha de Ingreso")
+    }else if(encargadoO.toString()==""){
+      alert("Seleccionar el Encargado")
+    }else if(BodegaO.toString()==""){
+      alert("Seleccionar la Bodega")
+    }else{
 
-    };
- 
-    console.log(bien);
-    this.bienesService.guardarBiene(bien).subscribe(
-      //res => console.log(res),
-      res => {
-        this.limpiartxt();
-        console.log(res)
-        alert("Se guardo con éxito");
-      },
-      err => console.log(err)
-    );
+      let bien: Bien = {
+        id: 0,
+        identificador: Number.parseInt(identificadorO),
+        id_tipo_bien: Number.parseInt(tipoBienO),
+        serie_identificacion: serieO,
+        modelo: modeloO,
+        marca: marcaO,
+        critico: criticoO,
+        id_moneda: Number.parseInt(tipoMonedaO),
+        valor_compra: Number.parseFloat(valorCompraO),
+        recompra: recompraO,
+        color: colorO,
+        material: materialO,
+        dimensiones: dimensionesO,
+        id_bodega: Number.parseInt(BodegaO),
+        id_acta: Number.parseInt(actaO),
+        fecha_ingreso: fechaIngresoO,
+        id_bien_padre: Number.parseInt(idBienPadre), 
+        codigo: Number.parseInt(codigoO),
+        id_encargado: Number.parseInt(encargadoO)
+  
+      };
+   
+      console.log(bien);
+  
+      this.bienesService.guardarBiene(bien).subscribe(
+        //res => console.log(res),
+        res => {
+          this.limpiartxt();
+          console.log(res)
+          alert("Se guardo con éxito");
+        },
+        err => console.log(err)
+      );
+
+    }
     
   }
 
@@ -242,7 +315,25 @@ export class BienesnuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_Bodega")).value = ""; 
   }
 
+  limpiarTxtActa(){
+    (<HTMLInputElement>document.getElementById("txt_NroActaNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_OrigenNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_NroCompromisoNA")).value = "";
+    (<HTMLInputElement>document.getElementById("cbx_ActaContabilizadaNA")).value = "";
+    (<HTMLInputElement>document.getElementById("cbx_BienContabilizadoNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_DescripcionNA")).value = "";
+  }
 
+  limpiarTxtEncargado(){
+   (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_NombreNE")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value = "";
+  }
+
+  limpiarTxtBodega(){
+   (<HTMLInputElement>document.getElementById("txt_NombreBodegaNB")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value = "";
+  }
 
   confirmar() {
     if (confirm("¿Desea cancelar?")) {

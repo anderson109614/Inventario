@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Bien } from '../models/Bien';
 import { Persona } from '../models/Persona';
 import { Acta } from '../models/Acta';
+import { Bodega } from '../models/Bodega';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,11 @@ export class BienesService {
   guardarNuevaActa(acta: Acta)
   {
     return this.http.post<Acta>(this.ip+'Bienes/Actas.php',acta);
+  }
+
+  guardarNuevaBodega(bodega:Bodega)
+  {
+    return this.http.post<Bodega>(this.ip+'Bienes/Bodegas.php', bodega);
   }
 
 }

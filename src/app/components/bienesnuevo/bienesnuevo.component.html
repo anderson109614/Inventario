@@ -12,8 +12,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Indentificador</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Identificador" type="number" placeholder="Indentificador"
-                                        class="form-control form-control-success" required>
+                                    <input name="id" id="txt_Identificador" type="text" placeholder="Indentificador"
+                                        class="form-control form-control-success" maxlength="10">
                                     <!--                                        
                                         <small class="form-text">Example help
                                         text
@@ -137,7 +137,7 @@
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalActa">Seleccionar</button>
-                                                    <!--Modal Acta-->
+                                                <!--Modal Acta-->
                                                 <div class="modal fade modalActa" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">
@@ -214,112 +214,105 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade modalNuevaActa" tabindex="-1"
-                                                role="dialog" aria-labelledby="myLargeModalLabel"
-                                                aria-hidden="true" style="overflow-y: auto">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 id="exampleModalLabel"
-                                                                class="modal-title">Nuevo
-                                                                Acta</h5>
-                                                            <button type="button" data-dismiss="modal"
-                                                                aria-label="Close" class="close"><span
-                                                                    aria-hidden="true">×</span></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form>
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3">Nro
-                                                                                Acta</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input
-                                                                                    id="txt_NroActaNA"
-                                                                                    type="text"
-                                                                                    placeholder="Nro Acta"
-                                                                                    class="form-control form-control-warning">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label
-                                                                                class="col-sm-3">Origen</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input id="txt_OrigenNA"
-                                                                                    type="text"
-                                                                                    placeholder="Origen"
-                                                                                    class="form-control form-control-warning">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3">Nro
-                                                                                Compromiso</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input
-                                                                                    id="txt_NroCompromisoNA"
-                                                                                    type="text"
-                                                                                    placeholder="Nro Compromiso"
-                                                                                    class="form-control form-control-warning">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label
-                                                                                class="col-sm-3 form-control-label">Acta
-                                                                                Contabilizada</label>
-                                                                            <div class="col-sm-9 mb-3">
-                                                                                <select
-                                                                                    id="cbx_ActaContabilizadaNA"
-                                                                                    name="account"
-                                                                                    class="form-control">
-                                                                                    <!--<option value="">Seleccionar</option>-->
-                                                                                    <option value="Si">
-                                                                                        Sí</option>
-                                                                                    <option value="No">
-                                                                                        No</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label
-                                                                                class="col-sm-3 form-control-label">Bien
-                                                                                Contabilizado</label>
-                                                                            <div class="col-sm-9 mb-3">
-                                                                                <select
-                                                                                    id="cbx_BienContabilizadoNA"
-                                                                                    name="account"
-                                                                                    class="form-control">
-                                                                                    <!--<option value="">Seleccionar</option>-->
-                                                                                    <option value="Si">
-                                                                                        Sí</option>
-                                                                                    <option value="No">
-                                                                                        No</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                                <label class="col-sm-3">Descripcion</label>
+                                                <!--Modal Nueva Acta-->
+                                                <div class="modal fade modalNuevaActa" tabindex="-1" role="dialog"
+                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                    style="overflow-y: auto">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Nuevo
+                                                                    Acta</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-3">Nro
+                                                                                    Acta</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input
-                                                                                        id="txt_DescripcionNA"
+                                                                                    <input id="txt_NroActaNA"
+                                                                                        type="text"
+                                                                                        placeholder="Nro Acta"
+                                                                                        class="form-control form-control-warning">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-3">Origen</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input id="txt_OrigenNA" type="text"
+                                                                                        placeholder="Origen"
+                                                                                        class="form-control form-control-warning">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-3">Nro
+                                                                                    Compromiso</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input id="txt_NroCompromisoNA"
+                                                                                        type="text"
+                                                                                        placeholder="Nro Compromiso"
+                                                                                        class="form-control form-control-warning">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-sm-3 form-control-label">Acta
+                                                                                    Contabilizada</label>
+                                                                                <div class="col-sm-9 mb-3">
+                                                                                    <select id="cbx_ActaContabilizadaNA"
+                                                                                        name="account"
+                                                                                        class="form-control">
+                                                                                        <!--<option value="">Seleccionar</option>-->
+                                                                                        <option value="Si">
+                                                                                            Sí</option>
+                                                                                        <option value="No">
+                                                                                            No</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-sm-3 form-control-label">Bien
+                                                                                    Contabilizado</label>
+                                                                                <div class="col-sm-9 mb-3">
+                                                                                    <select id="cbx_BienContabilizadoNA"
+                                                                                        name="account"
+                                                                                        class="form-control">
+                                                                                        <!--<option value="">Seleccionar</option>-->
+                                                                                        <option value="Si">
+                                                                                            Sí</option>
+                                                                                        <option value="No">
+                                                                                            No</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-sm-3">Descripcion</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input id="txt_DescripcionNA"
                                                                                         type="text"
                                                                                         placeholder="Descripcion"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
                                                                             </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button"
-                                                                class="btn btn-primary"
-                                                                data-dismiss="modal"
-                                                                (click)="onClickGuardarActa()">Guardar</button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-dismiss="modal"
+                                                                    (click)="onClickGuardarActa()">Guardar</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             </div>
                                         </div>
                                     </div>
@@ -341,6 +334,7 @@
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBienes">Seleccionar</button>
+                                                <!--Modal Bienes-->
                                                 <div class="modal fade modalBienes" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">
@@ -354,7 +348,6 @@
                                                                     aria-label="Close" class="close"><span
                                                                         aria-hidden="true">×</span></button>
                                                             </div>
-                                                            <!--Modal Bienes-->
                                                             <div class="modal-body">
                                                                 <form>
                                                                     <div class="card">
@@ -564,6 +557,7 @@
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalBodegas">Seleccionar</button>
+                                                <!--Modal Bodegas-->
                                                 <div class="modal fade modalBodegas" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">
@@ -578,6 +572,19 @@
                                                                         aria-hidden="true">×</span></button>
                                                             </div>
                                                             <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <h5 id="exampleModalLabel" class="modal-title">
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div class="col-lg-6 text-right">
+                                                                        <button type="button" class="btn btn-primary"
+                                                                            data-toggle="modal"
+                                                                            data-target=".modalNuevaBodega"
+                                                                            data-dismiss="modal"
+                                                                            aria-label="Close">Nuevo</button>
+                                                                    </div>
+                                                                </div>
                                                                 <form>
                                                                     <div class="card">
                                                                         <div class="card-body">
@@ -615,6 +622,53 @@
                                                                         </div>
                                                                     </div>
                                                                 </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Modal Nuevas Bodegas-->
+                                                <div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
+                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                    style="overflow-y: auto">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 id="exampleModalLabel" class="modal-title">Nueva
+                                                                    Bodega</h5>
+                                                                <button type="button" data-dismiss="modal"
+                                                                    aria-label="Close" class="close"><span
+                                                                        aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-3">Nombre</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input id="txt_NombreBodegaNB"
+                                                                                        type="text" placeholder="Nombre"
+                                                                                        class="form-control form-control-warning">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-sm-3">Ubicación</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input id="txt_UbicacionNB"
+                                                                                        type="text"
+                                                                                        placeholder="Ubicación"
+                                                                                        class="form-control form-control-warning">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-dismiss="modal"
+                                                                    (click)="onClickGuardarBodega()">Guardar</button>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -8,92 +8,94 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Datos del Bien</h5>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Indentificador</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Identificador" value="{{bienesA.identificador}}" type="text" placeholder="Indentificador"
-                                        class="form-control form-control-success">
-                                    <!--                                        
+                        <div class="form-group row">
+                            <label class="col-sm-3">Indentificador</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Identificador" value="{{bienesA.identificador}}" type="text"
+                                    placeholder="Indentificador" class="form-control form-control-success">
+                                <!--                                        
                                         <small class="form-text">Example help
                                         text
                                         that
                                         remains unchanged.</small>
                                         -->
-                                </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Código</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Codigo" value="{{bienesA.codigo}}" type="text" placeholder="Código"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Código</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Codigo" value="{{bienesA.codigo}}" type="text" placeholder="Código"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Tipo de Bien</label>
-                                <div class="col-sm-9 mb-3">
-                                    <select id="cbx_TipoBien" name="cbx_TipoBien" class="form-control">
-                                       <option>Seleccionar</option>
-                                        <!--<option>{{bienesA.id_tipo_bien}}</option>-->
-                                       <option *ngFor="let tipo of tipobienes" [selected]="tipo.id === bienesA.id_tipo_bien" value="{{tipo.id}}">
-                                            {{tipo.id + " - " + tipo.nombre}}
-                                        </option>
-                                        
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Tipo de Bien</label>
+                            <div class="col-sm-9 mb-3">
+                                <select id="cbx_TipoBien" name="cbx_TipoBien" class="form-control">
+                                    <option>Seleccionar</option>
+                                    <!--<option>{{bienesA.id_tipo_bien}}</option>-->
+                                    <option *ngFor="let tipo of tipobienes"
+                                        [selected]="tipo.id === bienesA.id_tipo_bien" value="{{tipo.id}}">
+                                        {{tipo.id + " - " + tipo.nombre}}
+                                    </option>
+
+                                </select>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Serie</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Serie" value="{{bienesA.serie_identificacion}}" type="text" placeholder="Serie"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Serie</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Serie" value="{{bienesA.serie_identificacion}}" type="text"
+                                    placeholder="Serie" class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Modelo</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Modelo" value="{{bienesA.modelo}}" type="text" placeholder="Modelo"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Modelo</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Modelo" value="{{bienesA.modelo}}" type="text" placeholder="Modelo"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Marca</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Marca" value="{{bienesA.marca}}" type="text" placeholder="Marca"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Marca</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Marca" value="{{bienesA.marca}}" type="text" placeholder="Marca"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Color</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Color" value="{{bienesA.color}}" type="text" placeholder="Color"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Color</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Color" value="{{bienesA.color}}" type="text" placeholder="Color"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Material</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Material" value="{{bienesA.codigo}}" type="text" placeholder="Material"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Material</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Material" value="{{bienesA.codigo}}" type="text" placeholder="Material"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Dimensiones</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Dimensiones" value="{{bienesA.dimensiones}}" type="text" placeholder="Dimesiones"
-                                        class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Dimensiones</label>
+                            <div class="col-sm-9">
+                                <input id="txt_Dimensiones" value="{{bienesA.dimensiones}}" type="text"
+                                    placeholder="Dimesiones" class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Crítico</label>
-                                <div class="col-sm-9 mb-3">
-                                    <select id="cbx_Critico" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.critico" value="{{opcion}}">
-                                            {{opcion}}
-                                        </option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Crítico</label>
+                            <div class="col-sm-9 mb-3">
+                                <select id="cbx_Critico" name="account" class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.critico"
+                                        value="{{opcion}}">
+                                        {{opcion}}
+                                    </option>
+                                </select>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,104 +103,215 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Información Adicional</h5>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Valor de Compra</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_ValorCompra" value="{{bienesA.valor_compra}}" type="text" placeholder="Valor de Compra"
-                                        class="form-control form-control-success">
-                                </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Valor de Compra</label>
+                            <div class="col-sm-9">
+                                <input id="txt_ValorCompra" value="{{bienesA.valor_compra}}" type="text"
+                                    placeholder="Valor de Compra" class="form-control form-control-success">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Tipo de Moneda</label>
-                                <div class="col-sm-9 mb-3">
-                                    <select id="cbx_TipoMoneda" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let moneda of monedas" [selected]="moneda.id === bienesA.id_moneda" value="{{moneda.id}}">
-                                            {{moneda.id + " - " + moneda.nombre}}
-                                        </option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Tipo de Moneda</label>
+                            <div class="col-sm-9 mb-3">
+                                <select id="cbx_TipoMoneda" name="account" class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option *ngFor="let moneda of monedas" [selected]="moneda.id === bienesA.id_moneda"
+                                        value="{{moneda.id}}">
+                                        {{moneda.id + " - " + moneda.nombre}}
+                                    </option>
+                                </select>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Recompra</label>
-                                <div class="col-sm-9 mb-3">
-                                    <select id="cbx_Recompra" name="account" class="form-control">
-                                        <option>Seleccionar</option>
-                                        <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.recompra" value="{{opcion}}">
-                                            {{opcion}}
-                                        </option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Recompra</label>
+                            <div class="col-sm-9 mb-3">
+                                <select id="cbx_Recompra" name="account" class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option *ngFor="let opcion of opciones" [selected]="opcion === bienesA.recompra"
+                                        value="{{opcion}}">
+                                        {{opcion}}
+                                    </option>
+                                </select>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Nro Acta</label>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input id="txt_NroActa" value="{{bienesA.id_acta}}" type="text" class="form-control"
-                                                 readonly="true"> 
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target=".modalActa">Seleccionar</button>
-                                                <div class="modal fade modalActa" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
-                                                    style="overflow-y: auto">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 id="exampleModalLabel" class="modal-title">Lista de
-                                                                    Actas</h5>
-                                                                <button type="button" data-dismiss="modal"
-                                                                    aria-label="Close" class="close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="card">
-                                                                        <!--
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Nro Acta</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_NroActa" value="{{bienesA.id_acta}}" type="text"
+                                            class="form-control" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalActa">Seleccionar</button>
+                                            <!--Modal Actas-->
+                                            <div class="modal fade modalActa" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Lista de
+                                                                Actas</h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <!--
                                                                                 <div class="card-header">
                                                                                     <h4>Lista de Actas</h4>
                                                                                 </div>
                                                                                 -->
-                                                                        <div class="card-body">
-                                                                            <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Nro Acta</th>
-                                                                                            <th>Origen</th>
-                                                                                            <th>Nro Compromiso</th>
-                                                                                            <th>Descripcion</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr *ngFor="let acta of actas">
-                                                                                            <td>{{acta.id}}</td>
-                                                                                            <td>{{acta.nro_acta}}</td>
-                                                                                            <td>{{acta.origen}}</td>
-                                                                                            <td>{{acta.nro_compromiso}}
-                                                                                            </td>
-                                                                                            <td>{{acta.descripcion}}
-                                                                                            </td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMe(acta.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <h5 id="exampleModalLabel"
+                                                                                    class="modal-title"></h5>
+                                                                            </div>
+                                                                            <div class="col-lg-6 text-right">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    data-toggle="modal"
+                                                                                    data-target=".modalNuevaActa"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">Nuevo</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table-responsive">
+                                                                            <table
+                                                                                class="table table-striped table-hover">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Nro Acta</th>
+                                                                                        <th>Origen</th>
+                                                                                        <th>Nro Compromiso</th>
+                                                                                        <th>Descripcion</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr *ngFor="let acta of actas">
+                                                                                        <td>{{acta.id}}</td>
+                                                                                        <td>{{acta.nro_acta}}</td>
+                                                                                        <td>{{acta.origen}}</td>
+                                                                                        <td>{{acta.nro_compromiso}}
+                                                                                        </td>
+                                                                                        <td>{{acta.descripcion}}
+                                                                                        </td>
+                                                                                        <td><button type="button"
+                                                                                                (click)="onClickMe(acta.id)"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                                <i
+                                                                                                    class="fa fa-check-circle">
+                                                                                                </i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Modal Nueva Actas-->
+                                            <div class="modal fade modalNuevaActa" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Nueva
+                                                                Acta</h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Nro
+                                                                                Acta</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_NroActaNA" type="text"
+                                                                                    placeholder="Nro Acta"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Origen</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_OrigenNA" type="text"
+                                                                                    placeholder="Origen"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Nro
+                                                                                Compromiso</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_NroCompromisoNA"
+                                                                                    type="text"
+                                                                                    placeholder="Nro Compromiso"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label
+                                                                                class="col-sm-3 form-control-label">Acta
+                                                                                Contabilizada</label>
+                                                                            <div class="col-sm-9 mb-3">
+                                                                                <select id="cbx_ActaContabilizadaNA"
+                                                                                    name="account" class="form-control">
+                                                                                    <!--<option value="">Seleccionar</option>-->
+                                                                                    <option value="Si">
+                                                                                        Sí</option>
+                                                                                    <option value="No">
+                                                                                        No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label
+                                                                                class="col-sm-3 form-control-label">Bien
+                                                                                Contabilizado</label>
+                                                                            <div class="col-sm-9 mb-3">
+                                                                                <select id="cbx_BienContabilizadoNA"
+                                                                                    name="account" class="form-control">
+                                                                                    <!--<option value="">Seleccionar</option>-->
+                                                                                    <option value="Si">
+                                                                                        Sí</option>
+                                                                                    <option value="No">
+                                                                                        No</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Descripcion</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_DescripcionNA"
+                                                                                    type="text"
+                                                                                    placeholder="Descripcion"
+                                                                                    class="form-control form-control-warning">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-dismiss="modal"
+                                                                (click)="onClickGuardarActa()">Guardar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -207,83 +320,85 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Fecha de Ingreso</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_FechaIngreso" value="{{bienesA.fecha_ingreso}}" type="date" class="form-control form-control-warning">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Fecha de Ingreso</label>
+                            <div class="col-sm-9">
+                                <input id="txt_FechaIngreso" value="{{bienesA.fecha_ingreso}}" type="date"
+                                    class="form-control form-control-warning">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Bien</label>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input id="txt_Bien" type="text" class="form-control"
-                                                value="{{bienesA.id_bien_padre}}" readonly="true">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target=".modalBienes">Seleccionar</button>
-                                                <div class="modal fade modalBienes" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
-                                                    style="overflow-y: auto">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 id="exampleModalLabel" class="modal-title">Lista de
-                                                                    Bienes
-                                                                </h5>
-                                                                <button type="button" data-dismiss="modal"
-                                                                    aria-label="Close" class="close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Codigo</th>
-                                                                                            <th>Identificador</th>
-                                                                                            <th>Serie</th>
-                                                                                            <th>Modelo</th>
-                                                                                            <th>Marca</th>
-                                                                                            <th>Color</th>
-                                                                                            <th>Material</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr *ngFor="let bien of bienes">
-                                                                                            <td>{{bien.id}}</td>
-                                                                                            <td>{{bien.codigo}}</td>
-                                                                                            <td>{{bien.identificador}}
-                                                                                            </td>
-                                                                                            <td>{{bien.serie_identificacion}}
-                                                                                            </td>
-                                                                                            <td>{{bien.modelo}}</td>
-                                                                                            <td>{{bien.marca}}</td>
-                                                                                            <td>{{bien.color}}</td>
-                                                                                            <td>{{bien.material}}</td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeBien(bien.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Bien</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Bien" type="text" class="form-control"
+                                            value="{{bienesA.id_bien_padre}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalBienes">Seleccionar</button>
+                                            <!--Modal Bienes-->
+                                            <div class="modal fade modalBienes" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Lista de
+                                                                Bienes
+                                                            </h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="table-responsive">
+                                                                            <table
+                                                                                class="table table-striped table-hover">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Codigo</th>
+                                                                                        <th>Identificador</th>
+                                                                                        <th>Serie</th>
+                                                                                        <th>Modelo</th>
+                                                                                        <th>Marca</th>
+                                                                                        <th>Color</th>
+                                                                                        <th>Material</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr *ngFor="let bien of bienes">
+                                                                                        <td>{{bien.id}}</td>
+                                                                                        <td>{{bien.codigo}}</td>
+                                                                                        <td>{{bien.identificador}}
+                                                                                        </td>
+                                                                                        <td>{{bien.serie_identificacion}}
+                                                                                        </td>
+                                                                                        <td>{{bien.modelo}}</td>
+                                                                                        <td>{{bien.marca}}</td>
+                                                                                        <td>{{bien.color}}</td>
+                                                                                        <td>{{bien.material}}</td>
+                                                                                        <td><button type="button"
+                                                                                                (click)="onClickMeBien(bien.id)"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                                <i
+                                                                                                    class="fa fa-check-circle">
+                                                                                                </i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
                                                                         </div>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -292,71 +407,139 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Encargado</label>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input id="txt_Encargado" type="text" class="form-control"
-                                                value="{{bienesA.id_encargado}}" readonly="true">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target=".modalEncargados">Seleccionar</button>
-                                                <div class="modal fade modalEncargados" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
-                                                    style="overflow-y: auto">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 id="exampleModalLabel" class="modal-title">Lista de
-                                                                    Encargados
-                                                                </h5>
-                                                                <button type="button" data-dismiss="modal"
-                                                                    aria-label="Close" class="close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Cédula</th>
-                                                                                            <th>Nombres</th>
-                                                                                            <th>Apellidos</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr
-                                                                                            *ngFor="let encargado of encargados">
-                                                                                            <td>{{encargado.id}}</td>
-                                                                                            <td>{{encargado.cedula}}
-                                                                                            </td>
-                                                                                            <td>{{encargado.nombres}}
-                                                                                            </td>
-                                                                                            <td>{{encargado.apellidos}}
-                                                                                            </td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeEncargado(encargado.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Encargado</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Encargado" type="text" class="form-control"
+                                            value="{{bienesA.id_encargado}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalEncargados">Seleccionar</button>
+                                            <!--Modal Encargados-->
+                                            <div class="modal fade modalEncargados" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Lista de
+                                                                Encargados
+                                                            </h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <h5 id="exampleModalLabel"
+                                                                                    class="modal-title"></h5>
+                                                                            </div>
+                                                                            <div class="col-lg-6 text-right">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    data-toggle="modal"
+                                                                                    data-target=".modalNuevoEncargado"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">Nuevo</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table-responsive">
+                                                                            <table
+                                                                                class="table table-striped table-hover">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Cédula</th>
+                                                                                        <th>Nombres</th>
+                                                                                        <th>Apellidos</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr
+                                                                                        *ngFor="let encargado of encargados">
+                                                                                        <td>{{encargado.id}}</td>
+                                                                                        <td>{{encargado.cedula}}
+                                                                                        </td>
+                                                                                        <td>{{encargado.nombres}}
+                                                                                        </td>
+                                                                                        <td>{{encargado.apellidos}}
+                                                                                        </td>
+                                                                                        <td><button type="button"
+                                                                                                (click)="onClickMeEncargado(encargado.id)"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                                <i
+                                                                                                    class="fa fa-check-circle">
+                                                                                                </i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Modal Nuevo Encargado-->
+                                            <div class="modal fade modalNuevoEncargado" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Nuevo
+                                                                Encargado</h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Cedula</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_CedulaNE" type="text"
+                                                                                    placeholder="Cedula"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Nombres</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_NombreNE" type="text"
+                                                                                    placeholder="Nombres"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Apellidos</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_ApellidoNE" type="text"
+                                                                                    placeholder="Apellidos"
+                                                                                    class="form-control form-control-warning">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-dismiss="modal"
+                                                                (click)="onClickGuardarEncargado()">Guardar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -365,68 +548,128 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Bodega</label>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input id="txt_Bodega" type="text" class="form-control"
-                                                value="{{bienesA.id_bodega}}" readonly="true">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target=".modalBodegas">Seleccionar</button>
-                                                <div class="modal fade modalBodegas" tabindex="-1" role="dialog"
-                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
-                                                    style="overflow-y: auto">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 id="exampleModalLabel" class="modal-title">Lista de
-                                                                    Bodegas
-                                                                </h5>
-                                                                <button type="button" data-dismiss="modal"
-                                                                    aria-label="Close" class="close"><span
-                                                                        aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form>
-                                                                    <div class="card">
-                                                                        <div class="card-body">
-                                                                            <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Nombre</th>
-                                                                                            <th>Ubicación</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr
-                                                                                            *ngFor="let bodega of bodegas">
-                                                                                            <td>{{bodega.id}}</td>
-                                                                                            <td>{{bodega.nombre}}</td>
-                                                                                            <td>{{bodega.ubicacion}}
-                                                                                            </td>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Bodega</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Bodega" type="text" class="form-control"
+                                            value="{{bienesA.id_bodega}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalBodegas">Seleccionar</button>
+                                            <!--Modal Bodegas-->
+                                            <div class="modal fade modalBodegas" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Lista de
+                                                                Bodegas
+                                                            </h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <h5 id="exampleModalLabel"
+                                                                                    class="modal-title">
+                                                                                </h5>
+                                                                            </div>
+                                                                            <div class="col-lg-6 text-right">
+                                                                                <button type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    data-toggle="modal"
+                                                                                    data-target=".modalNuevaBodega"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">Nuevo</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table-responsive">
+                                                                            <table
+                                                                                class="table table-striped table-hover">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Nombre</th>
+                                                                                        <th>Ubicación</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr *ngFor="let bodega of bodegas">
+                                                                                        <td>{{bodega.id}}</td>
+                                                                                        <td>{{bodega.nombre}}</td>
+                                                                                        <td>{{bodega.ubicacion}}
+                                                                                        </td>
 
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeBodega(bodega.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                        <td><button type="button"
+                                                                                                (click)="onClickMeBodega(bodega.id)"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                                <i
+                                                                                                    class="fa fa-check-circle">
+                                                                                                </i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Modal Nuevas Bodegas-->
+                                            <div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
+                                                aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                style="overflow-y: auto">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 id="exampleModalLabel" class="modal-title">Nueva
+                                                                Bodega</h5>
+                                                            <button type="button" data-dismiss="modal"
+                                                                aria-label="Close" class="close"><span
+                                                                    aria-hidden="true">×</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Nombre</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_NombreBodegaNB"
+                                                                                    type="text" placeholder="Nombre"
+                                                                                    class="form-control form-control-warning">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3">Ubicación</label>
+                                                                            <div class="col-sm-9">
+                                                                                <input id="txt_UbicacionNB" type="text"
+                                                                                    placeholder="Ubicación"
+                                                                                    class="form-control form-control-warning">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-dismiss="modal"
+                                                                (click)="onClickGuardarBodega()">Guardar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -435,6 +678,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,9 @@ import {BienesService} from '../../servicios/bienes.service';
 import { Bien } from '../../models/Bien';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { Acta } from 'src/app/models/Acta';
+import { Persona } from 'src/app/models/Persona';
+import { Bodega } from 'src/app/models/Bodega';
 
 @Component({
   selector: 'app-bienesactualizar',
@@ -54,28 +57,42 @@ export class BienesactualizarComponent implements OnInit {
       err => console.log(err)
     );
 
+      this.cargarActas();
+    
+      this.cargarEncargados();
+
+      this.cargarBodegas();
+   
+
+  }
+
+  cargarActas(){
     this.bienesService.getActa().subscribe(
       res => {
         this.actas = res;
       },
       err => console.log(err)
     );
-    
+  }
+
+  cargarEncargados()
+  {
     this.bienesService.getEncargado().subscribe(
       res => {
         this.encargados = res;
       },
       err => console.log(err)
     );
+  }
 
+  cargarBodegas()
+  {
     this.bienesService.getBodega().subscribe(
       res => {
         this.bodegas = res;
       },
       err => console.log(err)
     );
-   
-
   }
 
   //clickMessage = '';
@@ -160,10 +177,123 @@ export class BienesactualizarComponent implements OnInit {
  
     console.log(bien);
     this.bienesService.actualizarBien(bien).subscribe(
-      res => console.log(res),
+      res => {
+        //console.log(res)
+        alert("Se Actualizo con éxito");
+        this.router.navigate(['/listabienes']);
+      },
       err => console.log(err)
     );
     
+  }
+
+  onClickGuardarActa(){
+    var nroActaN = (<HTMLInputElement>document.getElementById("txt_NroActaNA")).value;
+    var origenN = (<HTMLInputElement>document.getElementById("txt_OrigenNA")).value;
+    var nro_compromisoN = (<HTMLInputElement>document.getElementById("txt_NroCompromisoNA")).value;
+    var acta_contabilizadaN = (<HTMLInputElement>document.getElementById("cbx_ActaContabilizadaNA")).value;
+    var bien_contabilizadoN = (<HTMLInputElement>document.getElementById("cbx_BienContabilizadoNA")).value;
+    var descripcionN = (<HTMLInputElement>document.getElementById("txt_DescripcionNA")).value;
+
+    let acta:Acta = {
+      id: 0,
+      nro_acta: Number.parseInt(nroActaN), 
+      origen: origenN, 
+      nro_compromiso: Number.parseInt(nro_compromisoN),      
+      acta_contabilizada: acta_contabilizadaN, 
+      bien_contabilizado: bien_contabilizadoN, 
+      descripcion: descripcionN
+    }
+
+    console.log(acta);
+    this.bienesService.guardarNuevaActa(acta).subscribe(
+      //res => console.log(res),
+      res => {
+        var nroActa = (<HTMLInputElement>document.getElementById("txt_NroActa"));
+        nroActa.value = res.id.toString();
+
+        this.cargarActas();
+        alert("Se guardo con éxito");
+        this.limpiarTxtActa();
+      },
+      err => console.log(err)
+    );
+  }
+
+  
+  onClickGuardarEncargado(){
+    var CedulaE = (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value;
+    var NombresE = (<HTMLInputElement>document.getElementById("txt_NombreNE")).value;
+    var ApellidosE = (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value;
+
+    let encargado: Persona = {
+      id: "",
+      cedula: CedulaE,
+      nombres: NombresE,
+      apellidos: ApellidosE,
+      telefono: "",
+      direccion: ""
+    };
+
+    console.log(encargado);
+    this.bienesService.guardarNuevoEncargado(encargado).subscribe(
+      res => {
+        //console.log(res);
+        var idEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
+        idEncargado.value = res.id.toString();
+        this.cargarEncargados();      
+        alert("Se guardo con éxito");       
+        this.limpiarTxtEncargado();
+      },
+      err => console.log(err)
+    );
+  }
+
+  onClickGuardarBodega(){
+    var nombreBodegaN = (<HTMLInputElement>document.getElementById("txt_NombreBodegaNB")).value;
+    var ubicacionN =(<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value;
+
+    let bodega:Bodega={
+      id: 0,
+      nombre: nombreBodegaN,
+      ubicacion: ubicacionN
+    }
+
+    console.log(bodega);
+    this.bienesService.guardarNuevaBodega(bodega).subscribe(
+      res => {
+        //this.limpiartxt();
+        //console.log(res);
+        var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
+        idBodega.value = res.id.toString();
+        this.cargarBodegas();
+        alert("Se guardo con éxito");
+        this.limpiarTxtBodega();
+        
+      },
+      err => console.log(err)
+    );
+    
+  }
+
+  limpiarTxtActa(){
+    (<HTMLInputElement>document.getElementById("txt_NroActaNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_OrigenNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_NroCompromisoNA")).value = "";
+    (<HTMLInputElement>document.getElementById("cbx_ActaContabilizadaNA")).value = "";
+    (<HTMLInputElement>document.getElementById("cbx_BienContabilizadoNA")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_DescripcionNA")).value = "";
+  }
+
+  limpiarTxtEncargado(){
+   (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_NombreNE")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value = "";
+  }
+
+  limpiarTxtBodega(){
+   (<HTMLInputElement>document.getElementById("txt_NombreBodegaNB")).value = "";
+   (<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value = "";
   }
 
   confirmar() {
