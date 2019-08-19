@@ -32,6 +32,7 @@ export class PrestamosComponent implements OnInit {
     this.personas=result;
 
   }
+  
   onClickSelecPersona(id: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = id;
