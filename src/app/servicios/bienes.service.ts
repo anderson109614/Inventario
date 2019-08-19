@@ -41,6 +41,10 @@ export class BienesService {
     return this.http.get(this.ip+'Bienes/Bodegas.php')
   }
 
+  getTecnico(){
+    return this.http.get(this.ip + 'Mantenimientos/Tecnicos.php')
+  }
+
 
   guardarBiene(bien: Bien){
     return this.http.post<Bien>(this.ip+'Bienes/Bienes.php', bien)   

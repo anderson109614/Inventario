@@ -6,13 +6,16 @@ import { BienesnuevoComponent } from './components/bienesnuevo/bienesnuevo.compo
 import { SuministrosComponent} from './components/suministros/suministros.component';
 import {PrestamosComponent} from './components/prestamos/prestamos.component';
 import { MantenimientosComponent} from './components/mantenimientos/mantenimientos.component';
+import { MantenimientonuevoComponent } from './components/mantenimientonuevo/mantenimientonuevo.component';
+
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
   {path:'bienesnuevo', component: BienesnuevoComponent},
   {path:'suministros', component: SuministrosComponent},
   {path:'prestamos', component: PrestamosComponent},
-  {path:'mantenimientos', component: MantenimientosComponent}
+  {path:'mantenimientos', component: MantenimientosComponent},
+  {path:'mantenimientonuevo/:id', component: MantenimientonuevoComponent}
 ];
 
 @NgModule({
@@ -20,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ListabienesComponent, BienesactualizarComponent, BienesnuevoComponent]
+export const routingComponents = [ListabienesComponent, BienesactualizarComponent, BienesnuevoComponent, MantenimientonuevoComponent]
