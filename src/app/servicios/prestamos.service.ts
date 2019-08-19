@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PrestamosService {
-  ip = 'http://10.7.2.21/servicios/';
+  ip = 'http://10.7.3.74/servicios/';
   constructor(private http:HttpClient) { }
 
   getPrestamos(){

@@ -14,7 +14,7 @@ export class MantenimientonuevoComponent implements OnInit {
   constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit() {
-    
+    this.cargarTecnicos();
   }
 
   cargarTecnicos(){
