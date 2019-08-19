@@ -110,9 +110,8 @@ export class SuministrosComponent implements OnInit {
     );
   }
 
-  onClickSuministro(id: string,existencia:string) {
-    this.idSuministroSeleccionado=id;
-    this.existenciaAnterior=existencia;
+  onClickSuministro(id: string, existencia:string) {
+    this.idSuministroSeleccionado=id;this.existenciaAnterior=existencia;
     this.siministrosService.getDetallesId(id).subscribe(
       res => {
         //console.log(res);
