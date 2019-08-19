@@ -17,11 +17,15 @@ import { Bodega } from 'src/app/models/Bodega';
 export class BienesnuevoComponent implements OnInit {
 
   bienes: any = [];
+  bienesAux : any = [];
   tipobienes: any = [];
   monedas: any = [];
   actas: any = [];
+  actasAux: any = [];
   encargados: any = [];
+  encargadosAux : any = [];
   bodegas: any = [];
+  bodegasAux: any = [];
 
   
 
@@ -32,6 +36,7 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.getData().subscribe(
       res => {
         this.bienes = res;
+        this.bienesAux = res;
       },
       err => console.log(err)
     );
@@ -54,7 +59,7 @@ export class BienesnuevoComponent implements OnInit {
     
     this.cargarEncargados();
 
-      this.cargarBodegas();
+    this.cargarBodegas();
 
   }
 
@@ -63,6 +68,7 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.getEncargado().subscribe(
       res => {
         this.encargados = res;
+        this.encargadosAux = res;
       },
       err => console.log(err)
     );
@@ -73,6 +79,7 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.getActa().subscribe(
       res => {
         this.actas = res;
+        this.actasAux = res;
       },
       err => console.log(err)
     );
@@ -83,6 +90,7 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.getBodega().subscribe(
       res => {
         this.bodegas = res;
+        this.bodegasAux = res;
       },
       err => console.log(err)
     );
@@ -110,7 +118,53 @@ export class BienesnuevoComponent implements OnInit {
     this.clickMessageBodega = id.toString();
   }
 
- 
+  //Busqueda
+  checkPinPersona($event: KeyboardEvent){
+    this.encargados=this.encargadosAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.encargados.filter(encargado => encargado.cedula.toUpperCase().search(value.toUpperCase())==0 
+                                                    || encargado.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                                    || encargado.apellidos.toUpperCase().search(value.toUpperCase())==0 );
+    this.encargados=result;
+
+  }
+
+  checkPinActas($event: KeyboardEvent){
+    this.actas=this.actasAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.actas.filter(acta => acta.nro_acta.search(value)==0 
+                                          || acta.origen.toUpperCase().search(value.toUpperCase())==0 
+                                          || acta.nro_compromiso.search(value)==0 );
+    this.actas=result;
+
+  }
+
+  checkPinBodega($event: KeyboardEvent){
+    this.bodegas=this.bodegasAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.bodegas.filter(bodega => bodega.nombre.toUpperCase().search(value.toUpperCase())==0 
+                                              || bodega.ubicacion.toUpperCase().search(value.toUpperCase())==0 );
+    this.bodegas=result;
+
+  }
+  
+  checkBien($event: KeyboardEvent) {
+
+    this.bienes=this.bienesAux;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.bienes.filter(bien => bien.codigo.search(value)==0 
+                                           || bien.identificador.search(value)==0 
+                                           || bien.serie_identificacion.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.modelo.toUpperCase().search(value.toUpperCase())== 0
+                                           || bien.marca.toUpperCase().search(value.toUpperCase())== 0 
+                                           || bien.color.toUpperCase().search(value.toUpperCase())== 0
+                                           || bien.material.toUpperCase().search(value.toUpperCase())== 0 );
+    this.bienes=result;
+
+  }
+
+ //
   onClickGuardarEncargado(){
     var CedulaE = (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value;
     var NombresE = (<HTMLInputElement>document.getElementById("txt_NombreNE")).value;

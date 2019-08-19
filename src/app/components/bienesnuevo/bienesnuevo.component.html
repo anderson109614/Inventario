@@ -174,38 +174,43 @@
                                                                         </div>
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Nro Acta</th>
-                                                                                            <th>Origen</th>
-                                                                                            <th>Nro Compromiso</th>
-                                                                                            <th>Descripcion</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr *ngFor="let acta of actas">
-                                                                                            <td>{{acta.id}}</td>
-                                                                                            <td>{{acta.nro_acta}}</td>
-                                                                                            <td>{{acta.origen}}</td>
-                                                                                            <td>{{acta.nro_compromiso}}
-                                                                                            </td>
-                                                                                            <td>{{acta.descripcion}}
-                                                                                            </td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMe(acta.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                    <input type="search" class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinActas($event)" placeholder="Busqueda">
+                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                            <table
+                                                                                            class="table table-striped table-hover">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Id</th>
+                                                                                                    <th>Nro Acta</th>
+                                                                                                    <th>Origen</th>
+                                                                                                    <th>Nro Compromiso</th>
+                                                                                                    <th>Descripcion</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr *ngFor="let acta of actas">
+                                                                                                    <td>{{acta.id}}</td>
+                                                                                                    <td>{{acta.nro_acta}}</td>
+                                                                                                    <td>{{acta.origen}}</td>
+                                                                                                    <td>{{acta.nro_compromiso}}
+                                                                                                    </td>
+                                                                                                    <td>{{acta.descripcion}}
+                                                                                                    </td>
+                                                                                                    <td><button type="button"
+                                                                                                            (click)="onClickMe(acta.id)"
+                                                                                                            data-dismiss="modal"
+                                                                                                            aria-label="Close">
+                                                                                                            <i
+                                                                                                                class="fa fa-check-circle">
+                                                                                                            </i>
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                               
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -353,44 +358,49 @@
                                                                     <div class="card">
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Codigo</th>
-                                                                                            <th>Identificador</th>
-                                                                                            <th>Serie</th>
-                                                                                            <th>Modelo</th>
-                                                                                            <th>Marca</th>
-                                                                                            <th>Color</th>
-                                                                                            <th>Material</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr *ngFor="let bien of bienes">
-                                                                                            <td>{{bien.id}}</td>
-                                                                                            <td>{{bien.codigo}}</td>
-                                                                                            <td>{{bien.identificador}}
-                                                                                            </td>
-                                                                                            <td>{{bien.serie_identificacion}}
-                                                                                            </td>
-                                                                                            <td>{{bien.modelo}}</td>
-                                                                                            <td>{{bien.marca}}</td>
-                                                                                            <td>{{bien.color}}</td>
-                                                                                            <td>{{bien.material}}</td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeBien(bien.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                    <input type="search" class="form-control form-control-warning"
+                                                                                    (keyup)="checkBien($event)" placeholder="Busqueda">
+                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                            <table
+                                                                                            class="table table-striped table-hover">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Id</th>
+                                                                                                    <th>Codigo</th>
+                                                                                                    <th>Identificador</th>
+                                                                                                    <th>Serie</th>
+                                                                                                    <th>Modelo</th>
+                                                                                                    <th>Marca</th>
+                                                                                                    <th>Color</th>
+                                                                                                    <th>Material</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr *ngFor="let bien of bienes">
+                                                                                                    <td>{{bien.id}}</td>
+                                                                                                    <td>{{bien.codigo}}</td>
+                                                                                                    <td>{{bien.identificador}}
+                                                                                                    </td>
+                                                                                                    <td>{{bien.serie_identificacion}}
+                                                                                                    </td>
+                                                                                                    <td>{{bien.modelo}}</td>
+                                                                                                    <td>{{bien.marca}}</td>
+                                                                                                    <td>{{bien.color}}</td>
+                                                                                                    <td>{{bien.material}}</td>
+                                                                                                    <td><button type="button"
+                                                                                                            (click)="onClickMeBien(bien.id)"
+                                                                                                            data-dismiss="modal"
+                                                                                                            aria-label="Close">
+                                                                                                            <i
+                                                                                                                class="fa fa-check-circle">
+                                                                                                            </i>
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -447,38 +457,43 @@
                                                                         </div>
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Cédula</th>
-                                                                                            <th>Nombres</th>
-                                                                                            <th>Apellidos</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr
-                                                                                            *ngFor="let encargado of encargados">
-                                                                                            <td>{{encargado.id}}</td>
-                                                                                            <td>{{encargado.cedula}}
-                                                                                            </td>
-                                                                                            <td>{{encargado.nombres}}
-                                                                                            </td>
-                                                                                            <td>{{encargado.apellidos}}
-                                                                                            </td>
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeEncargado(encargado.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                    <input type="search" class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinPersona($event)" placeholder="Busqueda">
+                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                            <table
+                                                                                            class="table table-striped table-hover">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Id</th>
+                                                                                                    <th>Cédula</th>
+                                                                                                    <th>Nombres</th>
+                                                                                                    <th>Apellidos</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr
+                                                                                                    *ngFor="let encargado of encargados">
+                                                                                                    <td>{{encargado.id}}</td>
+                                                                                                    <td>{{encargado.cedula}}
+                                                                                                    </td>
+                                                                                                    <td>{{encargado.nombres}}
+                                                                                                    </td>
+                                                                                                    <td>{{encargado.apellidos}}
+                                                                                                    </td>
+                                                                                                    <td><button type="button"
+                                                                                                            (click)="onClickMeEncargado(encargado.id)"
+                                                                                                            data-dismiss="modal"
+                                                                                                            aria-label="Close">
+                                                                                                            <i
+                                                                                                                class="fa fa-check-circle">
+                                                                                                            </i>
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                               
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -589,35 +604,40 @@
                                                                     <div class="card">
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                <table
-                                                                                    class="table table-striped table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Id</th>
-                                                                                            <th>Nombre</th>
-                                                                                            <th>Ubicación</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr
-                                                                                            *ngFor="let bodega of bodegas">
-                                                                                            <td>{{bodega.id}}</td>
-                                                                                            <td>{{bodega.nombre}}</td>
-                                                                                            <td>{{bodega.ubicacion}}
-                                                                                            </td>
-
-                                                                                            <td><button type="button"
-                                                                                                    (click)="onClickMeBodega(bodega.id)"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                    <i
-                                                                                                        class="fa fa-check-circle">
-                                                                                                    </i>
-                                                                                                </button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                    <input type="search" class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinBodega($event)" placeholder="Busqueda">
+                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                            <table
+                                                                                            class="table table-striped table-hover">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Id</th>
+                                                                                                    <th>Nombre</th>
+                                                                                                    <th>Ubicación</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr
+                                                                                                    *ngFor="let bodega of bodegas">
+                                                                                                    <td>{{bodega.id}}</td>
+                                                                                                    <td>{{bodega.nombre}}</td>
+                                                                                                    <td>{{bodega.ubicacion}}
+                                                                                                    </td>
+        
+                                                                                                    <td><button type="button"
+                                                                                                            (click)="onClickMeBodega(bodega.id)"
+                                                                                                            data-dismiss="modal"
+                                                                                                            aria-label="Close">
+                                                                                                            <i
+                                                                                                                class="fa fa-check-circle">
+                                                                                                            </i>
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                             
                                                                             </div>
                                                                         </div>
                                                                     </div>
