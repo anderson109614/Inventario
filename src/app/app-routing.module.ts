@@ -4,12 +4,15 @@ import { ListabienesComponent } from './components/listabienes/listabienes.compo
 import { BienesactualizarComponent } from './components/bienesactualizar/bienesactualizar.component';
 import { BienesnuevoComponent } from './components/bienesnuevo/bienesnuevo.component';
 import { SuministrosComponent} from './components/suministros/suministros.component';
-
+import {PrestamosComponent} from './components/prestamos/prestamos.component';
+import { MantenimientosComponent} from './components/mantenimientos/mantenimientos.component';
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
   {path:'bienesnuevo', component: BienesnuevoComponent},
-  {path:'suministros', component: SuministrosComponent}
+  {path:'suministros', component: SuministrosComponent},
+  {path:'prestamos', component: PrestamosComponent},
+  {path:'mantenimientos', component: MantenimientosComponent}
 ];
 
 @NgModule({
