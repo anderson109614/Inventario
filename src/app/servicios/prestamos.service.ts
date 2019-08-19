@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Prestamo} from '../models/Prestamo';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,11 @@ export class PrestamosService {
     return this.http.get(this.ip + 'Prestamos/Prestamos.php?Estado='+Estado)
   }
   getPrestamosId(Id:string){
-    return this.http.get(this.ip + 'Prestamos/Prestamos.php?Id='+this.ip)
+    return this.http.get(this.ip + "Prestamos/Prestamos.php?Id='"+this.ip+"'")
+  }
+  devolverPrestamo(prestamo:Prestamo){
+    return this.http.put<Prestamo>(this.ip + 'Prestamos/Prestamos.php',prestamo)
+
   }
 
 

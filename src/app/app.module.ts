@@ -11,6 +11,7 @@ import { BienesService } from './servicios/bienes.service';
 import { SuministrosComponent } from './components/suministros/suministros.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { MantenimientosComponent } from './components/mantenimientos/mantenimientos.component';
+import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MantenimientosComponent } from './components/mantenimientos/mantenimien
     routingComponents,
     SuministrosComponent,
     PrestamosComponent,
-    MantenimientosComponent
+    MantenimientosComponent,
+    NuevoprestamoComponent
   ],
   imports: [
     BrowserModule,

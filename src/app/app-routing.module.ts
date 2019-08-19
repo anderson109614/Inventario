@@ -7,7 +7,7 @@ import { SuministrosComponent} from './components/suministros/suministros.compon
 import {PrestamosComponent} from './components/prestamos/prestamos.component';
 import { MantenimientosComponent} from './components/mantenimientos/mantenimientos.component';
 import { MantenimientonuevoComponent } from './components/mantenimientonuevo/mantenimientonuevo.component';
-
+import {NuevoprestamoComponent} from './components/nuevoprestamo/nuevoprestamo.component'
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
@@ -15,7 +15,8 @@ const routes: Routes = [
   {path:'suministros', component: SuministrosComponent},
   {path:'prestamos', component: PrestamosComponent},
   {path:'mantenimientos', component: MantenimientosComponent},
-  {path:'mantenimientonuevo/:id', component: MantenimientonuevoComponent}
+  {path:'mantenimientonuevo/:id', component: MantenimientonuevoComponent},
+  {path:'prestamos/nuevoprestamo', component: NuevoprestamoComponent}
 ];
 
 @NgModule({
