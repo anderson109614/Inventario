@@ -9,6 +9,8 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import { BienesService } from './servicios/bienes.service';
 import { SuministrosComponent } from './components/suministros/suministros.component';
+import { PrestamosComponent } from './components/prestamos/prestamos.component';
+import { MantenimientosComponent } from './components/mantenimientos/mantenimientos.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SuministrosComponent } from './components/suministros/suministros.compo
     NavComponent,
     MenuComponent,
     routingComponents,
-    SuministrosComponent
+    SuministrosComponent,
+    PrestamosComponent,
+    MantenimientosComponent
   ],
   imports: [
     BrowserModule,
