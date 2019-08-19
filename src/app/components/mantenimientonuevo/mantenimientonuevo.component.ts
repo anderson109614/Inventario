@@ -16,7 +16,9 @@ import { MantenimientosService } from 'src/app/servicios/mantenimientos.service'
 export class MantenimientonuevoComponent implements OnInit {
 
   tecnicos: any = [];
+  tecnicosAux : any = [];
   empresas: any = [];
+  empresasAux : any = [];
 
   constructor(private bienesService:BienesService, private empresasService:EmpresasService, private tecnicosService:TecnicosService,
     private mantenimientosService:MantenimientosService, private rutaActiva: ActivatedRoute, public router: Router) { }
@@ -30,7 +32,8 @@ export class MantenimientonuevoComponent implements OnInit {
   cargarTecnicos(){
     this.bienesService.getTecnico().subscribe(
       res => {
-        this.tecnicos = res;    
+        this.tecnicos = res;
+        this.tecnicosAux = res;    
         console.log(res);    
       },
       err => console.log(err)
@@ -41,6 +44,7 @@ export class MantenimientonuevoComponent implements OnInit {
     this.empresasService.getEmpresas().subscribe(
       res => {
         this.empresas = res;    
+        this.empresasAux = res;
         console.log(res);    
       },
       err => console.log(err)
@@ -207,6 +211,37 @@ export class MantenimientonuevoComponent implements OnInit {
     }
     
   }
+
+  //
+
+  //Busquedas
+  checkTecnico($event: KeyboardEvent){
+    this.tecnicos=this.tecnicosAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.tecnicos.filter(tecnico => tecnico.cedula.toUpperCase().search(value.toUpperCase())==0 
+                                                || tecnico.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                                || tecnico.apellidos.toUpperCase().search(value.toUpperCase())==0 
+                                                || tecnico.nombre.toUpperCase().search(value.toUpperCase())==0);
+
+                                     
+    this.tecnicos=result;
+
+  }
+
+  checkEmpresa($event: KeyboardEvent){
+    this.empresas=this.empresasAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.empresas.filter(empresa => empresa.nombre.toUpperCase().search(value.toUpperCase())==0 
+                                                || empresa.telefono.toUpperCase().search(value.toUpperCase())==0 
+                                                || empresa.direccion.toUpperCase().search(value.toUpperCase())==0 
+                                                || empresa.correo_electronico.toUpperCase().search(value.toUpperCase())==0);
+
+                                     
+    this.empresas=result;
+
+  }
+
+  //
 
 
   //Limpiar textos

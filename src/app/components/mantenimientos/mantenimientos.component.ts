@@ -54,11 +54,25 @@ export class MantenimientosComponent implements OnInit {
   //
   verificarSeleccion(){
     if(this.idBienSeleccionado!='-1'){
-      (<HTMLButtonElement>document.getElementById("btn_NuevoMantenimiento")).disabled=false;
       this.router.navigate(['/mantenimientonuevo/',this.idBienSeleccionado]);
     }else{
       alert('Seleccionar Bien');
     }
   }
 
+  //Busqueda
+  checkBienes($event: KeyboardEvent){
+    this.bienes=this.bienesAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.bienes.filter(bien => bien.codigo.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.identificador.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.serie.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.modelo.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.marca.toUpperCase().search(value.toUpperCase())==0);
+
+                                     
+    this.bienes=result;
+
+  }
+  //
 }
