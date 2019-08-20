@@ -66,13 +66,26 @@ export class MantenimientosComponent implements OnInit {
     let value = (<HTMLInputElement>event.target).value;
     const result = this.bienes.filter(bien => bien.codigo.toUpperCase().search(value.toUpperCase())==0 
                                            || bien.identificador.toUpperCase().search(value.toUpperCase())==0 
-                                           || bien.serie.toUpperCase().search(value.toUpperCase())==0 
+                                           || bien.serie_identificacion.toUpperCase().search(value.toUpperCase())==0 
                                            || bien.modelo.toUpperCase().search(value.toUpperCase())==0 
                                            || bien.marca.toUpperCase().search(value.toUpperCase())==0);
 
                                      
     this.bienes=result;
+  }
 
+  checkMantenimientos($event: KeyboardEvent){
+    this.detalles=this.detallesAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.detalles.filter(detalle => detalle.mantenimiento.toUpperCase().search(value.toUpperCase())==0 
+                                                || detalle.descripcion.toUpperCase().search(value.toUpperCase())==0 
+                                                || detalle.fecha.toUpperCase().search(value.toUpperCase())==0 
+                                                || detalle.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                                || detalle.apellidos.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.estado.toUpperCase().search(value.toUpperCase())==0
+                                                || detalle.observacion.toUpperCase().search(value.toUpperCase())==0);
+
+    this.detalles=result;
   }
   //
 }
