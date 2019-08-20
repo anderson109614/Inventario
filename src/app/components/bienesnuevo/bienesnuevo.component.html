@@ -10,6 +10,12 @@
                         <form class="form-horizontal">
                             <h5 class="card-title">Datos del Bien</h5>
                             <div class="form-group row">
+                                <label class="col-sm-3">Imagen</label>
+                                <div class="col-sm-9">
+                                    <input id="txt_Img" type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3">Indentificador</label>
                                 <div class="col-sm-9">
                                     <input name="id" id="txt_Identificador" type="text" placeholder="Indentificador"
