@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Persona} from '../../models/Persona';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import {BienesService} from '../../servicios/bienes.service';
-
+import {Prestamo} from '../../models/Prestamo';
 @Component({
   selector: 'app-nuevoprestamo',
   templateUrl: './nuevoprestamo.component.html',
@@ -208,7 +208,17 @@ export class NuevoprestamoComponent implements OnInit {
   }
 
   onClickGuardarNuevoPrestamo(){
-      
+        let pre:Prestamo={
+          id:'',
+          id_persona_devolucion :'',
+          fecha_hora_recibido  :'',
+          observacion_recibido :'',
+          id_bien:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
+          id_encargado_prestamo:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
+          id_persona_prestamo:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
+          fecha_hora_entrega:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
+          observacion_entrega:(<HTMLInputElement>document.getElementById('txt_IdBien')).value
+        };
 
 
   }

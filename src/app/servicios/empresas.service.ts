@@ -9,7 +9,7 @@ export class EmpresasService {
 
   constructor(private http:HttpClient) { }
 
-  ip = 'http://10.7.1.178/servicios/';
+  ip = 'http://10.7.1.207/servicios/';
 
   getEmpresas(){
     return this.http.get(this.ip + 'Mantenimientos/Empresas.php')

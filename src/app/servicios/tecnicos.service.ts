@@ -9,7 +9,7 @@ export class TecnicosService {
 
   constructor(private http:HttpClient) { }
 
-  ip = 'http://10.7.1.178/servicios/';
+  ip = 'http://10.7.1.207/servicios/';
 
   guardarNuevoTecnico(tecnico: Tecnico)
   {

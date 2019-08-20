@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgQrScannerModule } from 'angular2-qrscanner';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -28,7 +28,8 @@ import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgQrScannerModule
   ],
   providers: [BienesService],
   bootstrap: [AppComponent]

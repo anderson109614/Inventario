@@ -130,7 +130,12 @@ export class PrestamosComponent implements OnInit {
       id:this.idDev,
       id_persona_devolucion :(<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value,
       fecha_hora_recibido  :(<HTMLInputElement>document.getElementById("txt_FechaNS")).value+" "+(<HTMLInputElement>document.getElementById("txt_HoraNS")).value,
-      observacion_recibido :(<HTMLInputElement>document.getElementById("txt_ObservacionNS")).value
+      observacion_recibido :(<HTMLInputElement>document.getElementById("txt_ObservacionNS")).value,
+      id_bien:'',
+    id_encargado_prestamo:'',
+    id_persona_prestamo:'',
+    fecha_hora_entrega:'',
+    observacion_entrega:''
 
     }
     console.log(pre);
