@@ -9,13 +9,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Datos del Bien</h5>
                         <div style="text-align: center"> 
-                            <img src="{{bienesA.img_bien}}" style="width: 30%; height: 30%; border:1px solid black" >
+                            <img id = "txt_img" src="{{bienesA.img_bien}}" style="width: 30%; height: 30%; border:1px solid black" >
                         </div>
                         <br>
                         <div class="form-group row">
                                 <label class="col-sm-3">Imagen</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Img" type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+                                    <input type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
                                 </div>
                             </div>
                         <div class="form-group row">
@@ -46,7 +46,7 @@
                                     <!--<option>{{bienesA.id_tipo_bien}}</option>-->
                                     <option *ngFor="let tipo of tipobienes"
                                         [selected]="tipo.id === bienesA.id_tipo_bien" value="{{tipo.id}}">
-                                        {{tipo.id + " - " + tipo.nombre}}
+                                        {{tipo.nombre}}
                                     </option>
 
                                 </select>
@@ -127,7 +127,7 @@
                                     <option>Seleccionar</option>
                                     <option *ngFor="let moneda of monedas" [selected]="moneda.id === bienesA.id_moneda"
                                         value="{{moneda.id}}">
-                                        {{moneda.id + " - " + moneda.nombre}}
+                                        {{moneda.nombre}}
                                     </option>
                                 </select>
                             </div>

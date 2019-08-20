@@ -27,6 +27,11 @@ export class BienesnuevoComponent implements OnInit {
   bodegas: any = [];
   bodegasAux: any = [];
 
+  //id acta, bien, encargado y bodega
+  idActa : string;
+  idBien : string;
+  idEncargado : string;
+  idBodega : string;
   
 
   constructor(private bienesService:BienesService, public router: Router) { }
@@ -98,24 +103,28 @@ export class BienesnuevoComponent implements OnInit {
 
 
   clickMessage = '';
-  onClickMe(id:string) {
-    this.clickMessage = id.toString();
+  onClickMe(id: string, nro_acta:string) {
+    this.clickMessage = nro_acta.toString();
+    this.idActa = id.toString();
 
   }
 
   clickMessageBien = '';
-  onClickMeBien(id:string) {
-    this.clickMessageBien = id.toString();
+  onClickMeBien(id:string, serie_identificacion: string) {
+    this.clickMessageBien = serie_identificacion.toString();
+    this.idBien = id.toString();
   }
 
   clickMessageEncargado = '';
-  onClickMeEncargado(id:string) {
-    this.clickMessageEncargado = id.toString();
+  onClickMeEncargado(id:string, nombres:string, apellidos:string) {
+    this.clickMessageEncargado = nombres.toString() + " " + apellidos.toString();
+    this.idEncargado = id.toString();
   }
 
   clickMessageBodega = '';
-  onClickMeBodega(id:string) {
-    this.clickMessageBodega = id.toString();
+  onClickMeBodega(id:string, nombre:string) {
+    this.clickMessageBodega = nombre.toString();
+    this.idBodega = id.toString();
   }
 
   //Busqueda
@@ -310,17 +319,17 @@ export class BienesnuevoComponent implements OnInit {
     var valorCompraO = (<HTMLInputElement>document.getElementById("txt_ValorCompra")).value; 
     var tipoMonedaO = (<HTMLInputElement>document.getElementById("cbx_TipoMoneda")).value; 
     var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
-    var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
+    var actaO = this.idActa; 
     var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
-    var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;
+    var bienO = this.idBien;
     var idBienPadre; 
     if(bienO.toString() == ""){
     idBienPadre = "null";
     }else{
     idBienPadre = bienO;
     }  
-    var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
-    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value;
+    var encargadoO = this.idEncargado;
+    var BodegaO = this.idBodega;
     var img_bienO =  this.base64textStringG;
    
     if(identificadorO.toString() == ""){

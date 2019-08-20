@@ -14,7 +14,7 @@ import { Bodega } from 'src/app/models/Bodega';
 })
 export class BienesactualizarComponent implements OnInit {
 
-  bienesA: any;
+  bienesA: any = [];
   bienes: any = [];
   bienesAux : any = [];
   tipobienes: any = [];
@@ -34,8 +34,9 @@ export class BienesactualizarComponent implements OnInit {
     this.bienesService.getBienId(this.rutaActiva.snapshot.params.id).subscribe(
       res => {
         
-       console.log(res);
+       //console.log(res);
        this.bienesA=res;
+       console.log(this.bienesA);
       },
       err => console.log(err)
     );
@@ -68,7 +69,7 @@ export class BienesactualizarComponent implements OnInit {
 
       this.cargarBodegas();
    
-
+      
   }
 
   cargarActas(){
@@ -133,7 +134,10 @@ export class BienesactualizarComponent implements OnInit {
   }
 
    //imagen
-   base64textStringG = this.bienes.img_bien;
+ 
+   base64textStringG = "";
+   
+   
    onUploadChange(evt: any) {
      const file = evt.target.files[0];
  
@@ -148,7 +152,6 @@ export class BienesactualizarComponent implements OnInit {
    handleReaderLoaded(e) {
      this.base64textStringG = 'data:image/png;base64,' + btoa(e.target.result);
      //console.log(this.base64textStringG);
-
    }
  
  
