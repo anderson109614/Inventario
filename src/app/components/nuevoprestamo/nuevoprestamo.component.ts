@@ -207,4 +207,10 @@ export class NuevoprestamoComponent implements OnInit {
     persona.value = id;
   }
 
+  onClickGuardarNuevoPrestamo(){
+      
+
+
+  }
+
 }
