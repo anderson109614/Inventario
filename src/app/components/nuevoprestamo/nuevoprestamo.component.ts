@@ -17,6 +17,7 @@ export class NuevoprestamoComponent implements OnInit {
   encargadosAux : any = [];
   bienes: any=[];
   bienesAux: any=[];
+  idPersona:string;
   ngOnInit() {
     this.cargarPersonas();
     this.cargarEncargados();
@@ -64,6 +65,7 @@ export class NuevoprestamoComponent implements OnInit {
   onClickSelecPersona(id: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = id;
+    this.idPersona=id;
    // (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =id;
   }
   onClickGuardarPersona() {
