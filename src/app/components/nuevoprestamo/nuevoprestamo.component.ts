@@ -3,6 +3,7 @@ import {Persona} from '../../models/Persona';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import {BienesService} from '../../servicios/bienes.service';
 import {Prestamo} from '../../models/Prestamo';
+import {PrestamosService} from '../../servicios/prestamos.service'
 @Component({
   selector: 'app-nuevoprestamo',
   templateUrl: './nuevoprestamo.component.html',
@@ -10,14 +11,16 @@ import {Prestamo} from '../../models/Prestamo';
 })
 export class NuevoprestamoComponent implements OnInit {
 
-  constructor(private siministrosService: ServiciossuministrosService,private bienesService:BienesService) { }
+  constructor(private siministrosService: ServiciossuministrosService,private bienesService:BienesService,private prestamosService:PrestamosService) { }
   personas: any = [];
   personasAux: any = [];
   encargados: any = [];
   encargadosAux : any = [];
   bienes: any=[];
   bienesAux: any=[];
-  idPersona:string;
+  idPersona:string='';
+  idEncargado:string='';
+  idBien:string='';
   ngOnInit() {
     this.cargarPersonas();
     this.cargarEncargados();
@@ -62,9 +65,9 @@ export class NuevoprestamoComponent implements OnInit {
     this.encargados=result;
 
   }
-  onClickSelecPersona(id: string) {
+  onClickSelecPersona(id: string,nom:string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
-    persona.value = id;
+    persona.value = nom;
     this.idPersona=id;
    // (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =id;
   }
@@ -84,7 +87,8 @@ export class NuevoprestamoComponent implements OnInit {
           this.limpiarPersona();
           console.log(res);
           var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
-          persona.value = res.id;
+          persona.value = res.nombres+' '+res.apellidos;
+          this.idPersona=res.id;
           //(<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =res.id;
           this.cargarPersonas();
         },
@@ -155,8 +159,9 @@ export class NuevoprestamoComponent implements OnInit {
     );
   }
   clickMessageEncargado = '';
-  onClickMeEncargado(id:string) {
-    this.clickMessageEncargado = id.toString();
+  onClickMeEncargado(id:string,nom:string) {
+    this.idEncargado=id;
+    this.clickMessageEncargado = nom;
   }
   onClickGuardarEncargado(){
     var CedulaE = (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value;
@@ -180,7 +185,8 @@ export class NuevoprestamoComponent implements OnInit {
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
-        this.clickMessageEncargado = res.id.toString();
+        this.clickMessageEncargado = res.nombres +' '+res.apellidos;
+        this.idEncargado=res.id.toString();
         this.cargarEncargados();      
         alert("Se guardo con éxito");       
         this.limpiarTxtEncargado();
@@ -196,7 +202,7 @@ export class NuevoprestamoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_ApellidoNE")).value = "";
    }
   cargarBienes(){
-    this.bienesService.getData().subscribe(
+    this.prestamosService.getBienes().subscribe(
       res => {
         this.bienes = res;
         this.bienesAux = res;
@@ -204,9 +210,10 @@ export class NuevoprestamoComponent implements OnInit {
       err => console.log(err)
     );
   }
-  onClickSeleccionaBien(id:string){
+  onClickSeleccionaBien(id:string,nom:string){
     var persona = (<HTMLInputElement>document.getElementById('txt_IdBien'))
-    persona.value = id;
+    persona.value = nom;
+    this.idBien=id;
   }
 
   onClickGuardarNuevoPrestamo(){
@@ -215,14 +222,63 @@ export class NuevoprestamoComponent implements OnInit {
           id_persona_devolucion :'',
           fecha_hora_recibido  :'',
           observacion_recibido :'',
-          id_bien:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
-          id_encargado_prestamo:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
-          id_persona_prestamo:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
-          fecha_hora_entrega:(<HTMLInputElement>document.getElementById('txt_IdBien')).value,
-          observacion_entrega:(<HTMLInputElement>document.getElementById('txt_IdBien')).value
+          id_bien:this.idBien,
+          id_encargado_prestamo:this.idEncargado,
+          id_persona_prestamo:this.idPersona,
+          fecha_hora_entrega:(<HTMLInputElement>document.getElementById("txt_FechaNS")).value+" "+(<HTMLInputElement>document.getElementById("txt_HoraNS")).value,
+          observacion_entrega:(<HTMLInputElement>document.getElementById('txt_ObservacionNS')).value
         };
+        if(this.validarNuevoPrestamo(pre)){
+          this.prestamosService.guardarPrestamo(pre).subscribe(
+            res => {
+              this.limpiarPersona();
+              console.log(res);
+              this.limpiar;
+              alert('Datos Guardados correctamente');
+              
+            },
+            err => {
+              alert('Error al guardar los datos del prestamo... intentelo nuevamente');
+              console.log(err)
+            }
+    
+          );
+        }
 
-
+  }
+  validarNuevoPrestamo(pre:Prestamo){
+    if(pre.id_bien.length==0){
+      alert('Seleccione un Bien');
+      return false;
+    }
+    if(pre.id_encargado_prestamo.length==0){
+      alert('Seleccione un Encargado');
+      return false;
+    }
+    if(pre.id_persona_prestamo.length==0){
+      alert('Seleccione una Persona');
+      return false;
+    }
+    if(pre.fecha_hora_entrega.length<12){
+      alert('Seleccione una Fecha y Hora validas');
+      return false;
+    }
+    if(pre.observacion_entrega.length==0){
+      alert('Ingrese una Observacion');
+      return false;
+    }
+    return true;
+  }
+  limpiar(){
+    (<HTMLInputElement>document.getElementById("txt_FechaNS")).value='';
+    (<HTMLInputElement>document.getElementById("txt_HoraNS")).value='';
+    (<HTMLInputElement>document.getElementById('txt_ObservacionNS')).value;
+    this.idBien='';
+    this.idEncargado='';
+    this.idPersona='';
+    (<HTMLInputElement>document.getElementById("txt_IdBien")).value='';
+    (<HTMLInputElement>document.getElementById("txt_Encargado")).value='';
+    (<HTMLInputElement>document.getElementById('txt_IdPersonaNS')).value;
   }
 
 }

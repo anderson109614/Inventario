@@ -136,7 +136,7 @@
                                                 <td>{{persona.nombres + ' '+ persona.apellidos}}</td>
                                                 <td>{{persona.telefono}}</td>
                                                 <td>
-                                                    <button type="button" (click)="onClickSelecPersona(persona.id)"
+                                                    <button type="button" (click)="onClickSelecPersona(persona.id,persona.nombres + ' '+ persona.apellidos)"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>
@@ -268,7 +268,7 @@
                                                 </td>
                                                 <td>{{encargado.apellidos}}
                                                 </td>
-                                                <td><button type="button" (click)="onClickMeEncargado(encargado.id)"
+                                                <td><button type="button" (click)="onClickMeEncargado(encargado.id,encargado.nombres+ ' '+encargado.apellidos)"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>
@@ -379,7 +379,7 @@
                                                 <td>
 
 
-                                                    <button type="button" (click)="onClickSeleccionaBien(prestamo.id)"
+                                                    <button type="button" (click)="onClickSeleccionaBien(prestamo.id,prestamo.serie_identificacion)"
                                                     data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>

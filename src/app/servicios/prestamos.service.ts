@@ -21,6 +21,16 @@ export class PrestamosService {
     return this.http.put<Prestamo>(this.ip + 'Prestamos/Prestamos.php',prestamo)
 
   }
+  guardarPrestamo(prestamo:Prestamo){
+    return this.http.post<Prestamo>(this.ip + 'Prestamos/Prestamos.php',prestamo)
+
+  }
+  getBienes(){
+    return this.http.get(this.ip + 'Prestamos/Bienes.php')
+  }
+  getPrestamosCodigo(Id:string){
+    return this.http.get<Prestamo>(this.ip + 'Prestamos/Prestamos.php?Codigo='+Id)
+  }
 
 
 }
