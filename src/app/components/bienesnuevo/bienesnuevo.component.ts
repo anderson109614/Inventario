@@ -273,6 +273,27 @@ export class BienesnuevoComponent implements OnInit {
     }
 
   }
+
+  //imagen
+  base64textStringG = '';
+  onUploadChange(evt: any) {
+    const file = evt.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  handleReaderLoaded(e) {
+    this.base64textStringG = 'data:image/png;base64,' + btoa(e.target.result);
+    //console.log(this.base64textStringG);
+  }
+
+
+  //
   
   onClickGuardar() {
 
@@ -299,7 +320,8 @@ export class BienesnuevoComponent implements OnInit {
     idBienPadre = bienO;
     }  
     var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
-    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
+    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value;
+    var img_bienO =  this.base64textStringG;
    
     if(identificadorO.toString() == ""){
       (<HTMLInputElement>document.getElementById("txt_Identificador")).required;
@@ -350,8 +372,8 @@ export class BienesnuevoComponent implements OnInit {
         fecha_ingreso: fechaIngresoO,
         id_bien_padre: Number.parseInt(idBienPadre), 
         codigo: Number.parseInt(codigoO),
-        id_encargado: Number.parseInt(encargadoO)
-  
+        id_encargado: Number.parseInt(encargadoO),
+        img_bien : img_bienO
       };
    
       console.log(bien);
@@ -390,6 +412,7 @@ export class BienesnuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_Bien")).value = "";  
     (<HTMLInputElement>document.getElementById("txt_Encargado")).value = ""; 
     (<HTMLInputElement>document.getElementById("txt_Bodega")).value = ""; 
+    (<HTMLInputElement>document.getElementById("txt_Img")).value = "";
   }
 
   limpiarTxtActa(){

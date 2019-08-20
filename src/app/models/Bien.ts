@@ -18,4 +18,5 @@ export interface Bien{
     id_bien_padre: number, 
     codigo: number,
     id_encargado: number,
+    img_bien: string
 }

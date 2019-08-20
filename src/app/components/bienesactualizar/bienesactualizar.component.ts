@@ -132,6 +132,28 @@ export class BienesactualizarComponent implements OnInit {
     idBodega.value = id.toString();
   }
 
+   //imagen
+   base64textStringG = this.bienes.img_bien;
+   onUploadChange(evt: any) {
+     const file = evt.target.files[0];
+ 
+     if (file) {
+       const reader = new FileReader();
+ 
+       reader.onload = this.handleReaderLoaded.bind(this);
+       reader.readAsBinaryString(file);
+     }
+   }
+ 
+   handleReaderLoaded(e) {
+     this.base64textStringG = 'data:image/png;base64,' + btoa(e.target.result);
+     //console.log(this.base64textStringG);
+
+   }
+ 
+ 
+   //
+
   onClickActualizar() {
     var idBien = this.rutaActiva.snapshot.params.id;
     var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
@@ -158,7 +180,8 @@ export class BienesactualizarComponent implements OnInit {
     }
      
     var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
-    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value; 
+    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value;
+    var img_bienO = this.base64textStringG;
    
     let bien: Bien = {
       id: idBien,
@@ -180,7 +203,7 @@ export class BienesactualizarComponent implements OnInit {
       id_bien_padre: Number.parseInt(idBienPadre),     
       codigo: Number.parseInt(codigoO),
       id_encargado: Number.parseInt(encargadoO),
-
+      img_bien : img_bienO
     };
  
     console.log(bien);
