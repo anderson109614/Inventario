@@ -28,10 +28,10 @@ export class BienesnuevoComponent implements OnInit {
   bodegasAux: any = [];
 
   //id acta, bien, encargado y bodega
-  idActa : string;
+  idActa = "";
   idBien = "";
-  idEncargado : string;
-  idBodega : string;
+  idEncargado = "";
+  idBodega = "";
   
 
   constructor(private bienesService:BienesService, public router: Router) { }

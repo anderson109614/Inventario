@@ -19,6 +19,7 @@ export class MantenimientonuevoComponent implements OnInit {
   tecnicosAux : any = [];
   empresas: any = [];
   empresasAux : any = [];
+  tipomantenimientos : any = [];
 
   constructor(private bienesService:BienesService, private empresasService:EmpresasService, private tecnicosService:TecnicosService,
     private mantenimientosService:MantenimientosService, private rutaActiva: ActivatedRoute, public router: Router) { }
@@ -26,6 +27,7 @@ export class MantenimientonuevoComponent implements OnInit {
   ngOnInit() {
     this.cargarTecnicos();
     this.cargarEmpresas();
+    this.cargarTipoMantenimiento();
   }
 
   //Cargar datos 
@@ -51,18 +53,32 @@ export class MantenimientonuevoComponent implements OnInit {
     );
   }
 
+  cargarTipoMantenimiento(){
+    this.mantenimientosService.getTipoMantenimiento().subscribe(
+      res => {
+        this.tipomantenimientos = res;
+        console.log(res);    
+      },
+      err => console.log(err)
+    );
+  }
+
   //
 
   // Evento capturar id
  
-  onClickMeTecnico(id:string) {
-    var idTecnico = (<HTMLInputElement>document.getElementById("txt_Tecnico"));
-    idTecnico.value = id.toString();
+  idTecnico = "";
+  onClickMeTecnico(id:string, nombres:string, apellidos:string) {
+    var nombreTecnico = (<HTMLInputElement>document.getElementById("txt_Tecnico"));
+    nombreTecnico.value = nombres.toString() + " " + apellidos.toString();
+    this.idTecnico = id.toString();
   }
 
-  onClickMeEmpresa(id:string) {
+  idEmpresa = "";
+  onClickMeEmpresa(id:string, nombre:string) {
     var idEmpresa = (<HTMLInputElement>document.getElementById("txt_Empresa"));
-    idEmpresa.value = id.toString();
+    idEmpresa.value = nombre.toString();
+    this.idEmpresa = id.toString();
   }
 
   //
@@ -98,7 +114,8 @@ export class MantenimientonuevoComponent implements OnInit {
         res => {
           //this.limpiartxt();
           //console.log(res)
-          (<HTMLInputElement>document.getElementById("txt_Empresa")).value = res.id.toString();
+          (<HTMLInputElement>document.getElementById("txt_Empresa")).value = res.nombre.toString();
+          this.idEmpresa = res.id.toString();
           this.cargarEmpresas();
           alert("Se guardo con éxito");
           this.limpiarTxtEmpresa();
@@ -111,10 +128,12 @@ export class MantenimientonuevoComponent implements OnInit {
   //
   //Guardar Tecnico
   onClickGuardarTecnico(){
-    var empresaN = (<HTMLInputElement>document.getElementById("txt_Empresa")).value;
+    var empresaN = this.idEmpresa;
     var cedulaN = (<HTMLInputElement>document.getElementById("txt_CedulaNT")).value;
     var nombresN = (<HTMLInputElement>document.getElementById("txt_NombresNT")).value;
     var apellidosN = (<HTMLInputElement>document.getElementById("txt_ApellidosNT")).value;
+    var telefonoN = (<HTMLInputElement>document.getElementById("txt_TelefonoNT")).value;
+    var correoN = (<HTMLInputElement>document.getElementById("txt_CorreoNT")).value;
     
 
     if(empresaN.toString()==""){
@@ -125,13 +144,17 @@ export class MantenimientonuevoComponent implements OnInit {
       alert("Ingresar Nombres");
     }else if(apellidosN.toString() == ""){
       alert("Ingresar Apellidos");
+    }else if(telefonoN.toString() == ""){
+      alert("Ingresar Teléfono");
     }else{
       let tecnico:Tecnico = {
         id: 0,
         cedula: cedulaN,
         nombres: nombresN,
         apellidos: apellidosN,
-        id_empresa: Number.parseInt(empresaN)
+        id_empresa: Number.parseInt(empresaN),
+        telefono : telefonoN,
+        correo : correoN
       }
   
       console.log(tecnico);
@@ -140,7 +163,8 @@ export class MantenimientonuevoComponent implements OnInit {
         res => {
           //this.limpiartxt();
           //console.log(res)
-          (<HTMLInputElement>document.getElementById("txt_Tecnico")).value = res.id.toString();
+          (<HTMLInputElement>document.getElementById("txt_Tecnico")).value = res.nombres.toString() + " " + res.apellidos.toString();
+          this.idTecnico = res.id.toString();
           this.cargarTecnicos();
           alert("Se guardo con éxito");
           this.limpiarTxtTecnico();
@@ -153,11 +177,12 @@ export class MantenimientonuevoComponent implements OnInit {
   //
   //Guardar Mantenimiento
   onClickGuardarMantenimiento(){
+    var idTipoMantenimientoN = (<HTMLInputElement>document.getElementById("cbx_TipoMantenimiento")).value;
     var idBienN = this.rutaActiva.snapshot.params.id;
     var mantenimientoN = (<HTMLInputElement>document.getElementById("txt_Mantenimiento")).value;
     var descripcionN = (<HTMLInputElement>document.getElementById("txt_Descripcion")).value;
     var fechaN = (<HTMLInputElement>document.getElementById("txt_Fecha")).value;
-    var tecnicoN = (<HTMLInputElement>document.getElementById("txt_Tecnico")).value;
+    var tecnicoN = this.idTecnico;
     var estadoN = (<HTMLInputElement>document.getElementById("txt_Estado")).value;
     var observacionN = (<HTMLInputElement>document.getElementById("txt_Observacion")).value;
     
@@ -183,7 +208,8 @@ export class MantenimientonuevoComponent implements OnInit {
         fecha : fechaN,
         id_tecnico: Number.parseInt(tecnicoN),
         estado: estadoN, 
-        observacion : observacionN
+        observacion : observacionN,
+        id_tipo_mantenimiento : Number.parseInt(idTipoMantenimientoN)
       }
   
       console.log(mantenimiento);
@@ -257,6 +283,8 @@ export class MantenimientonuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_CedulaNT")).value = "";
     (<HTMLInputElement>document.getElementById("txt_NombresNT")).value = "";
     (<HTMLInputElement>document.getElementById("txt_ApellidosNT")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_TelefonoNT")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_CorreoNT")).value = "";
   }
 
   limpiarTxtMantenimiento(){

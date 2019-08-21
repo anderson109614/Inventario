@@ -20,4 +20,8 @@ export class MantenimientosService {
   {
     return this.http.post<Mantenimiento>(this.ip+'Mantenimientos/Mantenimientos.php', mantenimiento);
   }
+
+  getTipoMantenimiento(){
+    return this.http.get(this.ip+'Mantenimientos/TipoMantenimiento.php');
+  }
 }

@@ -3,5 +3,7 @@ export interface Tecnico{
     cedula: string,
     nombres: string,
     apellidos: string,
-    id_empresa: number
+    id_empresa: number,
+    telefono : string,
+    correo : string
 }

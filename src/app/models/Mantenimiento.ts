@@ -6,5 +6,6 @@ export interface Mantenimiento{
     fecha : string,
     id_tecnico: number,
     estado: string, 
-    observacion : string
+    observacion : string,
+    id_tipo_mantenimiento : number;
 }
