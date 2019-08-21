@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Empresa } from '../models/Empresa';
-
+import {con} from '../models/coneccion';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,7 @@ export class EmpresasService {
 
   constructor(private http:HttpClient) { }
 
-  ip = 'http://10.7.1.182/servicios/';
+  ip = con.ipser;
 
   getEmpresas(){
     return this.http.get(this.ip + 'Mantenimientos/Empresas.php')

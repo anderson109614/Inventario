@@ -4,6 +4,7 @@ import {Persona} from '../models/Persona';
 import {Suministro} from '../models/Suministro';
 import {Unidad} from '../models/Unidad';
 import {DetalleSuministro} from '../models/DetalleSuministro';
+import {con} from '../models/coneccion';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class ServiciossuministrosService {
 
   constructor(private http:HttpClient) {  }
 
-  ip = 'http://10.7.1.182/servicios/';
+  ip = con.ipser;
   getSuministro(){
     return this.http.get(this.ip + 'Suministros/Suministros.php')
   }
