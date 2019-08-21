@@ -300,7 +300,8 @@ export class BienesactualizarComponent implements OnInit {
       //res => console.log(res),
       res => {
         var nroActa = (<HTMLInputElement>document.getElementById("txt_NroActa"));
-        nroActa.value = res.id.toString();
+        nroActa.value = res.nro_acta.toString();
+        this.idActa = res.id.toString();
 
         this.cargarActas();
         alert("Se guardo con éxito");
@@ -329,8 +330,9 @@ export class BienesactualizarComponent implements OnInit {
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
-        var idEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
-        idEncargado.value = res.id.toString();
+        var nombreEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
+        nombreEncargado.value = res.nombres.toString() + " " + res.apellidos.toString();
+        this.idEncargado = res.id.toString();
         this.cargarEncargados();      
         alert("Se guardo con éxito");       
         this.limpiarTxtEncargado();
@@ -354,8 +356,9 @@ export class BienesactualizarComponent implements OnInit {
       res => {
         //this.limpiartxt();
         //console.log(res);
-        var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
-        idBodega.value = res.id.toString();
+        var nombreBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
+        nombreBodega.value = res.nombre.toString();
+        this.idBodega = res.id.toString();
         this.cargarBodegas();
         alert("Se guardo con éxito");
         this.limpiarTxtBodega();

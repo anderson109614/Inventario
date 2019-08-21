@@ -29,7 +29,7 @@ export class BienesnuevoComponent implements OnInit {
 
   //id acta, bien, encargado y bodega
   idActa : string;
-  idBien : string;
+  idBien = "";
   idEncargado : string;
   idBodega : string;
   
