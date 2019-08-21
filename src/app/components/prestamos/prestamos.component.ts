@@ -4,6 +4,8 @@ import { Persona } from '../../models/Persona';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import { Prestamo } from '../../models/Prestamo';
 import { QrScannerComponent } from 'angular2-qrscanner';
+declare var jQuery:any;
+declare var $:any;
 @Component({
   selector: 'app-prestamos',
   templateUrl: './prestamos.component.html',
@@ -14,6 +16,7 @@ export class PrestamosComponent implements OnInit {
   personas: any = [];
   personasAux: any = [];
   idDev: string = '';
+  
   @ViewChild(QrScannerComponent, null) qrScannerComponent: QrScannerComponent;
   constructor(private prestamosService: PrestamosService, private siministrosService: ServiciossuministrosService) { }
 
@@ -21,6 +24,15 @@ export class PrestamosComponent implements OnInit {
     this.cargarBienesPrestados();
     this.cargarPersonas();
     //this.iniciarCamara();
+
+    
+    $('.modalPersona').on('hidden.bs.modal', function (e) {
+      alert('modal')
+    })
+
+
+
+
   }
 
   iniciarCamara() {
@@ -255,6 +267,6 @@ export class PrestamosComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_FechaQR")).value = '';
     (<HTMLInputElement>document.getElementById("txt_HoraQR")).value = '';
     (<HTMLInputElement>document.getElementById("txt_ObservacionQR")).value = '';
+    
   }
-
-}
+ }
