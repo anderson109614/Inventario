@@ -23,4 +23,11 @@ export class GenerarcodigoqrComponent implements OnInit {
 
   }
 
+  
+  downloadImage(){
+    //console.log(document.getElementsByTagName('img')[0].src);
+    this.href = document.getElementsByTagName('img')[0].src;
+    
+  }
+
 }
