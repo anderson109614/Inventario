@@ -12,6 +12,9 @@ import { SuministrosComponent } from './components/suministros/suministros.compo
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { MantenimientosComponent } from './components/mantenimientos/mantenimientos.component';
 import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
+
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgQrScannerModule
+    NgQrScannerModule,
+    NgxQRCodeModule
   ],
   providers: [BienesService],
   bootstrap: [AppComponent]

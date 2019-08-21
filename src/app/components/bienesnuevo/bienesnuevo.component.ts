@@ -393,6 +393,7 @@ export class BienesnuevoComponent implements OnInit {
           this.limpiartxt();
           console.log(res)
           alert("Se guardo con éxito");
+          this.router.navigate(['/generarcodigoqr/',res.codigo]);
         },
         err => console.log(err)
       );

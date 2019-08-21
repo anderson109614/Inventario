@@ -220,7 +220,7 @@ export class BienesactualizarComponent implements OnInit {
       res => {
         //console.log(res)
         alert("Se Actualizo con éxito");
-        this.router.navigate(['/listabienes']);
+        this.router.navigate(['/generarcodigoqr/',res.codigo]);
       },
       err => console.log(err)
     );
