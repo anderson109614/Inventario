@@ -58,16 +58,23 @@ export class PrestamosComponent implements OnInit {
   }
   cargarDatos(bien:string){
     //alert(bien);
-    (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value=bien;
+    
     this.prestamosService.getPrestamosCodigo(bien.toString()).subscribe(
       res => {
         this.limpiarPersona();
         console.log(res);
-        if(res ==null){
-          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res.id_persona_devolucion;
-          this.idPersona=res.id_persona_devolucion;
+       // console.log(res[0].id_persona_devolucion);
+       //console.log( );
+        if(Object.keys(res).length != 0){
+          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value=bien;
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas+' '+res[0].apellidosPersona;
+          this.idPersona=res[0].id_persona_devolucion;
+          //console.log(res.id_persona_devolucion);
         }else{
           alert('No se a podido optener datos');
+          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value='';
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = '';
+          this.idPersona='';
         }
         
         
