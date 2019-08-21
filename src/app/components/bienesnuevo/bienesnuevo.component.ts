@@ -29,7 +29,6 @@ export class BienesnuevoComponent implements OnInit {
 
   //id acta, bien, encargado y bodega
   idActa : string;
-  idBien : string;
   idEncargado : string;
   idBodega : string;
   
@@ -110,6 +109,7 @@ export class BienesnuevoComponent implements OnInit {
   }
 
   clickMessageBien = '';
+  idBien = '';
   onClickMeBien(id:string, serie_identificacion: string) {
     this.clickMessageBien = serie_identificacion.toString();
     this.idBien = id.toString();
@@ -322,6 +322,7 @@ export class BienesnuevoComponent implements OnInit {
     var actaO = this.idActa; 
     var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
     var bienO = this.idBien;
+    console.log(bienO);
     var idBienPadre; 
     if(bienO.toString() == ""){
     idBienPadre = "null";

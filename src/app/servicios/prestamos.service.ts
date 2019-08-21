@@ -5,7 +5,7 @@ import {Prestamo} from '../models/Prestamo';
   providedIn: 'root'
 })
 export class PrestamosService {
-  ip = 'http://10.7.1.207/servicios/';
+  ip = 'http://10.7.2.56/servicios/';
   constructor(private http:HttpClient) { }
 
   getPrestamos(){

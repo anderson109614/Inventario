@@ -149,7 +149,7 @@
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input id="txt_NroActa" value="{{bienesA.id_acta}}" type="text"
+                                        <input id="txt_NroActa" value="{{bienesA.nro_acta}}" type="text"
                                             class="form-control" readonly="true">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -215,7 +215,7 @@
                                                                                                 <td>{{acta.descripcion}}
                                                                                                 </td>
                                                                                                 <td><button type="button"
-                                                                                                        (click)="onClickMe(acta.id)"
+                                                                                                        (click)="onClickMe(acta.id, acta.nro_acta)"
                                                                                                         data-dismiss="modal"
                                                                                                         aria-label="Close">
                                                                                                         <i
@@ -434,7 +434,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input id="txt_Encargado" type="text" class="form-control"
-                                            value="{{bienesA.id_encargado}}" readonly="true">
+                                            value="{{bienesA.NombreEncargado +' '+ bienesA.ApellidosEncargado}}" readonly="true">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target=".modalEncargados">Seleccionar</button>
@@ -495,7 +495,7 @@
                                                                                                 <td>{{encargado.apellidos}}
                                                                                                 </td>
                                                                                                 <td><button type="button"
-                                                                                                        (click)="onClickMeEncargado(encargado.id)"
+                                                                                                        (click)="onClickMeEncargado(encargado.id, encargado.nombres, encargado.apellidos)"
                                                                                                         data-dismiss="modal"
                                                                                                         aria-label="Close">
                                                                                                         <i
@@ -580,7 +580,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input id="txt_Bodega" type="text" class="form-control"
-                                            value="{{bienesA.id_bodega}}" readonly="true">
+                                            value="{{bienesA.NombreBodega}}" readonly="true">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target=".modalBodegas">Seleccionar</button>
@@ -638,7 +638,7 @@
                                                                                                 </td>
         
                                                                                                 <td><button type="button"
-                                                                                                        (click)="onClickMeBodega(bodega.id)"
+                                                                                                        (click)="onClickMeBodega(bodega.id, bodega.nombre)"
                                                                                                         data-dismiss="modal"
                                                                                                         aria-label="Close">
                                                                                                         <i
@@ -716,7 +716,7 @@
         <div class="row">
             <div class="col-lg-12" style="text-align: right">
                 <button class="btn btn-secondary" (click)="confirmar()" style="margin-right: 15px">Cancelar</button>
-                <button type="submit" class="btn btn-primary" (click)="onClickActualizar()">Actualizar</button>
+                <button type="submit" class="btn btn-primary" (click)="onClickActualizar(bienesA.img_bien, bienesA.id_acta, bienesA.id_encargado, bienesA.id_bodega)">Actualizar</button>
             </div>
         </div>
     </div>

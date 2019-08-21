@@ -27,19 +27,27 @@ export class BienesactualizarComponent implements OnInit {
   bodegasAux: any = [];
   opciones: string[] = ["Si", "No"];
 
+  
+
   constructor(private bienesService:BienesService, private rutaActiva: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
     //var l= this.rutaActiva.snapshot.params.id;
     this.bienesService.getBienId(this.rutaActiva.snapshot.params.id).subscribe(
       res => {
-        
-       //console.log(res);
+
        this.bienesA=res;
-       console.log(this.bienesA);
+       this.base64textStringG = res[0].img_bien;
+       this.idActa = res[0].id_acta;
+       this.idEncargado = res[0].id_encargado;
+       this.idBodega = res[0].id_bodega;
+       
+       //console.log(this.idEncargado2);
       },
       err => console.log(err)
     );
+
+    
 
     this.bienesService.getData().subscribe(
       res => {
@@ -69,8 +77,10 @@ export class BienesactualizarComponent implements OnInit {
 
       this.cargarBodegas();
    
-      
+    
   }
+
+  
 
   cargarActas(){
     this.bienesService.getActa().subscribe(
@@ -105,39 +115,36 @@ export class BienesactualizarComponent implements OnInit {
   }
 
   //clickMessage = '';
-  onClickMe(id:string) {
+  idActa;
+  onClickMe(id:string, nro_acta:string) {
     //this.clickMessage = id.toString();
     var nroActa = (<HTMLInputElement>document.getElementById("txt_NroActa"));
-    nroActa.value = id.toString();
-
+    nroActa.value = nro_acta.toString();
+    this.idActa = id.toString();
   }
 
-  onClickCombo(){
-    var cTipo = (<HTMLSelectElement>document.getElementById("cbx_TipoBien"));
-    cTipo.options.item(2).selected = true;
-    //cTipo.options[0] = new Option("1");
-  }
-  
   onClickMeBien(id:string) {
-    var idBien = (<HTMLInputElement>document.getElementById("txt_Bien"));
-    idBien.value = id.toString();
+    var nombreBien = (<HTMLInputElement>document.getElementById("txt_Bien"));
+    nombreBien.value = id.toString();
   }
 
-  onClickMeEncargado(id:string) {
-    var idEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
-    idEncargado.value = id.toString();
+  idEncargado;
+  onClickMeEncargado(id:string, nombres:string, apellidos:string) {
+    var nombreEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
+    nombreEncargado.value = nombres + " " + apellidos;
+    this.idEncargado = id.toString();
   }
 
-  onClickMeBodega(id:string) {
-    var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
-    idBodega.value = id.toString();
+  idBodega;
+  onClickMeBodega(id:string, nombre:string) {
+    var nombreBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
+    nombreBodega.value = nombre;
+    this.idBodega = id.toString();
   }
 
    //imagen
  
-   base64textStringG = "";
-   
-   
+   base64textStringG;
    onUploadChange(evt: any) {
      const file = evt.target.files[0];
  
@@ -172,7 +179,7 @@ export class BienesactualizarComponent implements OnInit {
     var valorCompraO = (<HTMLInputElement>document.getElementById("txt_ValorCompra")).value; 
     var tipoMonedaO = (<HTMLInputElement>document.getElementById("cbx_TipoMoneda")).value; 
     var recompraO = (<HTMLInputElement>document.getElementById("cbx_Recompra")).value; 
-    var actaO = (<HTMLInputElement>document.getElementById("txt_NroActa")).value; 
+    var actaO = this.idActa;
     var fechaIngresoO = (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value;
     var bienO = (<HTMLInputElement>document.getElementById("txt_Bien")).value;
     var idBienPadre; 
@@ -182,10 +189,10 @@ export class BienesactualizarComponent implements OnInit {
     idBienPadre = bienO;
     }
      
-    var encargadoO = (<HTMLInputElement>document.getElementById("txt_Encargado")).value; 
-    var BodegaO = (<HTMLInputElement>document.getElementById("txt_Bodega")).value;
+    var encargadoO = this.idEncargado;
+    var BodegaO = this.idBodega;
     var img_bienO = this.base64textStringG;
-   
+
     let bien: Bien = {
       id: idBien,
       identificador: Number.parseInt(identificadorO),
@@ -294,7 +301,8 @@ export class BienesactualizarComponent implements OnInit {
       //res => console.log(res),
       res => {
         var nroActa = (<HTMLInputElement>document.getElementById("txt_NroActa"));
-        nroActa.value = res.id.toString();
+        nroActa.value = res.nro_acta.toString();
+        this.idActa = res.id.toString();
 
         this.cargarActas();
         alert("Se guardo con éxito");
@@ -323,8 +331,9 @@ export class BienesactualizarComponent implements OnInit {
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
-        var idEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
-        idEncargado.value = res.id.toString();
+        var nombreEncargado = (<HTMLInputElement>document.getElementById("txt_Encargado"));
+        nombreEncargado.value = res.nombres.toString() + " " + res.apellidos.toString();
+        this.idEncargado = res.id.toString();
         this.cargarEncargados();      
         alert("Se guardo con éxito");       
         this.limpiarTxtEncargado();
@@ -348,8 +357,9 @@ export class BienesactualizarComponent implements OnInit {
       res => {
         //this.limpiartxt();
         //console.log(res);
-        var idBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
-        idBodega.value = res.id.toString();
+        var nombreBodega = (<HTMLInputElement>document.getElementById("txt_Bodega"));
+        nombreBodega.value = res.nombre.toString();
+        this.idBodega = res.id.toString();
         this.cargarBodegas();
         alert("Se guardo con éxito");
         this.limpiarTxtBodega();
