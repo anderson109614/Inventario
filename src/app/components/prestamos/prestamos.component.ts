@@ -4,8 +4,8 @@ import { Persona } from '../../models/Persona';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import { Prestamo } from '../../models/Prestamo';
 import { QrScannerComponent } from 'angular2-qrscanner';
-declare var jQuery:any;
-declare var $:any;
+declare var jQuery: any;
+declare var $: any;
 @Component({
   selector: 'app-prestamos',
   templateUrl: './prestamos.component.html',
@@ -16,7 +16,7 @@ export class PrestamosComponent implements OnInit {
   personas: any = [];
   personasAux: any = [];
   idDev: string = '';
-  
+
   @ViewChild(QrScannerComponent, null) qrScannerComponent: QrScannerComponent;
   constructor(private prestamosService: PrestamosService, private siministrosService: ServiciossuministrosService) { }
 
@@ -24,8 +24,8 @@ export class PrestamosComponent implements OnInit {
     this.cargarBienesPrestados();
     this.cargarPersonas();
     //this.iniciarCamara();
+    this.cargarFechaHora();
 
-    
     $('.modalPersona').on('hidden.bs.modal', function (e) {
       alert('modal')
     })
@@ -65,35 +65,69 @@ export class PrestamosComponent implements OnInit {
       this.cargarDatos(result);
     });
   }
-  cargarFechaHora(){
-
-  }
-  cargarDatos(bien:string){
-    //alert(bien);
+  cargarFechaHora() {
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth() + 1;
+    var yyyy = hoy.getFullYear();
+    var d=dd.toString();
+    var m=mm.toString();
+    if(dd<10){
+      d='0'+dd;
+    }
+    if(mm<10){
+      m='0'+mm;
+    }
+    var h=yyyy+'-'+m+'-'+d;
+    var ho=hoy.getHours();
+    var mi=hoy.getMinutes();
+    var hos=ho.toString();
+    var mis=mi.toString();
+    if(ho<10){
+      hos='0'+hos;
+    }
+    if(mi<10){
+      mis='0'+mis;
+    }
+    var hora= hos+':'+mis;
+   
+    (<HTMLInputElement>document.getElementById("txt_FechaNS")).value =h;
+    (<HTMLInputElement>document.getElementById("txt_HoraNS")).value =hora;
+    (<HTMLInputElement>document.getElementById("txt_FechaQR")).value =h;
+    (<HTMLInputElement>document.getElementById("txt_HoraQR")).value = hora;
     
+    
+  }
+  cargarDatos(bien: string) {
+    //alert(bien);
+
     this.prestamosService.getPrestamosCodigo(bien.toString()).subscribe(
       res => {
         this.limpiarPersona();
         console.log(res);
-       // console.log(res[0].id_persona_devolucion);
-       //console.log( );
-        if(Object.keys(res).length != 0){
-          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value=bien;
-          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas+' '+res[0].apellidosPersona;
-          this.idPersona=res[0].id_persona_devolucion;
+        // console.log(res[0].id_persona_devolucion);
+        //console.log( );
+        if (Object.keys(res).length != 0) {
+          (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = false;
+          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = bien;
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas + ' ' + res[0].apellidosPersona;
+          this.idPersona = res[0].id_persona_devolucion;
+          this.idDev=res[0].id;
           //console.log(res.id_persona_devolucion);
-        }else{
+        } else {
           alert('No se a podido optener datos');
-          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value='';
+          (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = true;
+          (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = '';
           (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = '';
-          this.idPersona='';
+          this.idPersona = '';
         }
-        
-        
-        
+
+
+
       },
       err => {
         alert('Error al intentar extraer datos del prestamo... intentelo nuevamente');
+        this.limpiarDevolucion();
         console.log(err)
       }
 
@@ -113,13 +147,13 @@ export class PrestamosComponent implements OnInit {
     this.personas = result;
 
   }
- idPersona:string='';
-  onClickSelecPersona(id: string,nom: string) {
+  idPersona: string = '';
+  onClickSelecPersona(id: string, nom: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = nom;
     var personaqr = (<HTMLInputElement>document.getElementById('txt_IdPersonaQR'))
     personaqr.value = nom;
-    this.idPersona=id;
+    this.idPersona = id;
     // (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =id;
   }
   onClickGuardarPersona() {
@@ -138,10 +172,10 @@ export class PrestamosComponent implements OnInit {
           this.limpiarPersona();
           console.log(res);
           var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
-          persona.value = res.nombres+' '+res.apellidos;
-          
-          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res.nombres+' '+res.apellidos;
-          this.idPersona=res.id;
+          persona.value = res.nombres + ' ' + res.apellidos;
+
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res.nombres + ' ' + res.apellidos;
+          this.idPersona = res.id;
           this.cargarPersonas();
         },
         err => {
@@ -268,5 +302,37 @@ export class PrestamosComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_HoraQR")).value = '';
     (<HTMLInputElement>document.getElementById("txt_ObservacionQR")).value = '';
     
+    (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = '';
   }
- }
+  onClickGuardarDevolucionQR() {
+    let pre: Prestamo = {
+      id: this.idDev,
+      id_persona_devolucion: this.idPersona,
+      fecha_hora_recibido: (<HTMLInputElement>document.getElementById("txt_FechaQR")).value + " " + (<HTMLInputElement>document.getElementById("txt_HoraQR")).value,
+      observacion_recibido: (<HTMLInputElement>document.getElementById("txt_ObservacionQR")).value,
+      id_bien: '',
+      id_encargado_prestamo: '',
+      id_persona_prestamo: '',
+      fecha_hora_entrega: '',
+      observacion_entrega: ''
+
+    }
+    console.log(pre);
+    if (this.validarDevolucion(pre)) {
+      this.prestamosService.devolverPrestamo(pre).subscribe(
+        res => {
+          this.limpiarPersona();
+          console.log(res);
+          this.cargarBienesPrestados();
+          this.limpiarDevolucion();
+          (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = true;
+        },
+        err => {
+          alert('Error al guardar los datos de la Persona... intentelo nuevamente');
+          console.log(err)
+        }
+
+      );
+    }
+  }
+}
