@@ -11,6 +11,7 @@ import {NuevoprestamoComponent} from './components/nuevoprestamo/nuevoprestamo.c
 import { GenerarcodigoqrComponent } from './components/generarcodigoqr/generarcodigoqr.component';
 import {LaboratoriosComponent} from './components/laboratorios/laboratorios.component';
 import {HorariosComponent} from './components/horarios/horarios.component';
+import {MantenimientoproximoComponent} from './components/mantenimientoproximo/mantenimientoproximo.component';
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'prestamos/nuevoprestamo', component: NuevoprestamoComponent},
   {path:'generarcodigoqr/:codigo', component: GenerarcodigoqrComponent},
   {path:'laboratorios', component: LaboratoriosComponent},
-  {path:'horarios/:idLab', component: HorariosComponent}
+  {path:'horarios/:idLab', component: HorariosComponent},
+  {path:'mantenimientoproximo', component: MantenimientoproximoComponent}
 ];
 
 @NgModule({
@@ -30,4 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ListabienesComponent, BienesactualizarComponent, BienesnuevoComponent, MantenimientonuevoComponent, GenerarcodigoqrComponent]
+export const routingComponents = [ListabienesComponent, BienesactualizarComponent, BienesnuevoComponent, MantenimientonuevoComponent, GenerarcodigoqrComponent,MantenimientoproximoComponent]
