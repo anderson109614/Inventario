@@ -1,0 +1,51 @@
+
+
+  .zoom {
+    /*padding: 5px;*/
+    background-color: green;
+    transition: transform .2s; /* Animation */
+    /*width: 25px;
+    height: 25px;*/
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  /* Style the buttons */
+.btnA {
+    border: none;
+    outline: none;
+     padding: 20px 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+  .active, .btnA:hover {
+    background-color: green;
+    color: white;
+  }
+
+  /* ------------*/
+  .btnC {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .successC {
+    border-color: #4CAF50;
+    color: green;
+  }
+  
+  .successC:hover {
+    background-color: #4CAF50;
+    color: white;
+  }

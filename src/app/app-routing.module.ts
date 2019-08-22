@@ -9,7 +9,8 @@ import { MantenimientosComponent} from './components/mantenimientos/mantenimient
 import { MantenimientonuevoComponent } from './components/mantenimientonuevo/mantenimientonuevo.component';
 import {NuevoprestamoComponent} from './components/nuevoprestamo/nuevoprestamo.component'
 import { GenerarcodigoqrComponent } from './components/generarcodigoqr/generarcodigoqr.component';
-
+import {LaboratoriosComponent} from './components/laboratorios/laboratorios.component';
+import {HorariosComponent} from './components/horarios/horarios.component';
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path:'mantenimientos', component: MantenimientosComponent},
   {path:'mantenimientonuevo/:id', component: MantenimientonuevoComponent},
   {path:'prestamos/nuevoprestamo', component: NuevoprestamoComponent},
-  {path:'generarcodigoqr/:codigo', component: GenerarcodigoqrComponent}
+  {path:'generarcodigoqr/:codigo', component: GenerarcodigoqrComponent},
+  {path:'laboratorios', component: LaboratoriosComponent},
+  {path:'horarios/:idLab', component: HorariosComponent}
 ];
 
 @NgModule({
