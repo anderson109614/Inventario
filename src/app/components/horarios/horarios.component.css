@@ -31,6 +31,10 @@
     background-color: green;
     color: white;
   }
+  .activeR, .btnA:hover {
+    background-color: red;
+    color: white;
+  }
 
   /* ------------*/
   .btnC {
