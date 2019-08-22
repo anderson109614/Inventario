@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class PrestamosComponent implements OnInit {
   Prestamos: any = [];
+  PrestamoaAux:any=[];
   personas: any = [];
   personasAux: any = [];
   idDev: string = '';
@@ -25,10 +26,11 @@ export class PrestamosComponent implements OnInit {
     this.cargarPersonas();
     //this.iniciarCamara();
     this.cargarFechaHora();
-
-    $('.modalPersona').on('hidden.bs.modal', function (e) {
+    
+    /*$('.modalPersona').on('hidden.bs.modal', function (e) {
       alert('modal')
     })
+    */
 
 
 
@@ -147,6 +149,21 @@ export class PrestamosComponent implements OnInit {
     this.personas = result;
 
   }
+  checkPin($event: KeyboardEvent) {
+    this.Prestamos = this.PrestamoaAux;
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.Prestamos.filter(prestamo => prestamo.id.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.fecha_hora_entrega.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.serie_identificacion.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.modelo.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.marca.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.nombresEncargado.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.ApellidosEncargado.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.nombrePersonas.toUpperCase().search(value.toUpperCase()) == 0
+                                                || prestamo.apellidosPersona.toUpperCase().search(value.toUpperCase()) == 0);
+    this.Prestamos = result;
+
+  }
   idPersona: string = '';
   onClickSelecPersona(id: string, nom: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
@@ -231,6 +248,7 @@ export class PrestamosComponent implements OnInit {
         console.log('Entro');
         console.log(res);
         this.Prestamos = res;
+        this.PrestamoaAux=res;
 
       },
       err => console.log(err)
@@ -335,4 +353,16 @@ export class PrestamosComponent implements OnInit {
       );
     }
   }
+
+//////////////////////
+
+
+  
+
+
+
+
+
+
+
 }

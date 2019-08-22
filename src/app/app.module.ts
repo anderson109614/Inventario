@@ -13,6 +13,8 @@ import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { MantenimientosComponent } from './components/mantenimientos/mantenimientos.component';
 import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo.component';
 import { QRCodeModule } from 'angular2-qrcode';
+import { LaboratoriosComponent } from './components/laboratorios/laboratorios.component';
+import { HorariosComponent } from './components/horarios/horarios.component';
 
 
 
@@ -26,7 +28,9 @@ import { QRCodeModule } from 'angular2-qrcode';
     SuministrosComponent,
     PrestamosComponent,
     MantenimientosComponent,
-    NuevoprestamoComponent
+    NuevoprestamoComponent,
+    LaboratoriosComponent,
+    HorariosComponent
   ],
   imports: [
     BrowserModule,
