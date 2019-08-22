@@ -34,7 +34,7 @@
                                         <td>{{suministro.nombre}}</td>
                                         <td>{{suministro.existencia}}</td>
                                         <td>
-                                                <button type="button"
+                                                <button style="margin-right: 15px;" type="button"
                                                 (click)="onClickEditarsuministros(suministro.nombre,suministro.id)"
                                                 data-toggle="modal"
                                                 data-target=".modalEditarSuministro"
@@ -43,13 +43,14 @@
                                                 </i>
                                                 
                                             </button>
-
                                             <button type="button"
                                                 (click)="onClickSuministro(suministro.id,suministro.existencia)">
                                                 <i class="fa fa-arrow-right">
                                                 </i>
                                             </button>
+                                            
                                         </td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>

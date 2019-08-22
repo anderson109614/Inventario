@@ -29,6 +29,9 @@ export class SuministrosComponent implements OnInit {
     this.cargarPersonas();
     this.cargarDEtalleTodo();
     this.cargarUnidades();
+
+   
+    //this.notifycacion('con en click');
    // $('#bb').quicksearch('#tt ');
      
    // $('input#bb').quicksearch('table tbody tr');
@@ -96,9 +99,11 @@ export class SuministrosComponent implements OnInit {
       res => {
         this.suministros = res;
         this.suministroAuxs=res;
+        this.notificarcionSuministros(res);
       },
       err => console.log(err)
     );
+    
   }
   cargarPersonas() {
     this.siministrosService.getPersonas().subscribe(
@@ -423,6 +428,40 @@ export class SuministrosComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById("txt_NombreAS")).value='';
     (<HTMLSelectElement>document.getElementById("txt_idAS")).value='';
   }
-
+  /////////////
+  notifycacion(msj:string) {
+    
+    if (!("Notification" in window)) {
+      alert("Tu explorados no soporta las notificaciones de escritorio");
+    }else if (Notification.permission === "granted") {
+      
+      var notification = new Notification(msj);
+      /*
+      notification.onclick = function(event) {
+        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        window.open('http://www.mozilla.org', '_blank');
+      }*/
+    }
+    else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(function (permission) {
+       
+        if (permission === "granted") {
+          var notification = new Notification(msj);
+        }
+      });
+    }
+  }
+  notificarcionSuministros(res:any){
+   var a=  0;
+   res.forEach(function (value) {
+    if(value.existencia<10){
+      a++;
+    }
+  }); 
+    if(a>0){
+      this.notifycacion(a+' Suministros se encuentran con menos de 10 unidades');
+    }
+   
+  }
 
 }
