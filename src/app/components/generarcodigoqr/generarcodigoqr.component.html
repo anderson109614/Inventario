@@ -1,17 +1,20 @@
+<br>
 <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8" style="text-align: center">
-        <!--<ngx-qrcode [width]="100" [scale]="5" [qrc-element-type]="elementType" [qrc-value]="value">
-        </ngx-qrcode>
-    -->
+        <h1>Código: {{download}}</h1>
+        <br>
     <qr-code [value]="value" [size]="250"></qr-code>
     </div>
     <div class="col-lg-2"></div>
 </div>
+<br>
 <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8" style="text-align: center">
-            <button type="button" class="btn btn-primary" (click)="downloadImage()">Descargar</button>
+           <!-- <button type="button" class="btn btn-primary">Descargar</button> -->
+           <a class="btn btn-primary" [href]="href" (click)="downloadImage()" [download]="download">Descargar Código QR</a>
+           
         </div>
         <div class="col-lg-2"></div>
     </div>

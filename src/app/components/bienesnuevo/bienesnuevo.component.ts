@@ -5,6 +5,7 @@ import { RouterLink, Router } from '@angular/router';
 import { Persona } from 'src/app/models/Persona';
 import { Acta } from 'src/app/models/Acta';
 import { Bodega } from 'src/app/models/Bodega';
+import { con } from 'src/app/models/coneccion';
 
 @Component({
   selector: 'app-bienesnuevo',
@@ -26,6 +27,8 @@ export class BienesnuevoComponent implements OnInit {
   encargadosAux : any = [];
   bodegas: any = [];
   bodegasAux: any = [];
+  
+ 
 
   //id acta, bien, encargado y bodega
   idActa = "";
@@ -33,11 +36,11 @@ export class BienesnuevoComponent implements OnInit {
   idEncargado = "";
   idBodega = "";
   
-
   constructor(private bienesService:BienesService, public router: Router) { }
 
+  
   ngOnInit() {
-    
+
     this.bienesService.getData().subscribe(
       res => {
         this.bienes = res;
