@@ -7,6 +7,7 @@ import { Tecnico } from 'src/app/models/Tecnico';
 import { TecnicosService } from 'src/app/servicios/tecnicos.service';
 import { Mantenimiento } from 'src/app/models/Mantenimiento';
 import { MantenimientosService } from 'src/app/servicios/mantenimientos.service';
+import { con } from 'src/app/models/coneccion';
 
 @Component({
   selector: 'app-mantenimientonuevo',
@@ -21,6 +22,8 @@ export class MantenimientonuevoComponent implements OnInit {
   empresasAux : any = [];
   tipomantenimientos : any = [];
 
+  
+
   constructor(private bienesService:BienesService, private empresasService:EmpresasService, private tecnicosService:TecnicosService,
     private mantenimientosService:MantenimientosService, private rutaActiva: ActivatedRoute, public router: Router) { }
 
@@ -28,6 +31,9 @@ export class MantenimientonuevoComponent implements OnInit {
     this.cargarTecnicos();
     this.cargarEmpresas();
     this.cargarTipoMantenimiento();
+   
+    var nombreTecnico = (<HTMLInputElement>document.getElementById("txt_Mno"));
+    nombreTecnico.checked = true;
   }
 
   //Cargar datos 
@@ -81,6 +87,38 @@ export class MantenimientonuevoComponent implements OnInit {
     this.idEmpresa = id.toString();
   }
 
+  //
+
+  //Radio Button 
+  onClickMantenimiento(){
+    var rbsi = (<HTMLInputElement>document.getElementById("txt_Msi"));
+    rbsi.checked = true;
+    var rbno = (<HTMLInputElement>document.getElementById("txt_Mno"));
+    rbno.checked = false;
+   
+    console.log( (<HTMLInputElement>document.getElementById("txt_Mno")).checked);
+    this.bloquearTxt(true);
+    
+  }
+
+  onclickCambiarRB(){
+    var rbsi = (<HTMLInputElement>document.getElementById("txt_Msi"));
+    rbsi.checked = false;
+    var rbno = (<HTMLInputElement>document.getElementById("txt_Mno"));
+    rbno.checked = true;
+
+    
+      this.bloquearTxt(false);
+    
+  }
+
+  bloquearTxt(estado:boolean){
+    (<HTMLInputElement>document.getElementById("txt_Mantenimiento")).disabled=estado;
+    (<HTMLInputElement>document.getElementById("txt_Tecnico")).disabled=estado;
+    (<HTMLButtonElement>document.getElementById("btn_Tecnico")).disabled=estado;
+    (<HTMLInputElement>document.getElementById("txt_Estado")).disabled=estado;
+    (<HTMLInputElement>document.getElementById("txt_Observacion")).disabled=estado;
+  }
   //
 
   //Guardar
@@ -185,47 +223,75 @@ export class MantenimientonuevoComponent implements OnInit {
     var tecnicoN = this.idTecnico;
     var estadoN = (<HTMLInputElement>document.getElementById("txt_Estado")).value;
     var observacionN = (<HTMLInputElement>document.getElementById("txt_Observacion")).value;
-    
+    var programadoSi = (<HTMLInputElement>document.getElementById("txt_Msi")).checked;
 
-    if(mantenimientoN.toString()==""){
-      alert("Ingrese Mantenimiento");
-    }else if(descripcionN.toString() == ""){
-      alert("Ingresar Descripción");
-    }else if(fechaN.toString() == ""){
-      alert("Selecionar Fecha");
-    }else if(tecnicoN.toString() == ""){
-      alert("Seleccionar Técnico");
-    }else if(estadoN.toString()==""){
-      alert("Ingresar Estado");
-    }else if(observacionN.toString()==""){
-      alert("Ingresar Observación");
-    }else{
+    if(programadoSi == true){
+
       let mantenimiento:Mantenimiento = {
         id: 0,
         id_bien: idBienN,
-        mantenimiento : mantenimientoN,
+        mantenimiento : "",
         descripcion : descripcionN,
         fecha : fechaN,
-        id_tecnico: Number.parseInt(tecnicoN),
-        estado: estadoN, 
-        observacion : observacionN,
-        id_tipo_mantenimiento : Number.parseInt(idTipoMantenimientoN)
+        id_tecnico: "null",
+        estado: "", 
+        observacion : "",
+        id_tipo_mantenimiento : idTipoMantenimientoN,
+        programado : "SI"
       }
   
       console.log(mantenimiento);
       this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
-        //res => console.log(res),
         res => {
-          //this.limpiartxt();
-          //console.log(res)
-          //(<HTMLInputElement>document.getElementById("txt_Tecnico")).value = res.id.toString();
-          //this.cargarTecnicos();
           alert("Se guardo con éxito");
           this.limpiarTxtMantenimiento();
         },
         err => console.log(err)
       );
+
+    }else{
+      if(mantenimientoN.toString()==""){
+        alert("Ingrese Mantenimiento");
+      }else if(descripcionN.toString() == ""){
+        alert("Ingresar Descripción");
+      }else if(fechaN.toString() == ""){
+        alert("Selecionar Fecha");
+      }else if(tecnicoN.toString() == ""){
+        alert("Seleccionar Técnico");
+      }else if(estadoN.toString()==""){
+        alert("Ingresar Estado");
+      }else if(observacionN.toString()==""){
+        alert("Ingresar Observación");
+      }else{
+        let mantenimiento:Mantenimiento = {
+          id: 0,
+          id_bien: idBienN,
+          mantenimiento : mantenimientoN,
+          descripcion : descripcionN,
+          fecha : fechaN,
+          id_tecnico:tecnicoN,
+          estado: estadoN, 
+          observacion : observacionN,
+          id_tipo_mantenimiento : idTipoMantenimientoN,
+          programado : "NO"
+        }
+    
+        console.log(mantenimiento);
+        this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
+          //res => console.log(res),
+          res => {
+            //this.limpiartxt();
+            //console.log(res)
+            //(<HTMLInputElement>document.getElementById("txt_Tecnico")).value = res.id.toString();
+            //this.cargarTecnicos();
+            alert("Se guardo con éxito");
+            this.limpiarTxtMantenimiento();
+          },
+          err => console.log(err)
+        );
+      }
     }
+
 
   }
 

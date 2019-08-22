@@ -13,8 +13,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Programar Mantenimiento</label>
                                 <div class="col-sm-9 mb-3">
-                                        <input type="radio" name="gender" value="male"> Sí
-                                        <input type="radio" name="gender" value="female" style="margin-left: 20px"> No
+                                        <input id="txt_Msi" type="radio" value="Si" (click)="onClickMantenimiento(true,false)"> Sí
+                                        <input id="txt_Mno" type="radio" value="No" (click)="onclickCambiarRB()" style="margin-left: 20px"> No
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -56,7 +56,7 @@
                                         <div class="input-group">
                                             <input id="txt_Tecnico" type="text" class="form-control" readonly="true">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                <button id="btn_Tecnico" type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalTecnicos">Seleccionar</button>
                                                 <!--Modal Tecnicos-->
                                                 <div class="modal fade modalTecnicos" tabindex="-1" role="dialog"
