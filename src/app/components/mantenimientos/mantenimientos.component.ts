@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MantenimientosService } from 'src/app/servicios/mantenimientos.service';
 import { BienesService } from 'src/app/servicios/bienes.service';
 import { Router } from '@angular/router';
+import { con } from 'src/app/models/coneccion';
 
 @Component({
   selector: 'app-mantenimientos',
@@ -22,6 +23,17 @@ export class MantenimientosComponent implements OnInit {
 
   ngOnInit() {
     this.cargarBienes();
+    this.cargarMantenimientos();
+  }
+
+  cargarMantenimientos(){
+    this.mantenimientosService.getProximosMantenimientos().subscribe(
+      res => {
+        console.log(res);
+        this.notificarMantenimientos(res);
+      },
+      err => console.log(err)
+    );
   }
 
   cargarBienes()
@@ -86,6 +98,47 @@ export class MantenimientosComponent implements OnInit {
                                                 || detalle.observacion.toUpperCase().search(value.toUpperCase())==0);
 
     this.detalles=result;
+  }
+  //
+
+  //Notificacion
+  notifycacion(msj:string) {
+    
+    if (!("Notification" in window)) {
+      alert("Tu explorados no soporta las notificaciones de escritorio");
+    }else if (Notification.permission === "granted") {
+      
+      var notification = new Notification(msj);
+      
+        notification.onclick = function(event) {
+        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        window.open('http://localhost:4200/mantenimientoproximo', '_self');
+      }
+    }
+    else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(function (permission) {
+       
+        if (permission === "granted") {
+          var notification = new Notification(msj);
+        }
+      });
+    }
+  }
+
+  notificarMantenimientos(res:any){
+   var a=  0;
+   res.forEach(function() {
+      a++;
+  }); 
+  console.log(a);
+    if(a>0){
+      if(a==1){
+        this.notifycacion('Tiene ' + a + ' bien próximo ha realizar mantenimiento');
+      }else{
+        this.notifycacion('Tiene ' + a + ' bienes próximos ha realizar mantenimiento');
+      }
+    }
+   
   }
   //
 }

@@ -24,4 +24,8 @@ export class MantenimientosService {
   getTipoMantenimiento(){
     return this.http.get(this.ip+'Mantenimientos/TipoMantenimiento.php');
   }
+
+  getProximosMantenimientos(){
+    return this.http.get(this.ip+'Mantenimientos/Proximos.php');
+  }
 }
