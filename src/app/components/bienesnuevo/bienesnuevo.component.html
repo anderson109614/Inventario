@@ -555,7 +555,7 @@
                                                                             <div class="form-group row">
                                                                                 <label class="col-sm-3">Cedula</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input id="txt_CedulaNE" type="text"
+                                                                                    <input id="txt_CedulaNE" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
                                                                                         placeholder="Cedula"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -563,7 +563,7 @@
                                                                             <div class="form-group row">
                                                                                 <label class="col-sm-3">Nombres</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input id="txt_NombreNE" type="text"
+                                                                                    <input id="txt_NombreNE" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
                                                                                         placeholder="Nombres"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -573,7 +573,7 @@
                                                                                     class="col-sm-3">Apellidos</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_ApellidoNE"
-                                                                                        type="text"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
                                                                                         placeholder="Apellidos"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -704,8 +704,8 @@
                                                                             <div class="form-group row">
                                                                                 <label class="col-sm-3">Nombre</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input id="txt_NombreBodegaNB"
-                                                                                        type="text" placeholder="Nombre"
+                                                                                    <input id="txt_NombreBodegaNB" 
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40" placeholder="Nombre"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
                                                                             </div>
@@ -714,7 +714,7 @@
                                                                                     class="col-sm-3">Ubicación</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_UbicacionNB"
-                                                                                        type="text"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
                                                                                         placeholder="Ubicación"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
