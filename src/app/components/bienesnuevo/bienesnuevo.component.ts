@@ -359,33 +359,44 @@ export class BienesnuevoComponent implements OnInit {
     var img_bienO =  this.base64textStringG;
    
     if(identificadorO.toString() == ""){
-      (<HTMLInputElement>document.getElementById("txt_Identificador")).required;
       alert("Ingresar Identificador");
+      (<HTMLInputElement>document.getElementById("txt_Identificador")).focus();
     }else if(codigoO.toString() == ""){
-      (<HTMLInputElement>document.getElementById("txt_Codigo")).required;
       alert("Ingresar Código");
+      (<HTMLInputElement>document.getElementById("txt_Codigo")).focus();
     }else if(serieO.toString() == ""){
       alert("Ingresar Serie");
+      (<HTMLInputElement>document.getElementById("txt_Serie")).focus();
     }else if(modeloO.toString() == ""){
       alert("Ingresar Modelo");
+      (<HTMLInputElement>document.getElementById("txt_Modelo")).focus();
     }else if(marcaO.toString() == ""){
       alert("Ingresar Marca");
+      (<HTMLInputElement>document.getElementById("txt_Marca")).focus();
     }else if(colorO.toString() ==""){
       alert("Ingresar Color");
+      (<HTMLInputElement>document.getElementById("txt_Color")).focus();
     }else if(materialO.toString()==""){
       alert("Ingresar Material");
+      (<HTMLInputElement>document.getElementById("txt_Material")).focus(); 
     }else if(dimensionesO.toString() == ""){
-      alert("Ingresar Dimensiones")
+      alert("Ingresar Dimensiones");
+      (<HTMLInputElement>document.getElementById("txt_Dimensiones")).focus(); 
     }else if(valorCompraO.toString() == ""){
-      alert("Ingresar Valor de Compra")
+      alert("Ingresar Valor de Compra");
+      (<HTMLInputElement>document.getElementById("txt_ValorCompra")).focus(); 
     }else if(actaO.toString()== ""){
-      alert("Seleccionar el Nro de Acta")
+      alert("Seleccionar el Nro de Acta");
+      (<HTMLInputElement>document.getElementById("txt_NroActa")).focus(); 
     }else if(fechaIngresoO.toString()==""){
-      alert("Seleccionar Fecha de Ingreso")
+      alert("Seleccionar Fecha de Ingreso");
+      (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).focus();
     }else if(encargadoO.toString()==""){
-      alert("Seleccionar el Encargado")
+      alert("Seleccionar el Encargado");
+      (<HTMLInputElement>document.getElementById("txt_Encargado")).focus();
     }else if(BodegaO.toString()==""){
-      alert("Seleccionar la Bodega")
+      alert("Seleccionar la Bodega");
+      (<HTMLInputElement>document.getElementById("txt_Bodega")).focus();
     }else{
 
       let bien: Bien = {

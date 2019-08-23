@@ -98,15 +98,19 @@ export class LaboratoriosnuevoComponent implements OnInit {
 
     if(nombreLaboratorioN.toString()==""){
       alert("Ingresar Nombre Laboratorio");
-      (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).focus;
+      (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).focus();
     }else if(descripcionLaboratorioN.toString() == ""){
       alert("Ingrear Descripción");
+      (<HTMLInputElement>document.getElementById("txt_DescripcionLaboratorio")).focus();
     }else if(capacidadLaboratorioN.toString() == ""){
       alert("Ingresar Capacidad Laboratorio");
+      (<HTMLInputElement>document.getElementById("txt_CapacidadLaboratorio")).focus();
     }else if(ubicacionLaboratorioN.toString() == ""){
       alert("Ingresar Ubicación Laboratorio");
+      (<HTMLInputElement>document.getElementById("txt_UbicacionLaboratorio")).focus();
     }else if(laboratoristaN.toString() == ""){
       alert("Seleccionar Laboratorista");
+      (<HTMLInputElement>document.getElementById("txt_Laboratorista")).focus();
     }else{
       let laboratorio:Laboratorio = {
         id: 0,
@@ -239,6 +243,19 @@ export class LaboratoriosnuevoComponent implements OnInit {
   
   }
 
+  //
+
+  //Busqueda
+  
+  checkLaboratoristas($event: KeyboardEvent){
+    this.laboratoristas=this.laboratoristasAux;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.laboratoristas.filter(laboratorista => laboratorista.cedula.toUpperCase().search(value.toUpperCase())==0 
+                                           || laboratorista.nombres.toUpperCase().search(value.toUpperCase())==0 
+                                           || laboratorista.apellidos.toUpperCase().search(value.toUpperCase())==0 );
+    this.laboratoristas=result;
+  }
   //
 
   //Confirmar
