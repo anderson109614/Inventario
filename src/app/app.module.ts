@@ -17,9 +17,6 @@ import { LaboratoriosComponent } from './components/laboratorios/laboratorios.co
 import { HorariosComponent } from './components/horarios/horarios.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
