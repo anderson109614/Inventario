@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LaboratoriosService } from 'src/app/servicios/laboratorios.service';
 import { Persona } from 'src/app/models/Persona';
+import { Laboratorio } from 'src/app/models/Laboratorio';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-laboratoriosnuevo',
@@ -12,7 +14,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
   laboratoristas : any = [];
   laboratoristasAux : any = [];
 
-  constructor(private labServicio: LaboratoriosService) { }
+  constructor(private labServicio: LaboratoriosService, public router: Router) { }
 
   ngOnInit() {
     this.cargarLaboratoristas();
@@ -43,7 +45,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
   }
   //
 
-  //Guardar Laboratorista
+  //Guardar Laboratorista y Laboratorios
   guardarLaboratorista(){
     var cedulaN = (<HTMLInputElement>document.getElementById("txt_CedulaNL")).value;
     var nombresN = (<HTMLInputElement>document.getElementById("txt_NombresNL")).value;
@@ -51,13 +53,13 @@ export class LaboratoriosnuevoComponent implements OnInit {
 
     if(cedulaN.toString() == ""){
       alert("Ingresar Cédula");
-    }else if(this.validarCedula(cedulaN.toString())){
+    }else if(!this.validarCedula(cedulaN.toString())){
       alert("Nro Cédula no válida");
     }else if(nombresN.toString() == ""){
       alert("Ingresar Nombres");
     }else if(apellidosN.toString() == ""){
       alert("Ingresar Apellidos");
-    }{
+    }else{
       let laboratorista:Persona = {
         id : "",
         cedula: cedulaN,
@@ -68,9 +70,86 @@ export class LaboratoriosnuevoComponent implements OnInit {
       }
 
       console.log(laboratorista);
+      this.labServicio.guardarLaboratorista(laboratorista).subscribe(
+        //res => console.log(res),
+        res => {
+          //this.limpiartxt();
+          console.log(res);
+          (<HTMLInputElement>document.getElementById("txt_Laboratorista")).value = res.nombres.toString() + " " + res.apellidos.toString();
+          this.idLaboratorista = res.id.toString();
+          this.cargarLaboratoristas();
+          alert("Se guardo con éxito");
+          this.limpiarTxtLaboratorista();
+        },
+        err => console.log(err)
+      );
+
 
 
     }
+  }
+
+  onClickGuardarLaboratorio(){
+    var nombreLaboratorioN = (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).value;
+    var descripcionLaboratorioN = (<HTMLInputElement>document.getElementById("txt_DescripcionLaboratorio")).value;
+    var capacidadLaboratorioN = (<HTMLInputElement>document.getElementById("txt_CapacidadLaboratorio")).value;
+    var ubicacionLaboratorioN = (<HTMLInputElement>document.getElementById("txt_UbicacionLaboratorio")).value;
+    var laboratoristaN = this.idLaboratorista;
+
+    if(nombreLaboratorioN.toString()==""){
+      alert("Ingresar Nombre Laboratorio");
+      (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).focus;
+    }else if(descripcionLaboratorioN.toString() == ""){
+      alert("Ingrear Descripción");
+    }else if(capacidadLaboratorioN.toString() == ""){
+      alert("Ingresar Capacidad Laboratorio");
+    }else if(ubicacionLaboratorioN.toString() == ""){
+      alert("Ingresar Ubicación Laboratorio");
+    }else if(laboratoristaN.toString() == ""){
+      alert("Seleccionar Laboratorista");
+    }else{
+      let laboratorio:Laboratorio = {
+        id: 0,
+        nombre : nombreLaboratorioN,
+        descripcion : descripcionLaboratorioN,
+        capacidad : Number.parseInt(capacidadLaboratorioN),
+        ubicacion : ubicacionLaboratorioN,
+        id_laboratorista : Number.parseInt(laboratoristaN)
+      }
+
+      console.log(laboratorio);
+      this.labServicio.guardarLaboratorio(laboratorio).subscribe(
+        //res => console.log(res),
+        res => {
+          //this.limpiartxt();
+          console.log(res);
+          
+          alert("Se guardo con éxito");
+          this.limpiarTxtLaboratorio();
+          this.router.navigate(['/laboratorios']);
+        },
+        err => console.log(err)
+      );
+    }
+
+  }
+
+  //
+
+
+  //Limpiar TXT
+  limpiarTxtLaboratorista(){
+    (<HTMLInputElement>document.getElementById("txt_CedulaNL")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_NombresNL")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_ApellidosNL")).value = "";
+  }
+
+  limpiarTxtLaboratorio(){
+    (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_DescripcionLaboratorio")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_CapacidadLaboratorio")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_UbicacionLaboratorio")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_Laboratorista")).value = "";
   }
   //
 
@@ -158,6 +237,18 @@ export class LaboratoriosnuevoComponent implements OnInit {
       return false;
     }
   
+  }
+
+  //
+
+  //Confirmar
+  confirmar() {
+    if (confirm("¿Desea cancelar?")) {
+      this.router.navigate(['/laboratorios']);
+    } else {
+      
+    }
+    
   }
 
   //

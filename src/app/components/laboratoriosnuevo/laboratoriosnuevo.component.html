@@ -14,7 +14,7 @@
                                 <label class="col-sm-3">Nombre</label>
                                 <div class="col-sm-9">
                                     <input id="txt_NombreLaboratorio" type="text"
-                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                         placeholder="Nombre Laboratorio" class="form-control form-control-success">
                                 </div>
                             </div>
@@ -60,6 +60,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: right">
+                            <button class="btn btn-secondary" (click)="confirmar()"
+                                style="margin-right: 15px">Cancelar</button>
+                            <button class="btn btn-primary" (click)="onClickGuardarLaboratorio()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
     </div>
 </section>
 
@@ -153,7 +166,7 @@
                                 <label class="col-sm-3">Nombres</label>
                                 <div class="col-sm-9">
                                     <input id="txt_NombresNL" type="text"
-                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                         placeholder="Nombres" class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -161,7 +174,7 @@
                                 <label class="col-sm-3">Apellidos</label>
                                 <div class="col-sm-9">
                                     <input id="txt_ApellidosNL" type="text"
-                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                         placeholder="Apellidos" class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -171,7 +184,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="onClickGuardarTecnico()">Guardar</button>
+                    (click)="guardarLaboratorista()">Guardar</button>
             </div>
         </div>
     </div>
