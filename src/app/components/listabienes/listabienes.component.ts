@@ -16,13 +16,7 @@ export class ListabienesComponent implements OnInit {
   constructor(private bienesService:BienesService) { }
 
   ngOnInit() {
-    this.bienesService.getData().subscribe(
-      res => {
-        this.bienes = res;
-        this.bienesAuxs = res;
-      },
-      err => console.log(err)
-    );
+    this.cargarBienes();
   }
 
   //////
@@ -44,6 +38,47 @@ export class ListabienesComponent implements OnInit {
                                            || bien.apellidos.toUpperCase().search(value.toUpperCase())== 0 );
     this.bienes=result;
 
+  }
+
+  //
+  //Cargar datos Bienes
+  cargarBienes(){
+    this.bienesService.getData().subscribe(
+      res => {
+        this.bienes = res;
+        this.bienesAuxs = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  //
+
+  eliminarBien(id:number){
+
+    if(this.confirmarEliminar()){
+      this.bienesService.eliminarBien(id).subscribe(
+        res => {
+          //console.log(res);
+          this.cargarBienes();
+          alert("Se elimino correctamente");
+        },
+        err => console.log(err)
+        
+      );
+    
+    }
+    
+  }
+
+  confirmarEliminar() {
+    if (confirm("¿Esta seguro que quiere eliminar?")) {
+     // this.router.navigate(['/listabienes']);
+     return true;
+    } else {
+      return false;
+    }
+    
   }
 
 }
