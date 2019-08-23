@@ -1,89 +1,99 @@
-<div class="row">
-    <div class="col-lg-3">
-
-    </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Bien</label>
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input id="txt_IdBien" type="text" class="form-control" value="" readonly="true">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target=".modalBienes">Seleccionar</button>
+<section class="forms">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                                <h4>Nuevo Prestamo</h4>
+                            </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Bien</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_IdBien" type="text" class="form-control" value=""
+                                            readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalBienes">Seleccionar</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Encargado</label>
-                    <div class="col-sm-9">
-                        <div class="form-group ">
-                            <div class="input-group">
-                                <input id="txt_Encargado" type="text" class="form-control"
-                                    value="{{clickMessageEncargado}}" readonly="true">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target=".modalEncargados">Seleccionar</button>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Encargado</label>
+                            <div class="col-sm-9">
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <input id="txt_Encargado" type="text" class="form-control"
+                                            value="{{clickMessageEncargado}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalEncargados">Seleccionar</button>
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Persona</label>
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input id="txt_IdPersonaNS" type="text" class="form-control" value="" readonly="true">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target=".modalPersona">Seleccionar</button>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Persona</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_IdPersonaNS" type="text" class="form-control" value=""
+                                            readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalPersona">Seleccionar</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Fecha</label>
+                            <div class="col-sm-9">
+                                <input id="txt_FechaNS" type="date" class="form-control form-control-warning">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Hora</label>
+                            <div class="col-sm-9">
+                                <input id="txt_HoraNS" type="time" class="form-control form-control-warning">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Observacion</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" maxlength="150" id="txt_ObservacionNS"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer text-right">
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            (click)="onClickGuardarNuevoPrestamo()">Guardar</button>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3">Fecha</label>
-                    <div class="col-sm-9">
-                        <input id="txt_FechaNS" type="date" class="form-control form-control-warning">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3">Hora</label>
-                    <div class="col-sm-9">
-                        <input id="txt_HoraNS" type="time" class="form-control form-control-warning">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3">Observacion</label>
-                    <div class="col-sm-9">
-                        <textarea class="form-control" maxlength="150" id="txt_ObservacionNS" rows="3"></textarea>
-                    </div>
-                </div>
+            </div>
+            <div class="col-lg-2">
 
             </div>
-            <div class="card-footer text-right">
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="onClickGuardarNuevoPrestamo()">Guardar</button>
-            </div>
+
+
         </div>
     </div>
-    <div class="col-lg-3">
+</section>
 
-    </div>
-
-
-
-</div>
 
 <!--Modales Personas-->
 <div class="modal fade modalPersona" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
@@ -136,7 +146,8 @@
                                                 <td>{{persona.nombres + ' '+ persona.apellidos}}</td>
                                                 <td>{{persona.telefono}}</td>
                                                 <td>
-                                                    <button type="button" (click)="onClickSelecPersona(persona.id,persona.nombres + ' '+ persona.apellidos)"
+                                                    <button type="button"
+                                                        (click)="onClickSelecPersona(persona.id,persona.nombres + ' '+ persona.apellidos)"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>
@@ -268,7 +279,8 @@
                                                 </td>
                                                 <td>{{encargado.apellidos}}
                                                 </td>
-                                                <td><button type="button" (click)="onClickMeEncargado(encargado.id,encargado.nombres+ ' '+encargado.apellidos)"
+                                                <td><button type="button"
+                                                        (click)="onClickMeEncargado(encargado.id,encargado.nombres+ ' '+encargado.apellidos)"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>
@@ -379,8 +391,9 @@
                                                 <td>
 
 
-                                                    <button type="button" (click)="onClickSeleccionaBien(prestamo.id,prestamo.serie_identificacion)"
-                                                    data-dismiss="modal" aria-label="Close">
+                                                    <button type="button"
+                                                        (click)="onClickSeleccionaBien(prestamo.id,prestamo.serie_identificacion)"
+                                                        data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">
                                                         </i>
 
