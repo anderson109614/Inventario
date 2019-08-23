@@ -61,7 +61,7 @@ export class HorariosComponent implements OnInit {
 
     this.labSer.getPrestamos(this.idLab, this.armarFecha(hoy)).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.prestados = res;
         this.marcarHOrarios(res);
       },
@@ -72,9 +72,11 @@ export class HorariosComponent implements OnInit {
     res.forEach(function (value) {
       var btns = document.getElementsByClassName(value.nombre + ' ' + value.horario);
       btns[0].classList.add("activeR");
+      btns[0].classList.remove("active");
       btns[0].classList.remove("successC");
       btns[0].classList.remove("zoom");
       (<HTMLButtonElement>btns[0]).style.pointerEvents = "none";
+      (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
     });
   }
 
@@ -83,7 +85,7 @@ export class HorariosComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("semana")).value = this.armarFecha(hoy);
     (<HTMLInputElement>document.getElementById("semana")).min = this.armarFecha(hoy);
     this.cargarFechasDias(hoy);
-    console.log(hoy);
+    //console.log(hoy);
     this.bloquearAnteriores(hoy);
   }
   getMonday(date) {
@@ -96,7 +98,6 @@ export class HorariosComponent implements OnInit {
     var lun = new Date(searchValue + ' 00:00:00');
     // console.log(lun);
     this.cargarFechasDias(lun);
-
     this.bloquearAnteriores(lun);
     this.cargarPrestados();
 
@@ -165,7 +166,7 @@ export class HorariosComponent implements OnInit {
       btns[i].classList.remove("zoom");
       btns[i].classList.remove("active");
       btns[i].classList.remove("activeR");
-
+      (<HTMLButtonElement>btns[i]).innerHTML = '';
 
     }
   }
@@ -217,75 +218,93 @@ export class HorariosComponent implements OnInit {
 
   clickGuardar() {
     var des = (<HTMLInputElement>document.getElementById('txtDescripcion')).value;
-    var idCab = '0';
-    let det: DetalleLab = {
-      id: '',
-      id_prestamo: '',
-      id_horario: '',
-      fecha: '',
-      idLab: this.idLab,
-      des: des
-    };
+    if (des.length != 0) {
+      var btns = document.getElementsByClassName("active");
+      if (btns.length>0) {
+        var idCab = '0';
+        let det: DetalleLab = {
+          id: '',
+          id_prestamo: '',
+          id_horario: '',
+          fecha: '',
+          idLab: this.idLab,
+          des: des
+        };
 
-    this.serHorarios.guardarCabecera(det).subscribe(
-      res => {
-        console.log('res');
+        this.serHorarios.guardarCabecera(det).subscribe(
+          res => {
+            console.log('res');
 
-        idCab = res.id;
-        this.guardarDetalle(res.id);
-        
-
-      },
-      err => console.log(err)
-    );
-    //console.log('resul id: '+Number.parseInt(idCab))
-    
+            idCab = res.id;
+            this.guardarDetalle(res.id);
 
 
-
-  }
-guardarDetalle(idCab:string){
-  if (Number.parseInt(idCab) > 0) {
-    var btns = document.getElementsByClassName("active");
-    for (var i = 0; i < btns.length; i++) {
-      console.log(i);
-      console.log((<HTMLButtonElement>btns[i]).classList[0]);
-      var dia=(<HTMLButtonElement>btns[i]).classList[0];
-      var hor=(<HTMLButtonElement>btns[i]).classList[1];
-      var fec=(<HTMLInputElement>document.getElementById('lbl'+dia)).value;;
-      ///
-      var id='';
-      this.horas.forEach(function (value) {
-        if(value.horario==hor && value.nombre==dia){
-          id=value.id;
-        }
-      }); 
-      ///
-      let d:DetalleLab={
-        id: '',
-        id_prestamo: idCab,
-        id_horario: id,
-        fecha: fec,
-        idLab: '',
-        des: ''
-      };        
-      //GUardado
-      this.serHorarios.guardarDetalles(d).subscribe(
-        res => {
-          console.log('res');
-          this.cargarPrestados();
-           
-        },
-        err => console.log(err)
-      );
+          },
+          err => console.log(err)
+        );
+      }else{
+        alert('Seleccione minimo una hora para reservar');
+      }
 
 
+    } else {
+      alert('Ingrese una descripcion');
     }
 
-  }else{
-    alert('Error al guardar los datos.....!!');
+    //console.log('resul id: '+Number.parseInt(idCab))
+
+
+
+
   }
-}
+  guardarDetalle(idCab: string) {
+    if (Number.parseInt(idCab) > 0) {
+      var btns = document.getElementsByClassName("active");
+      for (var i = 0; i < btns.length; i++) {
+        console.log(i);
+        console.log((<HTMLButtonElement>btns[i]).classList[0]);
+        var dia = (<HTMLButtonElement>btns[i]).classList[0];
+        var hor = (<HTMLButtonElement>btns[i]).classList[1];
+        var fec = (<HTMLInputElement>document.getElementById('lbl' + dia)).value;
+        ///
+        var id = '';
+        this.horas.forEach(function (value) {
+          if (value.horario == hor && value.nombre == dia) {
+            id = value.id;
+          }
+        });
+        ///
+        let d: DetalleLab = {
+          id: '',
+          id_prestamo: idCab,
+          id_horario: id,
+          fecha: fec,
+          idLab: '',
+          des: ''
+        };
+        //GUardado
+        this.serHorarios.guardarDetalles(d).subscribe(
+          res => {
+            console.log('res');
+            (<HTMLInputElement>document.getElementById('txtDescripcion')).value = '';
+            //this.marcarFechaActual();
+
+            this.estadoInicial();
+            this.asignacionDeClases();
+            this.cargarPrestados();
+
+          },
+          err => console.log(err)
+        );
+
+
+
+      }
+
+    } else {
+      alert('Error al guardar los datos.....!!');
+    }
+  }
   cargarHOras() {
     this.serHorarios.getHoras().subscribe(
       res => {
