@@ -34,22 +34,7 @@ export class HorariosComponent implements OnInit {
       });
     }
   }
- /*
-  quitarActivacionBotones(){
-    var btns = document.getElementsByClassName("btnA");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].removeEventListener("click", function () {
-        // var current = document.getElementsByClassName("active");
-        //current[0].className = current[0].className.replace(" active", "");
-        
-        this.classList.toggle("active");
 
-        // this.className += " active";
-
-      });
-    }
-  }
-  */
   cargarHorarios() {
     this.labSer.getHorarioLab(this.idLab).subscribe(
       res => {
@@ -66,6 +51,7 @@ export class HorariosComponent implements OnInit {
       btns[0].classList.add("activeR");
       btns[0].classList.remove("successC");
       btns[0].classList.remove("zoom");
+      (<HTMLButtonElement>btns[0]).style.pointerEvents = "none";
     });
   }
 
@@ -146,6 +132,7 @@ export class HorariosComponent implements OnInit {
         (<HTMLButtonElement>btns[j]).style.pointerEvents =  "auto";
         
       }
+      this.marcarHOrarios(this.horarios);
       
     
     }
