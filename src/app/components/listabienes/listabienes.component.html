@@ -41,9 +41,8 @@
                                 <td>{{bien.material}}</td>
                                 <td>{{bien.cedula}}</td>
                                 <td>{{bien.nombres + " " + bien.apellidos}}</td>
-                                <td><button [routerLink]="['/bienesactualizar/',bien.id]"><i
-                                            class="fa fa-pencil"></i></button></td>
-                                <td><button><i class="fa fa-times"></i></button></td>
+                                <td><button [routerLink]="['/bienesactualizar/',bien.id]"><i class="fa fa-pencil"></i></button></td>
+                                <td><button (click)="eliminarBien(bien.id)"><i class="fa fa-times"></i></button></td>
                                 <td><button [routerLink]="['/mantenimientonuevo/',bien.id]"><i class="fa fa-cogs"></i></button></td>
                                 <td><button [routerLink]="['/generarcodigoqr/',bien.codigo]"><i class="fa fa-qrcode"></i></button></td>
                             </tr>

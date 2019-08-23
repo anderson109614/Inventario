@@ -41,6 +41,17 @@ export class BienesnuevoComponent implements OnInit {
   
   ngOnInit() {
 
+    this.cargarBienes();
+    this.cargarTipoBienes();
+    this.cargarTipoMonedas();
+    this.cargarActas();
+    this.cargarEncargados();
+    this.cargarBodegas();
+
+  }
+
+  //Cargar datos Bienes, Encargados, Actas, Bodegas, Tipo De bienes y tipo de monedas
+  cargarBienes(){
     this.bienesService.getData().subscribe(
       res => {
         this.bienes = res;
@@ -48,27 +59,6 @@ export class BienesnuevoComponent implements OnInit {
       },
       err => console.log(err)
     );
-
-    this.bienesService.getTipoBienes().subscribe(
-      res => {
-        this.tipobienes = res;
-      },
-      err => console.log(err)
-    );
-
-    this.bienesService.getTipoMoneda().subscribe(
-      res => {
-        this.monedas = res;
-      },
-      err => console.log(err)
-    );
-
-    this.cargarActas();
-    
-    this.cargarEncargados();
-
-    this.cargarBodegas();
-
   }
 
   cargarEncargados()
@@ -104,7 +94,27 @@ export class BienesnuevoComponent implements OnInit {
     );
   }
 
+  cargarTipoBienes(){
+    this.bienesService.getTipoBienes().subscribe(
+      res => {
+        this.tipobienes = res;
+      },
+      err => console.log(err)
+    );
+  }
 
+  cargarTipoMonedas(){
+    this.bienesService.getTipoMoneda().subscribe(
+      res => {
+        this.monedas = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  //
+
+  //Seleccionar Acta, Bien padre, Encargado y Bodega
   clickMessage = '';
   onClickMe(id: string, nro_acta:string) {
     this.clickMessage = nro_acta.toString();
@@ -129,6 +139,7 @@ export class BienesnuevoComponent implements OnInit {
     this.clickMessageBodega = nombre.toString();
     this.idBodega = id.toString();
   }
+  //
 
   //Busqueda
   checkPinPersona($event: KeyboardEvent){
@@ -177,6 +188,8 @@ export class BienesnuevoComponent implements OnInit {
   }
 
  //
+
+ //Guardar Encargado, Acta y Bodega
   onClickGuardarEncargado(){
     var CedulaE = (<HTMLInputElement>document.getElementById("txt_CedulaNE")).value;
     var NombresE = (<HTMLInputElement>document.getElementById("txt_NombreNE")).value;
@@ -199,7 +212,8 @@ export class BienesnuevoComponent implements OnInit {
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
-        this.clickMessageEncargado = res.id.toString();
+        this.clickMessageEncargado = res.nombres.toString() + " " + res.apellidos.toString();
+        this.idEncargado = res.id.toString();
         this.cargarEncargados();      
         alert("Se guardo con éxito");       
         this.limpiarTxtEncargado();
@@ -243,7 +257,8 @@ export class BienesnuevoComponent implements OnInit {
         res => {
           //this.limpiartxt();
           //console.log(res)
-          this.clickMessage = res.id.toString();
+          this.clickMessage = res.nro_acta.toString();
+          this.idActa = res.id.toString();
           this.cargarActas();
           alert("Se guardo con éxito");
           this.limpiarTxtActa();
@@ -275,7 +290,8 @@ export class BienesnuevoComponent implements OnInit {
           //this.limpiartxt();
           console.log(res);
           this.cargarBodegas();
-          this.clickMessageBodega = res.id.toString();
+          this.clickMessageBodega = res.nombre.toString();
+          this.idBodega = res.id.toString();
           alert("Se guardo con éxito");
           this.limpiarTxtBodega();
           
@@ -285,6 +301,7 @@ export class BienesnuevoComponent implements OnInit {
     }
 
   }
+  //
 
   //imagen
   base64textStringG = '';
@@ -306,7 +323,7 @@ export class BienesnuevoComponent implements OnInit {
 
 
   //
-  
+  //Guardar Bien
   onClickGuardar() {
 
     var identificadorO = (<HTMLInputElement>document.getElementById("txt_Identificador")).value;
@@ -405,7 +422,9 @@ export class BienesnuevoComponent implements OnInit {
     
   }
 
+  //
   
+  //Limpiar Txt
   limpiartxt(){
     (<HTMLInputElement>document.getElementById("txt_Identificador")).value = "";
     (<HTMLInputElement>document.getElementById("txt_Codigo")).value = "";  
@@ -448,6 +467,9 @@ export class BienesnuevoComponent implements OnInit {
    (<HTMLInputElement>document.getElementById("txt_UbicacionNB")).value = "";
   }
 
+  //
+  // Mensaje Confirmar
+
   confirmar() {
     if (confirm("¿Desea cancelar?")) {
       this.router.navigate(['/listabienes']);
@@ -456,6 +478,9 @@ export class BienesnuevoComponent implements OnInit {
     }
     
   }
+
+  
+  
 
 }
 

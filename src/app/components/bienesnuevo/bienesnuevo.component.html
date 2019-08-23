@@ -12,14 +12,16 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Imagen</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Img" type="file" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+                                    <input id="txt_Img" type="file" (change)="onUploadChange($event)"
+                                        accept=".png, .jpg, .jpeg, .pdf" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Indentificador</label>
                                 <div class="col-sm-9">
-                                    <input name="id" id="txt_Identificador" type="text" placeholder="Indentificador"
-                                        class="form-control form-control-success" maxlength="10">
+                                    <input name="id" id="txt_Identificador" type="text"
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
+                                        placeholder="Indentificador" class="form-control form-control-success">
                                     <!--                                        
                                         <small class="form-text">Example help
                                         text
@@ -31,7 +33,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Código</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Codigo" type="number" placeholder="Código"
+                                    <input id="txt_Codigo" type="text" maxlength="40" placeholder="Código"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -48,42 +50,44 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Serie</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Serie" type="text" placeholder="Serie"
+                                    <input id="txt_Serie" type="text" maxlength="40" placeholder="Serie"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Modelo</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Modelo" type="text" placeholder="Modelo"
+                                    <input id="txt_Modelo" type="text" maxlength="40" placeholder="Modelo"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Marca</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Marca" type="text" placeholder="Marca"
+                                    <input id="txt_Marca" type="text" maxlength="40" placeholder="Marca"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Color</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Color" type="text" placeholder="Color"
-                                        class="form-control form-control-warning">
+                                    <input id="txt_Color" type="text"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        placeholder="Color" class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Material</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Material" type="text" placeholder="Material"
-                                        class="form-control form-control-warning">
+                                    <input id="txt_Material" type="text"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        placeholder="Material" class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Dimensiones</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Dimensiones" type="text" placeholder="Dimesiones"
+                                    <input id="txt_Dimensiones" type="text" maxlength="40" placeholder="Dimesiones"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -109,8 +113,9 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Valor de Compra</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_ValorCompra" type="text" placeholder="Valor de Compra"
-                                        class="form-control form-control-success">
+                                    <input id="txt_ValorCompra" type="text"
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                        placeholder="Valor de Compra" class="form-control form-control-success">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -180,43 +185,49 @@
                                                                         </div>
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                    <input type="search" class="form-control form-control-warning"
-                                                                                    (keyup)="checkPinActas($event)" placeholder="Busqueda">
-                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                                                                            <table
-                                                                                            class="table table-striped table-hover">
-                                                                                            <thead>
-                                                                                                <tr>
-                                                                                                    <th>Id</th>
-                                                                                                    <th>Nro Acta</th>
-                                                                                                    <th>Origen</th>
-                                                                                                    <th>Nro Compromiso</th>
-                                                                                                    <th>Descripcion</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr *ngFor="let acta of actas">
-                                                                                                    <td>{{acta.id}}</td>
-                                                                                                    <td>{{acta.nro_acta}}</td>
-                                                                                                    <td>{{acta.origen}}</td>
-                                                                                                    <td>{{acta.nro_compromiso}}
-                                                                                                    </td>
-                                                                                                    <td>{{acta.descripcion}}
-                                                                                                    </td>
-                                                                                                    <td><button type="button"
-                                                                                                            (click)="onClickMe(acta.id, acta.nro_acta)"
-                                                                                                            data-dismiss="modal"
-                                                                                                            aria-label="Close">
-                                                                                                            <i
-                                                                                                                class="fa fa-check-circle">
-                                                                                                            </i>
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                               
+                                                                                <input type="search"
+                                                                                    class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinActas($event)"
+                                                                                    placeholder="Busqueda">
+                                                                                <div
+                                                                                    class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                    <table
+                                                                                        class="table table-striped table-hover">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Id</th>
+                                                                                                <th>Nro Acta</th>
+                                                                                                <th>Origen</th>
+                                                                                                <th>Nro Compromiso</th>
+                                                                                                <th>Descripcion</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr
+                                                                                                *ngFor="let acta of actas">
+                                                                                                <td>{{acta.id}}</td>
+                                                                                                <td>{{acta.nro_acta}}
+                                                                                                </td>
+                                                                                                <td>{{acta.origen}}</td>
+                                                                                                <td>{{acta.nro_compromiso}}
+                                                                                                </td>
+                                                                                                <td>{{acta.descripcion}}
+                                                                                                </td>
+                                                                                                <td><button
+                                                                                                        type="button"
+                                                                                                        (click)="onClickMe(acta.id, acta.nro_acta)"
+                                                                                                        data-dismiss="modal"
+                                                                                                        aria-label="Close">
+                                                                                                        <i
+                                                                                                            class="fa fa-check-circle">
+                                                                                                        </i>
+                                                                                                    </button>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -232,7 +243,7 @@
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 id="exampleModalLabel" class="modal-title">Nuevo
+                                                                <h5 id="exampleModalLabel" class="modal-title">Nueva
                                                                     Acta</h5>
                                                                 <button type="button" data-dismiss="modal"
                                                                     aria-label="Close" class="close"><span
@@ -248,6 +259,8 @@
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_NroActaNA"
                                                                                         type="text"
+                                                                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                                                        maxlength="10"
                                                                                         placeholder="Nro Acta"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -256,6 +269,7 @@
                                                                                 <label class="col-sm-3">Origen</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_OrigenNA" type="text"
+                                                                                        maxlength="40"
                                                                                         placeholder="Origen"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -266,6 +280,8 @@
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_NroCompromisoNA"
                                                                                         type="text"
+                                                                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                                                        maxlength="10"
                                                                                         placeholder="Nro Compromiso"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -304,12 +320,12 @@
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <label
-                                                                                    class="col-sm-3">Descripcion</label>
+                                                                                    class="col-sm-3">Descripción</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input id="txt_DescripcionNA"
-                                                                                        type="text"
-                                                                                        placeholder="Descripcion"
-                                                                                        class="form-control form-control-warning">
+                                                                                    <textarea id="txt_DescripcionNA"
+                                                                                        type="text" maxlength="49"
+                                                                                        placeholder="Descripción"
+                                                                                        class="form-control form-control-warning"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -364,49 +380,55 @@
                                                                     <div class="card">
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                    <input type="search" class="form-control form-control-warning"
-                                                                                    (keyup)="checkBien($event)" placeholder="Busqueda">
-                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                                                                            <table
-                                                                                            class="table table-striped table-hover">
-                                                                                            <thead>
-                                                                                                <tr>
-                                                                                                    <th>Id</th>
-                                                                                                    <th>Codigo</th>
-                                                                                                    <th>Identificador</th>
-                                                                                                    <th>Serie</th>
-                                                                                                    <th>Modelo</th>
-                                                                                                    <th>Marca</th>
-                                                                                                    <th>Color</th>
-                                                                                                    <th>Material</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr *ngFor="let bien of bienes">
-                                                                                                    <td>{{bien.id}}</td>
-                                                                                                    <td>{{bien.codigo}}</td>
-                                                                                                    <td>{{bien.identificador}}
-                                                                                                    </td>
-                                                                                                    <td>{{bien.serie_identificacion}}
-                                                                                                    </td>
-                                                                                                    <td>{{bien.modelo}}</td>
-                                                                                                    <td>{{bien.marca}}</td>
-                                                                                                    <td>{{bien.color}}</td>
-                                                                                                    <td>{{bien.material}}</td>
-                                                                                                    <td><button type="button"
-                                                                                                            (click)="onClickMeBien(bien.id, bien.serie_identificacion)"
-                                                                                                            data-dismiss="modal"
-                                                                                                            aria-label="Close">
-                                                                                                            <i
-                                                                                                                class="fa fa-check-circle">
-                                                                                                            </i>
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                
+                                                                                <input type="search"
+                                                                                    class="form-control form-control-warning"
+                                                                                    (keyup)="checkBien($event)"
+                                                                                    placeholder="Busqueda">
+                                                                                <div
+                                                                                    class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                    <table
+                                                                                        class="table table-striped table-hover">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Id</th>
+                                                                                                <th>Codigo</th>
+                                                                                                <th>Identificador</th>
+                                                                                                <th>Serie</th>
+                                                                                                <th>Modelo</th>
+                                                                                                <th>Marca</th>
+                                                                                                <th>Color</th>
+                                                                                                <th>Material</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr
+                                                                                                *ngFor="let bien of bienes">
+                                                                                                <td>{{bien.id}}</td>
+                                                                                                <td>{{bien.codigo}}</td>
+                                                                                                <td>{{bien.identificador}}
+                                                                                                </td>
+                                                                                                <td>{{bien.serie_identificacion}}
+                                                                                                </td>
+                                                                                                <td>{{bien.modelo}}</td>
+                                                                                                <td>{{bien.marca}}</td>
+                                                                                                <td>{{bien.color}}</td>
+                                                                                                <td>{{bien.material}}
+                                                                                                </td>
+                                                                                                <td><button
+                                                                                                        type="button"
+                                                                                                        (click)="onClickMeBien(bien.id, bien.serie_identificacion)"
+                                                                                                        data-dismiss="modal"
+                                                                                                        aria-label="Close">
+                                                                                                        <i
+                                                                                                            class="fa fa-check-circle">
+                                                                                                        </i>
+                                                                                                    </button>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -463,43 +485,48 @@
                                                                         </div>
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                    <input type="search" class="form-control form-control-warning"
-                                                                                    (keyup)="checkPinPersona($event)" placeholder="Busqueda">
-                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                                                                            <table
-                                                                                            class="table table-striped table-hover">
-                                                                                            <thead>
-                                                                                                <tr>
-                                                                                                    <th>Id</th>
-                                                                                                    <th>Cédula</th>
-                                                                                                    <th>Nombres</th>
-                                                                                                    <th>Apellidos</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr
-                                                                                                    *ngFor="let encargado of encargados">
-                                                                                                    <td>{{encargado.id}}</td>
-                                                                                                    <td>{{encargado.cedula}}
-                                                                                                    </td>
-                                                                                                    <td>{{encargado.nombres}}
-                                                                                                    </td>
-                                                                                                    <td>{{encargado.apellidos}}
-                                                                                                    </td>
-                                                                                                    <td><button type="button"
-                                                                                                            (click)="onClickMeEncargado(encargado.id, encargado.nombres, encargado.apellidos)"
-                                                                                                            data-dismiss="modal"
-                                                                                                            aria-label="Close">
-                                                                                                            <i
-                                                                                                                class="fa fa-check-circle">
-                                                                                                            </i>
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                               
+                                                                                <input type="search"
+                                                                                    class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinPersona($event)"
+                                                                                    placeholder="Busqueda">
+                                                                                <div
+                                                                                    class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                    <table
+                                                                                        class="table table-striped table-hover">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Id</th>
+                                                                                                <th>Cédula</th>
+                                                                                                <th>Nombres</th>
+                                                                                                <th>Apellidos</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr
+                                                                                                *ngFor="let encargado of encargados">
+                                                                                                <td>{{encargado.id}}
+                                                                                                </td>
+                                                                                                <td>{{encargado.cedula}}
+                                                                                                </td>
+                                                                                                <td>{{encargado.nombres}}
+                                                                                                </td>
+                                                                                                <td>{{encargado.apellidos}}
+                                                                                                </td>
+                                                                                                <td><button
+                                                                                                        type="button"
+                                                                                                        (click)="onClickMeEncargado(encargado.id, encargado.nombres, encargado.apellidos)"
+                                                                                                        data-dismiss="modal"
+                                                                                                        aria-label="Close">
+                                                                                                        <i
+                                                                                                            class="fa fa-check-circle">
+                                                                                                        </i>
+                                                                                                    </button>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -610,40 +637,45 @@
                                                                     <div class="card">
                                                                         <div class="card-body">
                                                                             <div class="table-responsive">
-                                                                                    <input type="search" class="form-control form-control-warning"
-                                                                                    (keyup)="checkPinBodega($event)" placeholder="Busqueda">
-                                                                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                                                                            <table
-                                                                                            class="table table-striped table-hover">
-                                                                                            <thead>
-                                                                                                <tr>
-                                                                                                    <th>Id</th>
-                                                                                                    <th>Nombre</th>
-                                                                                                    <th>Ubicación</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr
-                                                                                                    *ngFor="let bodega of bodegas">
-                                                                                                    <td>{{bodega.id}}</td>
-                                                                                                    <td>{{bodega.nombre}}</td>
-                                                                                                    <td>{{bodega.ubicacion}}
-                                                                                                    </td>
-        
-                                                                                                    <td><button type="button"
-                                                                                                            (click)="onClickMeBodega(bodega.id, bodega.nombre)"
-                                                                                                            data-dismiss="modal"
-                                                                                                            aria-label="Close">
-                                                                                                            <i
-                                                                                                                class="fa fa-check-circle">
-                                                                                                            </i>
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                             
+                                                                                <input type="search"
+                                                                                    class="form-control form-control-warning"
+                                                                                    (keyup)="checkPinBodega($event)"
+                                                                                    placeholder="Busqueda">
+                                                                                <div
+                                                                                    class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                                                    <table
+                                                                                        class="table table-striped table-hover">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Id</th>
+                                                                                                <th>Nombre</th>
+                                                                                                <th>Ubicación</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr
+                                                                                                *ngFor="let bodega of bodegas">
+                                                                                                <td>{{bodega.id}}</td>
+                                                                                                <td>{{bodega.nombre}}
+                                                                                                </td>
+                                                                                                <td>{{bodega.ubicacion}}
+                                                                                                </td>
+
+                                                                                                <td><button
+                                                                                                        type="button"
+                                                                                                        (click)="onClickMeBodega(bodega.id, bodega.nombre)"
+                                                                                                        data-dismiss="modal"
+                                                                                                        aria-label="Close">
+                                                                                                        <i
+                                                                                                            class="fa fa-check-circle">
+                                                                                                        </i>
+                                                                                                    </button>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>

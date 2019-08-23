@@ -70,4 +70,8 @@ export class BienesService {
     return this.http.post<Bodega>(this.ip+'Bienes/Bodegas.php', bodega);
   }
 
+  eliminarBien(id:number){
+    return this.http.delete(this.ip+'Bienes/Bienes.php?id='+id);
+  }
+
 }
