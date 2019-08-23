@@ -8,6 +8,7 @@ import { LaboratoriosService } from '../../servicios/laboratorios.service';
 })
 export class HorariosComponent implements OnInit {
   horarios: any = [];
+  prestados:any=[];
   constructor(private labSer: LaboratoriosService, private rutaActiva: ActivatedRoute) { }
   idLab: string = this.rutaActiva.snapshot.params.idLab;
   ngOnInit() {
@@ -18,7 +19,8 @@ export class HorariosComponent implements OnInit {
     this.marcarFechaActual();
     this.asignacionDeClases();
     this.asignarActivacionBotones();
-    this.cargarHorarios();
+    //this.cargarHorarios();
+    this.cargarPrestados();
   }
   
 
@@ -45,6 +47,23 @@ export class HorariosComponent implements OnInit {
       err => console.log(err)
     );
   }
+  cargarPrestados() {
+    var hoy = new Date((<HTMLInputElement>document.getElementById("semana")).value);
+    var d = hoy.getUTCDay();
+    if (d !== 1) {
+      hoy = this.getMonday(hoy);
+    }
+    
+
+    this.labSer.getPrestamos(this.idLab,this.armarFecha(hoy)).subscribe(
+      res => {
+        console.log(res);
+        this.prestados = res;
+        this.marcarHOrarios(res);
+      },
+      err => console.log(err)
+    );
+  }
   marcarHOrarios(res: any) {
     res.forEach(function (value) {
       var btns = document.getElementsByClassName(value.nombre + ' ' + value.horario);
@@ -55,9 +74,6 @@ export class HorariosComponent implements OnInit {
     });
   }
 
-  clickGuardar() {
-
-  }
   marcarFechaActual() {
     var hoy = new Date();
     (<HTMLInputElement>document.getElementById("semana")).value = this.armarFecha(hoy);
@@ -78,6 +94,7 @@ export class HorariosComponent implements OnInit {
     this.cargarFechasDias(lun);
 
     this.bloquearAnteriores(lun);
+    this.cargarPrestados();
 
   }
   asignacionDeClases(){
@@ -117,10 +134,6 @@ export class HorariosComponent implements OnInit {
         }
 
       }
-      
-      
-
-
     }else{
       console.log('no');
       this.estadoInicial();
@@ -147,6 +160,9 @@ export class HorariosComponent implements OnInit {
       btns[i].classList.remove("successC");
       btns[i].classList.remove("zoom");
       btns[i].classList.remove("active");
+      btns[i].classList.remove("activeR");
+      
+
     }
   }
   cargarFechasDias(lun: Date) {
@@ -194,5 +210,13 @@ export class HorariosComponent implements OnInit {
     var h = yyyy + '-' + m + '-' + d;
     return h;
   }
+
+  clickGuardar() {
+    
+
+
+  }
+
+
 
 }
