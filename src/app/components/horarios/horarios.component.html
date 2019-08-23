@@ -3,307 +3,319 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                        <div class="col-lg-10">
-                                <input type="date" name="" id="semana" (input)="onSearchChange($event.target.value)">
-                                <br>
-                                <input type="text" id="txtDescripcion">
+                    <div class="col-lg-10">
+                        <div class="form-group row">
+                            <label class="col-sm-3">Fecha</label>
+                            <div class="col-sm-9">
+                                <input type="date" name="" id="semana" class="form-control form-control-warning" (input)="onSearchChange($event.target.value)">
                             </div>
-                            <div class="col-lg-2">
-                                <button class="btn btn-success" (click)="clickGuardar()">Guardar</button>
+                        </div>
+                        <div class="form-group row">
+                                <label class="col-sm-3">Descripcion</label>
+                                <div class="col-sm-9">
+                                    <textarea   id="txtDescripcion" cols="30" rows="3" maxlength="80" class="form-control form-control-warning"></textarea>
+                                       
+                                </div>
                             </div>
+                        
+                       
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-success" (click)="clickGuardar()">Guardar</button>
+                    </div>
                 </div>
-               
 
-                
 
-               
+
+
+
             </div>
             <div class="card-body" style="text-align: center;width: 100%;">
-                
-                    <table style="border: black;width: 80%;margin:0px auto;"  >
-                        <tr>
-                            <td style="width: 5%;">
 
-                            </td>
-                            <td style="width: 19%;">
-                                <label id="lblLunes">Lunes</label>
-                            </td >
-                            <td style="width: 19%;">
-                                <label id="lblMartes">Martes</label>
-                            </td >
-                            <td style="width: 19%;">
-                                <label id="lblMiercoles">Miercoles</label>
-                            </td >
-                            <td style="width: 19%;">
-                                <label id="lblJueves">Jueves</label>
-                            </td >
-                            <td style="width: 19%;">
-                                <label id="lblViernes">Viernes</label>
-                            </td>
+                <table style="border: black;width: 80%;margin:0px auto;">
+                    <tr>
+                        <td style="width: 5%;">
 
-                        </tr>
-                        <tr>
-                            <td>
-                                07-08
-                            </td>
-                            <td>
-                                <button class="Lunes 7-8 btnA"></button>
-                            </td>
-                            <td>
-                                <button class="Martes 7-8 btnA"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 7-8 btnA"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 7-8 btnA"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 7-8 btnA" ></button>
-                            </td>
+                        </td>
+                        <td style="width: 19%;">
+                            <label id="lblLunes">Lunes</label>
+                        </td>
+                        <td style="width: 19%;">
+                            <label id="lblMartes">Martes</label>
+                        </td>
+                        <td style="width: 19%;">
+                            <label id="lblMiercoles">Miercoles</label>
+                        </td>
+                        <td style="width: 19%;">
+                            <label id="lblJueves">Jueves</label>
+                        </td>
+                        <td style="width: 19%;">
+                            <label id="lblViernes">Viernes</label>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                08-09
-                            </td>
-                            <td>
-                                <button class="Lunes 8-9 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 8-9 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 8-9 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 8-9 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 8-9 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            07-08
+                        </td>
+                        <td>
+                            <button class="Lunes 7-8 btnA"></button>
+                        </td>
+                        <td>
+                            <button class="Martes 7-8 btnA"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 7-8 btnA"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 7-8 btnA"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 7-8 btnA"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                09-10
-                            </td>
-                            <td>
-                                <button class="Lunes 9-10 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 9-10 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 9-10 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 9-10 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 9-10 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            08-09
+                        </td>
+                        <td>
+                            <button class="Lunes 8-9 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 8-9 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 8-9 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 8-9 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 8-9 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                10-11
-                            </td>
-                            <td>
-                                <button class="Lunes 10-11 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 10-11 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 10-11 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 10-11 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 10-11 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            09-10
+                        </td>
+                        <td>
+                            <button class="Lunes 9-10 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 9-10 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 9-10 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 9-10 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 9-10 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                11-12
-                            </td>
-                            <td>
-                                <button class="Lunes 11-12 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 11-12 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 11-12 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 11-12 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 11-12 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            10-11
+                        </td>
+                        <td>
+                            <button class="Lunes 10-11 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 10-11 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 10-11 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 10-11 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 10-11 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                12-13
-                            </td>
-                            <td>
-                                <button class="Lunes 12-13 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 12-13 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 12-13 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 12-13 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 12-13 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            11-12
+                        </td>
+                        <td>
+                            <button class="Lunes 11-12 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 11-12 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 11-12 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 11-12 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 11-12 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td colspan="6" style="text-align: center">
-                                Descanso
-                            </td>
-                            
+                    </tr>
+                    <tr>
+                        <td>
+                            12-13
+                        </td>
+                        <td>
+                            <button class="Lunes 12-13 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 12-13 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 12-13 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 12-13 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 12-13 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                14-15
-                            </td>
-                            <td>
-                                <button class="Lunes 14-15 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 14-15 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 14-15 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 14-15 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 14-15 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align: center">
+                            Descanso
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                15-16
-                            </td>
-                            <td>
-                                <button class="Lunes 15-16 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 15-16 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 15-16 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 15-16 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 15-16 btnA successC zoom"></button>
-                            </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                16-17
-                            </td>
-                            <td>
-                                <button class="Lunes 16-17 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 16-17 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 16-17 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 16-17 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 16-17 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            14-15
+                        </td>
+                        <td>
+                            <button class="Lunes 14-15 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 14-15 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 14-15 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 14-15 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 14-15 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                17-18
-                            </td>
-                            <td>
-                                <button class="Lunes 17-18 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 17-18 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 17-18 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 17-18 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 17-18 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            15-16
+                        </td>
+                        <td>
+                            <button class="Lunes 15-16 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 15-16 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 15-16 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 15-16 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 15-16 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                18-19
-                            </td>
-                            <td>
-                                <button class="Lunes 18-19 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 18-19 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 18-19 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 18-19 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 18-19 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            16-17
+                        </td>
+                        <td>
+                            <button class="Lunes 16-17 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 16-17 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 16-17 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 16-17 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 16-17 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                       <tr>
-                            <td>
-                                19-20
-                            </td>
-                            <td>
-                                <button class="Lunes 19-20 btnA  successC zoom "></button>
-                            </td>
-                            <td>
-                                <button class="Martes 19-20 btnA  successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Miercoles 19-20 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Jueves 19-20 btnA successC zoom"></button>
-                            </td>
-                            <td>
-                                <button class="Viernes 19-20 btnA successC zoom"></button>
-                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            17-18
+                        </td>
+                        <td>
+                            <button class="Lunes 17-18 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 17-18 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 17-18 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 17-18 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 17-18 btnA successC zoom"></button>
+                        </td>
 
-                       </tr>
-                    </table>
+                    </tr>
+                    <tr>
+                        <td>
+                            18-19
+                        </td>
+                        <td>
+                            <button class="Lunes 18-19 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 18-19 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 18-19 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 18-19 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 18-19 btnA successC zoom"></button>
+                        </td>
 
-                
+                    </tr>
+                    <tr>
+                        <td>
+                            19-20
+                        </td>
+                        <td>
+                            <button class="Lunes 19-20 btnA  successC zoom "></button>
+                        </td>
+                        <td>
+                            <button class="Martes 19-20 btnA  successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Miercoles 19-20 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Jueves 19-20 btnA successC zoom"></button>
+                        </td>
+                        <td>
+                            <button class="Viernes 19-20 btnA successC zoom"></button>
+                        </td>
+
+                    </tr>
+                </table>
+
+
 
 
 
