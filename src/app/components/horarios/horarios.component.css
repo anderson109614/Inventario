@@ -46,7 +46,7 @@
     color: white;
   }
   .activeR, .btnA:hover {
-    background-color: red;
+    background-color: orange;
     color: white;
   }
 
