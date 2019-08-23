@@ -72,7 +72,7 @@
                                 <label class="col-sm-3">Color</label>
                                 <div class="col-sm-9">
                                     <input id="txt_Color" type="text"
-                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                         placeholder="Color" class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 <label class="col-sm-3">Material</label>
                                 <div class="col-sm-9">
                                     <input id="txt_Material" type="text"
-                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                        onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                         placeholder="Material" class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -563,7 +563,7 @@
                                                                             <div class="form-group row">
                                                                                 <label class="col-sm-3">Nombres</label>
                                                                                 <div class="col-sm-9">
-                                                                                    <input id="txt_NombreNE" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                                                                    <input id="txt_NombreNE" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                         placeholder="Nombres"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -573,7 +573,7 @@
                                                                                     class="col-sm-3">Apellidos</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_ApellidoNE"
-                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                         placeholder="Apellidos"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -714,7 +714,7 @@
                                                                                     class="col-sm-3">Ubicación</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_UbicacionNB"
-                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                         placeholder="Ubicación"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>

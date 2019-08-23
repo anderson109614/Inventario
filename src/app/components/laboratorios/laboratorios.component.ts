@@ -17,6 +17,8 @@ export class LaboratoriosComponent implements OnInit {
 
 
   }
+
+  //Cargar datos laboratorios
   cargarlaboratorios() {
     this.labServicio.getLaboratorios().subscribe(
       res => {
@@ -28,5 +30,22 @@ export class LaboratoriosComponent implements OnInit {
       err => console.log(err)
     );
   }
+
+  //
+
+  //Busqueda
+  checkLaboratorios($event: KeyboardEvent){
+    this.laboratorios=this.laboratoriosAux;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.laboratorios.filter(laboratorio => laboratorio.nombre.toUpperCase().search(value.toUpperCase())==0 
+                                           || laboratorio.descripcion.toUpperCase().search(value.toUpperCase())==0 
+                                           || laboratorio.capacidad.toUpperCase().search(value.toUpperCase())==0
+                                           || laboratorio.ubicacion.toUpperCase().search(value.toUpperCase())==0 
+                                           || laboratorio.nombres.toUpperCase().search(value.toUpperCase())== 0
+                                           || laboratorio.apellidos.toUpperCase().search(value.toUpperCase())== 0 );
+    this.laboratorios=result;
+  }
+
 
 }

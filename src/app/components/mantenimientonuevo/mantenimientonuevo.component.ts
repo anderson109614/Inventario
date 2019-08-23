@@ -229,41 +229,56 @@ export class MantenimientonuevoComponent implements OnInit {
 
     if(programadoSi == true){
 
-      let mantenimiento:Mantenimiento = {
-        id: 0,
-        id_bien: idBienN,
-        mantenimiento : "",
-        descripcion : descripcionN,
-        fecha : fechaN,
-        id_tecnico: "null",
-        estado: "", 
-        observacion : "",
-        id_tipo_mantenimiento : idTipoMantenimientoN,
-        programado : "SI"
-      }
-  
-      console.log(mantenimiento);
-      this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
-        res => {
-          alert("Se guardo con éxito");
-          this.limpiarTxtMantenimiento();
-        },
-        err => console.log(err)
-      );
+      if(descripcionN.toString() == ""){
+        alert("Ingresar Descripción");
+        (<HTMLInputElement>document.getElementById("txt_Descripcion")).focus();
+      }else if(fechaN.toString() == ""){
+        alert("Seleccionar Fecha");
+        (<HTMLInputElement>document.getElementById("txt_Fecha")).focus();
+      }else{
+        let mantenimiento:Mantenimiento = {
+          id: 0,
+          id_bien: idBienN,
+          mantenimiento : "",
+          descripcion : descripcionN,
+          fecha : fechaN,
+          id_tecnico: "null",
+          estado: "", 
+          observacion : "",
+          id_tipo_mantenimiento : idTipoMantenimientoN,
+          programado : "SI"
+        }
 
+        console.log(mantenimiento);
+        this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
+          res => {
+            alert("Se guardo con éxito");
+            this.limpiarTxtMantenimiento();
+          },
+          err => console.log(err)
+        );
+      }
+
+  
     }else{
       if(mantenimientoN.toString()==""){
-        alert("Ingrese Mantenimiento");
+        alert("Ingresar Mantenimiento");
+        (<HTMLInputElement>document.getElementById("txt_Mantenimiento")).focus();
       }else if(descripcionN.toString() == ""){
         alert("Ingresar Descripción");
+        (<HTMLInputElement>document.getElementById("txt_Descripcion")).focus();
       }else if(fechaN.toString() == ""){
-        alert("Selecionar Fecha");
+        alert("Seleccionar Fecha");
+        (<HTMLInputElement>document.getElementById("txt_Fecha")).focus();
       }else if(tecnicoN.toString() == ""){
         alert("Seleccionar Técnico");
+        (<HTMLInputElement>document.getElementById("txt_Tecnico")).focus();
       }else if(estadoN.toString()==""){
         alert("Ingresar Estado");
+        (<HTMLInputElement>document.getElementById("txt_Estado")).focus();
       }else if(observacionN.toString()==""){
         alert("Ingresar Observación");
+        (<HTMLInputElement>document.getElementById("txt_Observacion")).focus();
       }else{
         let mantenimiento:Mantenimiento = {
           id: 0,

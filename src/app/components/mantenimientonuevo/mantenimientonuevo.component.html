@@ -31,7 +31,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Mantenimiento</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Mantenimiento" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40" placeholder="Mantenimiento"
+                                    <input id="txt_Mantenimiento" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Mantenimiento"
                                         class="form-control form-control-success">
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                                                                                 <label class="col-sm-3">Nombres</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_NombresNT"
-                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                         placeholder="Nombres"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -204,7 +204,7 @@
                                                                                     class="col-sm-3">Apellidos</label>
                                                                                 <div class="col-sm-9">
                                                                                     <input id="txt_ApellidosNT"
-                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40"
+                                                                                        type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                         placeholder="Apellidos"
                                                                                         class="form-control form-control-warning">
                                                                                 </div>
@@ -248,7 +248,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Estado</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Estado" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="40" placeholder="Estado"
+                                    <input id="txt_Estado" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Estado"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -375,7 +375,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Teléfono</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_TelefonoNE" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122' maxlength="10" placeholder="Teléfono"
+                                    <input id="txt_TelefonoNE" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Teléfono"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
