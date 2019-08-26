@@ -15,6 +15,7 @@ import { NuevoprestamoComponent } from './components/nuevoprestamo/nuevoprestamo
 import { QRCodeModule } from 'angular2-qrcode';
 import { LaboratoriosComponent } from './components/laboratorios/laboratorios.component';
 import { HorariosComponent } from './components/horarios/horarios.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { HorariosComponent } from './components/horarios/horarios.component';
     AppRoutingModule,
     HttpClientModule,
     NgQrScannerModule,
-    QRCodeModule
+    QRCodeModule,
+    FullCalendarModule
   ],
   providers: [BienesService],
   bootstrap: [AppComponent]

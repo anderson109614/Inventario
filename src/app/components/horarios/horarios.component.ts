@@ -3,13 +3,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LaboratoriosService } from '../../servicios/laboratorios.service';
 import { HorariosService } from '../../servicios/horarios.service';
 import { DetalleLab } from '../../models/DetalleLab';
-import { con } from 'src/app/models/coneccion';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
 @Component({
   selector: 'app-horarios',
   templateUrl: './horarios.component.html',
   styleUrls: ['./horarios.component.css']
 })
 export class HorariosComponent implements OnInit {
+
+  calendarPlugins = [dayGridPlugin, interactionPlugin];
+
   horarios: any = [];
   prestados: any = [];
 
@@ -27,6 +32,10 @@ export class HorariosComponent implements OnInit {
 
   }
 
+  
+  handleDateClick(arg) { // handler method
+    alert(arg.dateStr);
+  }
 
   asignarActivacionBotones() {
     var btns = document.getElementsByClassName("btnA");
