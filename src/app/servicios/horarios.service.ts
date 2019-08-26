@@ -24,5 +24,8 @@ export class HorariosService {
   guardarDetalles(det:DetalleLab){
     return this.http.post<DetalleLab>(this.ip + 'Laboratorios/Horarios.php',det)
   }
+  getTodosPRestamos(id:string){
+    return this.http.get(this.ip + 'Laboratorios/Horarios.php?id='+id)
+  }
 
 }

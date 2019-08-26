@@ -5,7 +5,7 @@ import { HorariosService } from '../../servicios/horarios.service';
 import { DetalleLab } from '../../models/DetalleLab';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-
+import {Eventos} from '../../models/Eventos';
 @Component({
   selector: 'app-horarios',
   templateUrl: './horarios.component.html',
@@ -14,7 +14,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 export class HorariosComponent implements OnInit {
 
   calendarPlugins = [dayGridPlugin, interactionPlugin];
-
+  eventosCalendario:any=[];
   horarios: any = [];
   prestados: any = [];
 
@@ -29,14 +29,12 @@ export class HorariosComponent implements OnInit {
     //this.cargarHorarios();
     this.cargarPrestados();
     this.cargarHOras();
+    this.cargarEventosCalendario();
 
   }
 
   
-  handleDateClick(arg) { // handler method
-    alert(arg.dateStr);
-  }
-
+ 
   asignarActivacionBotones() {
     var btns = document.getElementsByClassName("btnA");
     for (var i = 0; i < btns.length; i++) {
@@ -325,5 +323,47 @@ export class HorariosComponent implements OnInit {
     );
   }
 
+  VerSemana(){
+    var el = document.getElementById("Horario"); 
+    var elC = document.getElementById("calendario"); 
+  
+       
+      elC.style.display='none';  
+      el.style.display='block'; 
+    
+
+  }
+  VerMes(){
+    var el = document.getElementById("Horario"); 
+    var elC = document.getElementById("calendario"); 
+  
+    el.style.display='none';  
+    elC.style.display='block'; 
+    
+
+  }
+  handleDateClick(arg) { // handler method
+    var s=arg.dateStr;
+    var ds= new Date(s+ ' 00:00:00');
+    
+    (<HTMLInputElement>document.getElementById("semana")).value = this.armarFecha(ds);
+    //(<HTMLInputElement>document.getElementById("semana")).min = this.armarFecha(hoy);
+    this.cargarFechasDias(ds);
+    this.bloquearAnteriores(ds);
+    this.cargarPrestados();
+    console.log(ds);
+    this.VerSemana();
+  }
+  cargarEventosCalendario(){
+    this.serHorarios.getTodosPRestamos(this.idLab).subscribe(
+      res => {
+
+        console.log(res);
+        this.eventosCalendario=res;
+      },
+      err => console.log(err)
+    );
+
+  }
 
 }
