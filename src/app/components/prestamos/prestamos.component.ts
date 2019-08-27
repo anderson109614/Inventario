@@ -114,6 +114,7 @@ export class PrestamosComponent implements OnInit {
           (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = bien;
           (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas + ' ' + res[0].apellidosPersona;
           this.idPersona = res[0].id_persona_devolucion;
+          console.log(res[0].id_persona_devolucion);
           this.idDev=res[0].id;
           //console.log(res.id_persona_devolucion);
         } else {
