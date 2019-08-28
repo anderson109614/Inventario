@@ -20,6 +20,7 @@ export class SuministrosComponent implements OnInit {
   personas: any = [];
   personasAux: any = [];
   unidades:any=[];
+  idPersonaSelec:string='';
   constructor(private siministrosService: ServiciossuministrosService) { }
   idSuministroSeleccionado: string = '-1';
   existenciaAnterior:string='';
@@ -129,10 +130,14 @@ export class SuministrosComponent implements OnInit {
     this.idSuministroSeleccionado = id;
 
   }
-  onClickSelecPersona(id: string) {
+  
+  onClickSelecPersona(per: Persona) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
-    persona.value = id;
-    (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =id;
+    persona.value = per.nombres + ' '+ per.apellidos;
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =per.nombres + ' '+ per.apellidos;
+    this.idPersonaSelec=per.id;
+
+
   }
   onClickGuardarPersona() {
 
@@ -150,8 +155,9 @@ export class SuministrosComponent implements OnInit {
           this.limpiarPersona();
           console.log(res);
           var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
-          persona.value = res.id;
-          (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =res.id;
+          persona.value = res.nombres + ' '+ res.apellidos;
+          (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value =res.nombres + ' '+ res.apellidos;
+          this.idPersonaSelec=res.id;
           this.cargarPersonas();
         },
         err => {
@@ -212,7 +218,7 @@ export class SuministrosComponent implements OnInit {
     id_tipo_unidad:sep[0],
     cantidad:c,
     existencia:c*can,
-    id_persona:(<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value ,
+    id_persona:this.idPersonaSelec ,
 
     };
     if(this.verificarSuministro(sum)){
@@ -256,7 +262,7 @@ export class SuministrosComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById("cbx_UnidadNuevo")).options[0].selected=true;
     (<HTMLInputElement>document.getElementById("txt_NombreNS")).value="";
     (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value="";
-
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value="";
   }
 
   onClickGUardarUnidad(){
@@ -337,7 +343,7 @@ export class SuministrosComponent implements OnInit {
       id_tipo_unidad:sep[0],
       cantidad:c,
       existencia:exis,
-      id_persona:(<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value 
+      id_persona:this.idPersonaSelec
     };
     console.log(detSun);
     if(this.VerificarDetalle(detSun)){
@@ -387,6 +393,9 @@ export class SuministrosComponent implements OnInit {
     (<HTMLSelectElement>document.getElementById("txt_delatalleND")).value="";
     (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value ="";
     (<HTMLInputElement>document.getElementById("txt_CantidadND")).value ="";
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNS")).value="";
+    (<HTMLInputElement>document.getElementById("txt_IdPersonaNDS")).value="";
+    this.idPersonaSelec='';
 
   }
 

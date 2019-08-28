@@ -233,7 +233,7 @@ export class NuevoprestamoComponent implements OnInit {
             res => {
               this.limpiarPersona();
               console.log(res);
-              this.limpiar;
+              this.limpiar();
               alert('Datos Guardados correctamente');
               
             },
@@ -272,13 +272,13 @@ export class NuevoprestamoComponent implements OnInit {
   limpiar(){
     (<HTMLInputElement>document.getElementById("txt_FechaNS")).value='';
     (<HTMLInputElement>document.getElementById("txt_HoraNS")).value='';
-    (<HTMLInputElement>document.getElementById('txt_ObservacionNS')).value;
+    (<HTMLInputElement>document.getElementById('txt_ObservacionNS')).value="";
     this.idBien='';
     this.idEncargado='';
     this.idPersona='';
     (<HTMLInputElement>document.getElementById("txt_IdBien")).value='';
     (<HTMLInputElement>document.getElementById("txt_Encargado")).value='';
-    (<HTMLInputElement>document.getElementById('txt_IdPersonaNS')).value;
+    (<HTMLInputElement>document.getElementById('txt_IdPersonaNS')).value='';
   }
 
 }
