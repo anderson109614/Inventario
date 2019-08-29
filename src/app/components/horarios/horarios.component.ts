@@ -42,7 +42,7 @@ export class HorariosComponent implements OnInit {
         // var current = document.getElementsByClassName("active");
         //current[0].className = current[0].className.replace(" active", "");
         this.classList.toggle("active");
-        // this.className += " active";
+        
 
       });
     }
@@ -82,8 +82,12 @@ export class HorariosComponent implements OnInit {
       btns[0].classList.remove("active");
       btns[0].classList.remove("successC");
       btns[0].classList.remove("zoom");
+      console.log('badge '+ value.nombre + ' ' + value.horario);
+      var bad = document.getElementsByClassName('badge '+ value.nombre + ' ' + value.horario);
+      (<HTMLDivElement>bad[0]).style.display='block';
       (<HTMLButtonElement>btns[0]).style.pointerEvents = "none";
-      (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
+     (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
+    // (<HTMLButtonElement>btns[0]).innerHTML = ' <span class="badge">3</span>';
     });
   }
 
@@ -173,7 +177,7 @@ export class HorariosComponent implements OnInit {
       btns[i].classList.remove("zoom");
       btns[i].classList.remove("active");
       btns[i].classList.remove("activeR");
-      (<HTMLButtonElement>btns[i]).innerHTML = '';
+      //(<HTMLButtonElement>btns[i]).innerHTML = '';
 
     }
   }

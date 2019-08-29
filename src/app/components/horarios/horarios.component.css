@@ -15,18 +15,64 @@
   }
 
   /* Style the buttons */
+   /* padding: 20px 20px;*/
 .btnA {
+  
     border: none;
     outline: none;
-    /* padding: 20px 20px;*/
     background-color: #f1f1f1;
-    cursor: pointer;
+    /*cursor: pointer;*/
     font-size: 18px;
     width: 250px;
     height:50px;
     font-size: 15px;
+
+
+    position: relative;
+    display: inline-block;
+
+  
+  }
+ 
+
+
+
+  .notification {
+    border: none;
+    outline: none;
+    background-color: #f1f1f1;
+    width: 250px;
+    height:50px;
+
+
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
     
   }
+  
+  .notification:hover {
+    background: red;
+  }
+  
+  .badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    border: none;
+  }
+
+
+
+
+
   .btnB {
     border: none;
     outline: none;
@@ -49,6 +95,15 @@
   }
   .activeR, .btnA:hover {
     background-color: orange;
+    color: white;
+  }
+  .activeR .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
     color: white;
   }
 
