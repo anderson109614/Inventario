@@ -31,9 +31,9 @@
                                 <td>{{lab.capacidad}}</td>
                                 <td>{{lab.ubicacion}}</td>
                                 <td>{{lab.nombres+' '+lab.apellidos}}</td>
-                                <td><button style="margin-right: 30px" data-toggle="modal" (click)="onClickLaboratorio(lab.nombre, lab.id)"
+                                <td><button style="margin-right: 30px" data-toggle="modal" (click)="onClickLaboratorio(lab.id)"
                                         data-target=".modalLaboratorio"><i class="fa fa-pencil"></i></button>
-                                    <button style="margin-right: 30px" (click)="eliminarBien(lab.id)"><i
+                                    <button style="margin-right: 30px" (click)="eliminarLaboratorio(lab.id)"><i
                                             class="fa fa-times"></i></button>
                                     <button [routerLink]="['/horarios/',lab.id]"><i class="fa fa-th"></i></button>
                                 </td>
@@ -75,7 +75,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3">Nombre</label>
                                     <div class="col-sm-9">
-                                        <input id="txt_NombreLaboratorio" type="text" maxlength="40"
+                                        <input id="txt_NombreLaboratorio" type="text" maxlength="40" 
                                             placeholder="Nombre Laboratorio" class="form-control form-control-success">
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                     <label class="col-sm-3">Descripción</label>
                                     <div class="col-sm-9">
                                         <textarea id="txt_DescripcionLaboratorio" type="text" maxlength="40"
-                                            placeholder="Descripción"
+                                            placeholder="Descripción" 
                                             class="form-control form-control-warning"></textarea>
                                     </div>
                                 </div>
@@ -120,6 +120,10 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                (click)="actualizarLaboratorio()">Actualizar</button>
                         </div>
                     </div>
                 </form>
