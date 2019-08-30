@@ -8,13 +8,13 @@ import { LaboratoriosService } from '../../servicios/laboratorios.service';
 export class LaboratoriosComponent implements OnInit {
   laboratorios: any = [];
   laboratoriosAux: any = [];
+
+  laboratorioAct: any = []; 
+
   constructor(private labServicio: LaboratoriosService) { }
 
   ngOnInit() {
     this.cargarlaboratorios();
-
-
-
 
   }
 
@@ -47,5 +47,19 @@ export class LaboratoriosComponent implements OnInit {
     this.laboratorios=result;
   }
 
+
+  //Obtener nombre e id laboratorio
+  nombreLab = "";
+  onClickLaboratorio(nombre:string,id:string){
+    this.nombreLab = nombre;
+    this.labServicio.getLaboratorioId(id).subscribe(
+      res => {
+        this.laboratorioAct = res;
+        console.log(res);
+        ;
+      },
+      err => console.log(err)
+    );
+  }
 
 }
