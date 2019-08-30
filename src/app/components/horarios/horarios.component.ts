@@ -17,7 +17,7 @@ export class HorariosComponent implements OnInit {
   eventosCalendario:any=[];
   horarios: any = [];
   prestados: any = [];
-
+  horasE:any=[];
   horas: any = [];
   constructor(private labSer: LaboratoriosService, private rutaActiva: ActivatedRoute, private serHorarios: HorariosService) { }
   idLab: string = this.rutaActiva.snapshot.params.idLab;
@@ -30,11 +30,28 @@ export class HorariosComponent implements OnInit {
     this.cargarPrestados();
     this.cargarHOras();
     this.cargarEventosCalendario();
+   // this.asignacionClickEliminar();
 
   }
+  quitarliminar(){
 
+    var btns = document.getElementsByClassName("badge");
+    for (var i = 0; i < btns.length; i++) {
+     
+      (<HTMLButtonElement>btns[i]).style.display='none';
+    }
+  }
   
- 
+ del($event){
+  console.log(<HTMLButtonElement>$event.path[0].classList);
+  var idHor=(<HTMLButtonElement>$event.path[0]).classList[4];
+  var idPre=(<HTMLButtonElement>$event.path[0]).classList[3];
+  if(confirm('Seguro que desea eliminar...!!')){
+    this.eliminarPrestamos(idPre,idHor);
+  } 
+  
+
+ }
   asignarActivacionBotones() {
     var btns = document.getElementsByClassName("btnA");
     for (var i = 0; i < btns.length; i++) {
@@ -47,7 +64,19 @@ export class HorariosComponent implements OnInit {
       });
     }
   }
-
+  eliminarPrestamos(idPres:string,idHor:string){
+    this.labSer.delPrestamos(idPres,idHor).subscribe(
+      res => {
+        //console.log(res);
+        //alert('Prestamo eliminado');
+        this.estadoInicial();
+        this.asignacionDeClases();
+        this.cargarPrestados();
+        
+      },
+      err => console.log(err)
+    );
+  }
   cargarHorarios() {
     this.labSer.getHorarioLab(this.idLab).subscribe(
       res => {
@@ -77,17 +106,21 @@ export class HorariosComponent implements OnInit {
   }
   marcarHOrarios(res: any) {
     res.forEach(function (value) {
+      console.log(value);
       var btns = document.getElementsByClassName(value.nombre + ' ' + value.horario);
       btns[0].classList.add("activeR");
       btns[0].classList.remove("active");
       btns[0].classList.remove("successC");
       btns[0].classList.remove("zoom");
-      console.log('badge '+ value.nombre + ' ' + value.horario);
+      
       var bad = document.getElementsByClassName('badge '+ value.nombre + ' ' + value.horario);
       (<HTMLDivElement>bad[0]).style.display='block';
+      
+      (<HTMLDivElement>bad[0]).classList.add(value.id_prestamo);
+      (<HTMLDivElement>bad[0]).classList.add(value.id_horario);
       (<HTMLButtonElement>btns[0]).style.pointerEvents = "none";
-     (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
-    // (<HTMLButtonElement>btns[0]).innerHTML = ' <span class="badge">3</span>';
+      (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
+      
     });
   }
 
@@ -177,9 +210,10 @@ export class HorariosComponent implements OnInit {
       btns[i].classList.remove("zoom");
       btns[i].classList.remove("active");
       btns[i].classList.remove("activeR");
-      //(<HTMLButtonElement>btns[i]).innerHTML = '';
+      (<HTMLButtonElement>btns[i]).innerHTML = '';
 
     }
+    this.quitarliminar();
   }
   cargarFechasDias(lun: Date) {
     var d = lun.getUTCDay();
@@ -321,7 +355,7 @@ export class HorariosComponent implements OnInit {
       res => {
         console.log(res);
         this.horas = res;
-
+        this.horasE=res;
       },
       err => console.log(err)
     );

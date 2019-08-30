@@ -26,6 +26,9 @@ export class LaboratoriosService {
   getPrestamos(id:string, fecha:string){
     return this.http.get(this.ip + 'Laboratorios/Prestamos.php?id='+id+'&fecha='+fecha)
   }
+  delPrestamos(idPre:string, idHor:string){
+    return this.http.delete(this.ip + 'Laboratorios/Prestamos.php?idPrestamo='+idPre+'&idHorarios='+idHor)
+  }
 
   guardarLaboratorista(laboratorista:Persona){
     return this.http.post<Persona>(this.ip + 'Laboratorios/Laboratoristas.php', laboratorista)
