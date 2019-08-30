@@ -21,7 +21,7 @@ export class LaboratoriosService {
   }
 
   getHorarioLab(id:string){
-    return this.http.get(this.ip + 'Laboratorios/Laboratorios.php?id='+id)
+    return this.http.get(this.ip + 'Laboratorios/Dias.php?id='+id)
   }
 
   getLaboratoristas(){
