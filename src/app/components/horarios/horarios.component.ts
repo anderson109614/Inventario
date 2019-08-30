@@ -5,7 +5,7 @@ import { HorariosService } from '../../servicios/horarios.service';
 import { DetalleLab } from '../../models/DetalleLab';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import {Eventos} from '../../models/Eventos';
+import { Eventos } from '../../models/Eventos';
 @Component({
   selector: 'app-horarios',
   templateUrl: './horarios.component.html',
@@ -14,10 +14,10 @@ import {Eventos} from '../../models/Eventos';
 export class HorariosComponent implements OnInit {
 
   calendarPlugins = [dayGridPlugin, interactionPlugin];
-  eventosCalendario:any=[];
+  eventosCalendario: any = [];
   horarios: any = [];
   prestados: any = [];
-  horasE:any=[];
+  horasE: any = [];
   horas: any = [];
   constructor(private labSer: LaboratoriosService, private rutaActiva: ActivatedRoute, private serHorarios: HorariosService) { }
   idLab: string = this.rutaActiva.snapshot.params.idLab;
@@ -30,28 +30,28 @@ export class HorariosComponent implements OnInit {
     this.cargarPrestados();
     this.cargarHOras();
     this.cargarEventosCalendario();
-   // this.asignacionClickEliminar();
+    // this.asignacionClickEliminar();
 
   }
-  quitarliminar(){
+  quitarliminar() {
 
     var btns = document.getElementsByClassName("badge");
     for (var i = 0; i < btns.length; i++) {
-     
-      (<HTMLButtonElement>btns[i]).style.display='none';
+
+      (<HTMLButtonElement>btns[i]).style.display = 'none';
     }
   }
-  
- del($event){
-  console.log(<HTMLButtonElement>$event.path[0].classList);
-  var idHor=(<HTMLButtonElement>$event.path[0]).classList[4];
-  var idPre=(<HTMLButtonElement>$event.path[0]).classList[3];
-  if(confirm('Seguro que desea eliminar...!!')){
-    this.eliminarPrestamos(idPre,idHor);
-  } 
-  
 
- }
+  del($event) {
+    console.log(<HTMLButtonElement>$event.path[0].classList);
+    var idHor = (<HTMLButtonElement>$event.path[0]).classList[4];
+    var idPre = (<HTMLButtonElement>$event.path[0]).classList[3];
+    if (confirm('Seguro que desea eliminar...!!')) {
+      this.eliminarPrestamos(idPre, idHor);
+    }
+
+
+  }
   asignarActivacionBotones() {
     var btns = document.getElementsByClassName("btnA");
     for (var i = 0; i < btns.length; i++) {
@@ -59,20 +59,20 @@ export class HorariosComponent implements OnInit {
         // var current = document.getElementsByClassName("active");
         //current[0].className = current[0].className.replace(" active", "");
         this.classList.toggle("active");
-        
+
 
       });
     }
   }
-  eliminarPrestamos(idPres:string,idHor:string){
-    this.labSer.delPrestamos(idPres,idHor).subscribe(
+  eliminarPrestamos(idPres: string, idHor: string) {
+    this.labSer.delPrestamos(idPres, idHor).subscribe(
       res => {
         //console.log(res);
         //alert('Prestamo eliminado');
         this.estadoInicial();
         this.asignacionDeClases();
         this.cargarPrestados();
-        
+
       },
       err => console.log(err)
     );
@@ -112,15 +112,15 @@ export class HorariosComponent implements OnInit {
       btns[0].classList.remove("active");
       btns[0].classList.remove("successC");
       btns[0].classList.remove("zoom");
-      
-      var bad = document.getElementsByClassName('badge '+ value.nombre + ' ' + value.horario);
-      (<HTMLDivElement>bad[0]).style.display='block';
-      
+
+      var bad = document.getElementsByClassName('badge ' + value.nombre + ' ' + value.horario);
+      (<HTMLDivElement>bad[0]).style.display = 'block';
+
       (<HTMLDivElement>bad[0]).classList.add(value.id_prestamo);
       (<HTMLDivElement>bad[0]).classList.add(value.id_horario);
       (<HTMLButtonElement>btns[0]).style.pointerEvents = "none";
       (<HTMLButtonElement>btns[0]).innerHTML = value.Descripcion.toString().substring(0, 60);
-      
+
     });
   }
 
@@ -214,6 +214,14 @@ export class HorariosComponent implements OnInit {
 
     }
     this.quitarliminar();
+    
+    var btns = document.getElementsByClassName("badge");
+
+    for (var j = 0; j < btns.length; j++) {
+
+      (<HTMLButtonElement>btns[j]).style.pointerEvents = "auto";
+
+    }
   }
   cargarFechasDias(lun: Date) {
     var d = lun.getUTCDay();
@@ -265,7 +273,7 @@ export class HorariosComponent implements OnInit {
     var des = (<HTMLInputElement>document.getElementById('txtDescripcion')).value;
     if (des.length != 0) {
       var btns = document.getElementsByClassName("active");
-      if (btns.length>0) {
+      if (btns.length > 0) {
         var idCab = '0';
         let det: DetalleLab = {
           id: '',
@@ -287,7 +295,7 @@ export class HorariosComponent implements OnInit {
           },
           err => console.log(err)
         );
-      }else{
+      } else {
         alert('Seleccione minimo una hora para reservar');
       }
 
@@ -355,35 +363,35 @@ export class HorariosComponent implements OnInit {
       res => {
         console.log(res);
         this.horas = res;
-        this.horasE=res;
+        this.horasE = res;
       },
       err => console.log(err)
     );
   }
 
-  VerSemana(){
-    var el = document.getElementById("Horario"); 
-    var elC = document.getElementById("calendario"); 
-  
-       
-      elC.style.display='none';  
-      el.style.display='block'; 
-    
+  VerSemana() {
+    var el = document.getElementById("Horario");
+    var elC = document.getElementById("calendario");
+
+
+    elC.style.display = 'none';
+    el.style.display = 'block';
+
 
   }
-  VerMes(){
-    var el = document.getElementById("Horario"); 
-    var elC = document.getElementById("calendario"); 
-  
-    el.style.display='none';  
-    elC.style.display='block'; 
-    
+  VerMes() {
+    var el = document.getElementById("Horario");
+    var elC = document.getElementById("calendario");
+
+    el.style.display = 'none';
+    elC.style.display = 'block';
+
 
   }
   handleDateClick(arg) { // handler method
-    var s=arg.dateStr;
-    var ds= new Date(s+ ' 00:00:00');
-    
+    var s = arg.dateStr;
+    var ds = new Date(s + ' 00:00:00');
+
     (<HTMLInputElement>document.getElementById("semana")).value = this.armarFecha(ds);
     //(<HTMLInputElement>document.getElementById("semana")).min = this.armarFecha(hoy);
     this.cargarFechasDias(ds);
@@ -392,12 +400,12 @@ export class HorariosComponent implements OnInit {
     console.log(ds);
     this.VerSemana();
   }
-  cargarEventosCalendario(){
+  cargarEventosCalendario() {
     this.serHorarios.getTodosPRestamos(this.idLab).subscribe(
       res => {
 
         console.log(res);
-        this.eventosCalendario=res;
+        this.eventosCalendario = res;
       },
       err => console.log(err)
     );
