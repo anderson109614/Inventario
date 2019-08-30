@@ -35,7 +35,7 @@
                                         data-target=".modalLaboratorio"><i class="fa fa-pencil"></i></button>
                                     <button style="margin-right: 30px" (click)="eliminarBien(lab.id)"><i
                                             class="fa fa-times"></i></button>
-                                    <button><i class="fa fa-th"></i></button>
+                                    <button [routerLink]="['/horarios/',lab.id]"><i class="fa fa-th"></i></button>
                                 </td>
                             </tr>
                         </tbody>
