@@ -114,7 +114,7 @@
                                 <label class="col-sm-3">Valor de Compra</label>
                                 <div class="col-sm-9">
                                     <input id="txt_ValorCompra" type="text"
-                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46' maxlength="7"
                                         placeholder="Valor de Compra" class="form-control form-control-success">
                                 </div>
                             </div>
@@ -684,7 +684,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--Modal Nuevas Bodegas-->
+                                                <!--Modal Nueva Bodegas-->
                                                 <div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">

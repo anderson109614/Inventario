@@ -22,6 +22,7 @@
                             <label class="col-sm-3">Indentificador</label>
                             <div class="col-sm-9">
                                 <input id="txt_Identificador" value="{{bienesA[0].identificador}}" type="text"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
                                     placeholder="Indentificador" class="form-control form-control-success">
                                 <!--                                        
                                         <small class="form-text">Example help
@@ -34,7 +35,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3">Código</label>
                             <div class="col-sm-9">
-                                <input id="txt_Codigo" value="{{bienesA[0].codigo}}" type="text" placeholder="Código"
+                                <input id="txt_Codigo" value="{{bienesA[0].codigo}}" type="text" maxlength="40" placeholder="Código"
                                     class="form-control form-control-warning">
                             </div>
                         </div>
@@ -55,35 +56,36 @@
                         <div class="form-group row">
                             <label class="col-sm-3">Serie</label>
                             <div class="col-sm-9">
-                                <input id="txt_Serie" value="{{bienesA[0].serie_identificacion}}" type="text"
+                                <input id="txt_Serie" value="{{bienesA[0].serie_identificacion}}" type="text" maxlength="40"
                                     placeholder="Serie" class="form-control form-control-warning">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3">Modelo</label>
                             <div class="col-sm-9">
-                                <input id="txt_Modelo" value="{{bienesA[0].modelo}}" type="text" placeholder="Modelo"
+                                <input id="txt_Modelo" value="{{bienesA[0].modelo}}" type="text" maxlength="40" placeholder="Modelo"
                                     class="form-control form-control-warning">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3">Marca</label>
                             <div class="col-sm-9">
-                                <input id="txt_Marca" value="{{bienesA[0].marca}}" type="text" placeholder="Marca"
+                                <input id="txt_Marca" value="{{bienesA[0].marca}}" type="text" maxlength="40" placeholder="Marca"
                                     class="form-control form-control-warning">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3">Color</label>
                             <div class="col-sm-9">
-                                <input id="txt_Color" value="{{bienesA[0].color}}" type="text" placeholder="Color"
+                                <input id="txt_Color" value="{{bienesA[0].color}}" type="text" 
+                                onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Color"
                                     class="form-control form-control-warning">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3">Material</label>
                             <div class="col-sm-9">
-                                <input id="txt_Material" value="{{bienesA[0].material}}" type="text" placeholder="Material"
+                                <input id="txt_Material" value="{{bienesA[0].material}}" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Material"
                                     class="form-control form-control-warning">
                             </div>
                         </div>
@@ -97,7 +99,7 @@
                         <div class="form-group row">
                                 <label class="col-sm-3">Dimensiones</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_Dimensiones" value="{{bienesA[0].dimensiones}}" type="text"
+                                    <input id="txt_Dimensiones" value="{{bienesA[0].dimensiones}}" type="text" maxlength="40"
                                         placeholder="Dimesiones" class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -116,7 +118,8 @@
                         <div class="form-group row">
                             <label class="col-sm-3">Valor de Compra</label>
                             <div class="col-sm-9">
-                                <input id="txt_ValorCompra" value="{{bienesA[0].valor_compra}}" type="text"
+                                <input id="txt_ValorCompra" value="{{bienesA[0].valor_compra}}" type="text" 
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46' maxlength="7"
                                     placeholder="Valor de Compra" class="form-control form-control-success">
                             </div>
                         </div>
@@ -257,7 +260,9 @@
                                                                             <label class="col-sm-3">Nro
                                                                                 Acta</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_NroActaNA" type="text"
+                                                                                <input id="txt_NroActaNA" type="text" 
+                                                                                onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                                                        maxlength="10"
                                                                                     placeholder="Nro Acta"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -265,7 +270,8 @@
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3">Origen</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_OrigenNA" type="text"
+                                                                                <input id="txt_OrigenNA" type="text" 
+                                                                                maxlength="40"
                                                                                     placeholder="Origen"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -275,7 +281,9 @@
                                                                                 Compromiso</label>
                                                                             <div class="col-sm-9">
                                                                                 <input id="txt_NroCompromisoNA"
-                                                                                    type="text"
+                                                                                    type="text" 
+                                                                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                                                                        maxlength="10"
                                                                                     placeholder="Nro Compromiso"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -314,7 +322,7 @@
                                                                             <label class="col-sm-3">Descripcion</label>
                                                                             <div class="col-sm-9">
                                                                                 <input id="txt_DescripcionNA"
-                                                                                    type="text"
+                                                                                    type="text" maxlength="49"
                                                                                     placeholder="Descripcion"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -536,7 +544,7 @@
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3">Cedula</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_CedulaNE" type="text"
+                                                                                <input id="txt_CedulaNE" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10"
                                                                                     placeholder="Cedula"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -544,7 +552,7 @@
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3">Nombres</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_NombreNE" type="text"
+                                                                                <input id="txt_NombreNE" type="text" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                     placeholder="Nombres"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -552,7 +560,7 @@
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3">Apellidos</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_ApellidoNE" type="text"
+                                                                                <input id="txt_ApellidoNE" type="text" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40"
                                                                                     placeholder="Apellidos"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
@@ -659,7 +667,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--Modal Nuevas Bodegas-->
+                                            <!--Modal Nueva Bodegas-->
                                             <div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
@@ -680,14 +688,14 @@
                                                                             <label class="col-sm-3">Nombre</label>
                                                                             <div class="col-sm-9">
                                                                                 <input id="txt_NombreBodegaNB"
-                                                                                    type="text" placeholder="Nombre"
+                                                                                    type="text" maxlength="40" placeholder="Nombre"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3">Ubicación</label>
                                                                             <div class="col-sm-9">
-                                                                                <input id="txt_UbicacionNB" type="text"
+                                                                                <input id="txt_UbicacionNB" type="text" maxlength="40"
                                                                                     placeholder="Ubicación"
                                                                                     class="form-control form-control-warning">
                                                                             </div>
