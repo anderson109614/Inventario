@@ -42,4 +42,13 @@ export class LaboratoriosService {
   guardarLaboratorio(laboratorio:Laboratorio){
     return this.http.post<Laboratorio>(this.ip + 'Laboratorios/Laboratorios.php', laboratorio)
   }
+
+  actualizarLaboratorio(laboratorio:Laboratorio){
+    return this.http.put<Laboratorio>(this.ip + 'Laboratorios/Laboratorios.php', laboratorio)
+  }
+  
+  eliminarLaboratorio(id:string){
+    return this.http.delete(this.ip+'Laboratorios/Laboratorios.php?id='+id);
+  }
+  
 }
