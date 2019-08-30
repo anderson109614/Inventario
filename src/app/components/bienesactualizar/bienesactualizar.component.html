@@ -157,8 +157,80 @@
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target=".modalActa">Seleccionar</button>
-                                            <!--Modal Actas-->
-                                            <div class="modal fade modalActa" tabindex="-1" role="dialog"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3">Fecha de Ingreso</label>
+                            <div class="col-sm-9">
+                                <input id="txt_FechaIngreso" value="{{bienesA[0].fecha_ingreso}}" type="date"
+                                    class="form-control form-control-warning">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Bien</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Bien" type="text" class="form-control"
+                                            value="{{bienesA[0].id_bien_padre}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalBienes">Seleccionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Encargado</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Encargado" type="text" class="form-control"
+                                            value="{{bienesA[0].NombreEncargado + ' ' + bienesA[0].ApellidosEncargado}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalEncargados">Seleccionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Bodega</label>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="txt_Bodega" type="text" class="form-control"
+                                            value="{{bienesA[0].NombreBodega}}" readonly="true">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target=".modalBodegas">Seleccionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" style="text-align: right">
+                <button class="btn btn-secondary" (click)="confirmar()" style="margin-right: 15px">Cancelar</button>
+                <button type="submit" class="btn btn-primary" (click)="onClickActualizar()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Modales-->
+
+<!--Modal Actas-->
+<div class="modal fade modalActa" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -238,9 +310,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--Modal Nueva Actas-->
-                                            <div class="modal fade modalNuevaActa" tabindex="-1" role="dialog"
+</div>
+<!--Modal Nueva Actas-->
+<div class="modal fade modalNuevaActa" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -338,31 +410,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3">Fecha de Ingreso</label>
-                            <div class="col-sm-9">
-                                <input id="txt_FechaIngreso" value="{{bienesA[0].fecha_ingreso}}" type="date"
-                                    class="form-control form-control-warning">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Bien</label>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input id="txt_Bien" type="text" class="form-control"
-                                            value="{{bienesA[0].id_bien_padre}}" readonly="true">
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target=".modalBienes">Seleccionar</button>
-                                            <!--Modal Bienes-->
-                                            <div class="modal fade modalBienes" tabindex="-1" role="dialog"
+</div>
+
+<!--Modal Bienes-->
+<div class="modal fade modalBienes" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -430,24 +481,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Encargado</label>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input id="txt_Encargado" type="text" class="form-control"
-                                            value="{{bienesA[0].NombreEncargado + ' ' + bienesA[0].ApellidosEncargado}}" readonly="true">
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target=".modalEncargados">Seleccionar</button>
-                                            <!--Modal Encargados-->
-                                            <div class="modal fade modalEncargados" tabindex="-1" role="dialog"
+</div>
+
+<!--Modal Encargados-->
+<div class="modal fade modalEncargados" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -523,9 +560,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--Modal Nuevo Encargado-->
-                                            <div class="modal fade modalNuevoEncargado" tabindex="-1" role="dialog"
+</div>
+<!--Modal Nuevo Encargado-->
+<div class="modal fade modalNuevoEncargado" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -576,24 +613,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Bodega</label>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input id="txt_Bodega" type="text" class="form-control"
-                                            value="{{bienesA[0].NombreBodega}}" readonly="true">
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target=".modalBodegas">Seleccionar</button>
-                                            <!--Modal Bodegas-->
-                                            <div class="modal fade modalBodegas" tabindex="-1" role="dialog"
+</div>
+
+<!--Modal Bodegas-->
+<div class="modal fade modalBodegas" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -666,9 +689,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--Modal Nueva Bodegas-->
-                                            <div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
+</div>
+<!--Modal Nueva Bodegas-->
+<div class="modal fade modalNuevaBodega" tabindex="-1" role="dialog"
                                                 aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                 style="overflow-y: auto">
                                                 <div class="modal-dialog modal-lg">
@@ -711,21 +734,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12" style="text-align: right">
-                <button class="btn btn-secondary" (click)="confirmar()" style="margin-right: 15px">Cancelar</button>
-                <button type="submit" class="btn btn-primary" (click)="onClickActualizar()">Actualizar</button>
-            </div>
-        </div>
-    </div>
-</section>
+</div>
+
+<!---->

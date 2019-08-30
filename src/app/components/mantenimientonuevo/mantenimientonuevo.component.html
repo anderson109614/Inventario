@@ -8,7 +8,6 @@
                         <h4>Mantenimiento Nuevo</h4>
                     </div>
                     <div class="card-body">
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur.</p> -->
                         <form class="form-horizontal">
                             <div class="form-group row">
                                 <label class="col-sm-3 form-control-label">Programar Mantenimiento</label>
@@ -58,8 +57,51 @@
                                             <div class="input-group-append">
                                                 <button id="btn_Tecnico" type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target=".modalTecnicos">Seleccionar</button>
-                                                <!--Modal Tecnicos-->
-                                                <div class="modal fade modalTecnicos" tabindex="-1" role="dialog"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Estado</label>
+                                <div class="col-sm-9">
+                                    <input id="txt_Estado" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Estado"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Observación</label>
+                                <div class="col-sm-9">
+                                    <textarea id="txt_Observacion" required type="text" maxlength="40" placeholder="Observación"
+                                        class="form-control form-control-warning"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="form-group row">
+                    <div class="col-lg-12" style="text-align: right">
+                        <button class="btn btn-secondary" (click)="confirmar()"
+                            style="margin-right: 15px">Cancelar</button>
+                        <button class="btn btn-primary" (click)="onClickGuardarMantenimiento()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</section>
+
+<!--Modales-->
+
+<!--Modal Tecnicos-->
+<div class="modal fade modalTecnicos" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">
                                                     <div class="modal-dialog modal-lg">
@@ -138,9 +180,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--Modal Nuevo Tecnico-->
-                                                <div class="modal fade modalNuevoTecnico" tabindex="-1" role="dialog"
+</div>
+<!--Modal Nuevo Tecnico-->
+<div class="modal fade modalNuevoTecnico" tabindex="-1" role="dialog"
                                                     aria-labelledby="myLargeModalLabel" aria-hidden="true"
                                                     style="overflow-y: auto">
                                                     <div class="modal-dialog modal-lg">
@@ -239,50 +281,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Estado</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_Estado" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32' maxlength="40" placeholder="Estado"
-                                        class="form-control form-control-warning">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3">Observación</label>
-                                <div class="col-sm-9">
-                                    <textarea id="txt_Observacion" required type="text" maxlength="40" placeholder="Observación"
-                                        class="form-control form-control-warning"></textarea>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-                <div class="form-group row">
-                    <div class="col-lg-12" style="text-align: right">
-                        <button class="btn btn-secondary" (click)="confirmar()"
-                            style="margin-right: 15px">Cancelar</button>
-                        <button class="btn btn-primary" (click)="onClickGuardarMantenimiento()">Guardar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2"></div>
-        </div>
-    </div>
-</section>
-
-
-
+</div>
 
 <!--Modal Empresa-->
 <div class="modal fade modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
@@ -350,7 +349,6 @@
         </div>
     </div>
 </div>
-
 <!--Modal Nueva Empresa-->
 <div class="modal fade modalNuevaEmpresa" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" style="overflow-y: auto">
@@ -404,3 +402,7 @@
         </div>
     </div>
 </div>
+
+<!---->
+
+
