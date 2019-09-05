@@ -1,4 +1,4 @@
 export var con
 ={
-    ipser:'http://10.7.1.9/servicios/'
-}
+    ipser:'http://10.7.3.17/servicios/'
+} 
