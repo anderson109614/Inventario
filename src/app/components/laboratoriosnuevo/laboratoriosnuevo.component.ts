@@ -158,7 +158,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
   //
 
    //ValidarCedula
-  
+
    validarCedula(cedula: string) {
 
     if (cedula.length === 10) {
@@ -255,7 +255,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
                                            || laboratorista.nombres.toUpperCase().search(value.toUpperCase())==0 
                                            || laboratorista.apellidos.toUpperCase().search(value.toUpperCase())==0 );
     this.laboratoristas=result;
-  }
+  }   
   //
 
   //Confirmar
