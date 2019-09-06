@@ -259,7 +259,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
   //
 
   //Confirmar
-  confirmar() {
+  confirmar() {   
     if (confirm("¿Desea cancelar?")) {
       this.router.navigate(['/laboratorios']);
     } else {
