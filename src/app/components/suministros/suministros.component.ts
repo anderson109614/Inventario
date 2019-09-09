@@ -32,6 +32,7 @@ export class SuministrosComponent implements OnInit {
     this.cargarUnidades();
 
     (<HTMLButtonElement>document.getElementById("btn_add")).disabled = true;
+    this.cargarFechaHora();
 
     //this.notifycacion('con en click');
     // $('#bb').quicksearch('#tt ');
@@ -512,4 +513,34 @@ export class SuministrosComponent implements OnInit {
   }
   //
 
+   //Cargar fecha
+   cargarFechaHora() {
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth() + 1;
+    var yyyy = hoy.getFullYear();
+    var d=dd.toString();
+    var m=mm.toString();
+    if(dd<10){
+      d='0'+dd;
+    }
+    if(mm<10){
+      m='0'+mm;
+    }
+    var h=yyyy+'-'+m+'-'+d;
+    var ho=hoy.getHours();
+    var mi=hoy.getMinutes();
+    var hos=ho.toString();
+    var mis=mi.toString();
+    if(ho<10){
+      hos='0'+hos;
+    }
+    if(mi<10){
+      mis='0'+mis;
+    }
+    var hora= hos+':'+mis;
+   
+    (<HTMLInputElement>document.getElementById("txt_FechaND")).value =h;
+    
+  }
 }
