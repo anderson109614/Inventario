@@ -19,6 +19,7 @@ export class LaboratoriosComponent implements OnInit {
   laboratoriosA: any = [];
   laboratoristas: any = [];
   laboratoristasAux: any = [];
+  fechaBus:string='';
  horas:any=[];
   constructor(private labServicio: LaboratoriosService,private serHorarios: HorariosService) { }
 
@@ -355,6 +356,7 @@ export class LaboratoriosComponent implements OnInit {
   VerTodo(){
     (<HTMLDivElement>document.getElementById("divTodo")).style.display="block";
     (<HTMLDivElement>document.getElementById("divDisponible")).style.display="none";
+    this.cargarlaboratorios();
   }
   VerDisponibles(){
     (<HTMLDivElement>document.getElementById("divTodo")).style.display="none";
@@ -372,30 +374,51 @@ export class LaboratoriosComponent implements OnInit {
       });
     }
   }
+
   handleDateClick(arg) { // handler method
-    var s = arg.dateStr;
+    this.fechaBus = arg.dateStr;
     //alert(s);
     (<HTMLDivElement>document.getElementById("divCalendario")).style.display="none";
     (<HTMLDivElement>document.getElementById("divHorario")).style.display="block";
 
 
   }
+  limpiarSeleccionados(){
+    var btns = document.getElementsByClassName("btnA");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.remove('active');
+    }
+  }
   BuscarDisponibles(){
     var btns = document.getElementsByClassName("active");
+    var idHo='';
       for (var i = 0; i < btns.length; i++) {
         var dia = (<HTMLButtonElement>btns[i]).classList[0];
         var hor = (<HTMLButtonElement>btns[i]).classList[1];
         
         ///
-        var id = '';
+        var id = '.';
         this.horas.forEach(function (value) {
           if (value.horario == hor && value.nombre == dia) {
-            id = value.id;
+            id += value.id;
           }
         });
         ///
-
+        idHo+=id;
       }
+      this.labServicio.getLaboratorioDisponibles(this.fechaBus,idHo).subscribe(
+        res => {
+          this.laboratorios = res;
+          this.laboratoriosAux = res;
+          (<HTMLDivElement>document.getElementById("divTodo")).style.display="block";
+          (<HTMLDivElement>document.getElementById("divDisponible")).style.display="none";
+          (<HTMLDivElement>document.getElementById("divCalendario")).style.display="block";
+          (<HTMLDivElement>document.getElementById("divHorario")).style.display="none";
+          this.limpiarSeleccionados();
+          ;
+        },
+        err => console.log(err)
+      );
 
   }
 }
