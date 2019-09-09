@@ -2,26 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { LaboratoriosService } from '../../servicios/laboratorios.service';
 import { Persona } from 'src/app/models/Persona';
 import { Laboratorio } from 'src/app/models/Laboratorio';
+
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import {HorariosService} from '../../servicios/horarios.service'
 @Component({
   selector: 'app-laboratorios',
   templateUrl: './laboratorios.component.html',
   styleUrls: ['./laboratorios.component.css']
 })
 export class LaboratoriosComponent implements OnInit {
+  calendarPlugins = [dayGridPlugin, interactionPlugin];
   laboratorios: any = [];
   laboratoriosAux: any = [];
 
   laboratoriosA: any = [];
   laboratoristas: any = [];
   laboratoristasAux: any = [];
-
-  constructor(private labServicio: LaboratoriosService) { }
+ horas:any=[];
+  constructor(private labServicio: LaboratoriosService,private serHorarios: HorariosService) { }
 
   ngOnInit() {
     this.cargarlaboratorios();
     this.cargarLaboratoristas();
+    this.asignarActivacionBotones();
+    this.cargarHOras();
   }
-
+  cargarHOras() {
+    this.serHorarios.getHoras().subscribe(
+      res => {
+        //console.log(res);
+        this.horas = res;
+        
+      },
+      err => console.log(err)
+    );
+  }
   //Cargar datos laboratorios
   cargarlaboratorios() {
     this.labServicio.getLaboratorios().subscribe(
@@ -336,4 +352,50 @@ export class LaboratoriosComponent implements OnInit {
   }
   //
 
+  VerTodo(){
+    (<HTMLDivElement>document.getElementById("divTodo")).style.display="block";
+    (<HTMLDivElement>document.getElementById("divDisponible")).style.display="none";
+  }
+  VerDisponibles(){
+    (<HTMLDivElement>document.getElementById("divTodo")).style.display="none";
+    (<HTMLDivElement>document.getElementById("divDisponible")).style.display="block";
+  }
+  asignarActivacionBotones() {
+    var btns = document.getElementsByClassName("btnA");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        // var current = document.getElementsByClassName("active");
+        //current[0].className = current[0].className.replace(" active", "");
+        this.classList.toggle("active");
+
+
+      });
+    }
+  }
+  handleDateClick(arg) { // handler method
+    var s = arg.dateStr;
+    //alert(s);
+    (<HTMLDivElement>document.getElementById("divCalendario")).style.display="none";
+    (<HTMLDivElement>document.getElementById("divHorario")).style.display="block";
+
+
+  }
+  BuscarDisponibles(){
+    var btns = document.getElementsByClassName("active");
+      for (var i = 0; i < btns.length; i++) {
+        var dia = (<HTMLButtonElement>btns[i]).classList[0];
+        var hor = (<HTMLButtonElement>btns[i]).classList[1];
+        
+        ///
+        var id = '';
+        this.horas.forEach(function (value) {
+          if (value.horario == hor && value.nombre == dia) {
+            id = value.id;
+          }
+        });
+        ///
+
+      }
+
+  }
 }

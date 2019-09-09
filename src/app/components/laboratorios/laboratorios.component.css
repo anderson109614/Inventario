@@ -1,0 +1,124 @@
+.zoom {
+    /*padding: 5px;*/
+    background-color: green;
+    transition: transform .2s; /* Animation */
+    /*width: 25px;
+    height: 25px;*/
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  /* Style the buttons */
+   /* padding: 20px 20px;*/
+.btnA {
+  
+    border: none;
+    outline: none;
+    background-color: #f1f1f1;
+    /*cursor: pointer;*/
+    font-size: 18px;
+    width: 250px;
+    height:50px;
+    font-size: 15px;
+
+
+    position: relative;
+    display: inline-block;
+
+  
+  }
+ 
+
+
+
+  .notification {
+    border: none;
+    outline: none;
+    background-color: #f1f1f1;
+    width: 250px;
+    height:50px;
+
+
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  .notification:hover {
+    background: red;
+  }
+  
+  .badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    border: none;
+  }
+
+
+
+
+
+  .btnB {
+    border: none;
+    outline: none;
+     padding: 20px 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    
+  } 
+
+  td{
+    text-align: center; 
+  }
+  /* Style the active class, and buttons on mouse-over */
+  .active, .btnA:hover {
+    background-color: green;
+    color: white;
+  }
+  .activeR, .btnA:hover {
+    background-color: orange;
+    color: white;
+  }
+  .activeR .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+  }
+
+  /* ------------*/
+  .btnC {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .successC {
+    border-color: #4CAF50;
+    color: green;
+  }
+  
+  .successC:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
