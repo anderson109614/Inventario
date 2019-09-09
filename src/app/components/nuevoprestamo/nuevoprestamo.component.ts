@@ -240,7 +240,7 @@ export class NuevoprestamoComponent implements OnInit {
               console.log(res);
               this.limpiar();
               alert('Datos Guardados correctamente');
-              
+              this.cargarFechaHora();
             },
             err => {
               alert('Error al guardar los datos del prestamo... intentelo nuevamente');
