@@ -31,13 +31,10 @@ export class PrestamosComponent implements OnInit {
       alert('modal')
     })
     */
-
-
-
-
   }
 
   iniciarCamara() {
+    this.cargarFechaHora();
     this.qrScannerComponent.getMediaDevices().then(devices => {
       console.log(devices);
       const videoDevices: MediaDeviceInfo[] = [];
@@ -113,9 +110,10 @@ export class PrestamosComponent implements OnInit {
           (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = false;
           (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = bien;
           (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas + ' ' + res[0].apellidosPersona;
-          this.idPersona = res[0].id_persona_devolucion;
-          console.log(res[0].id_persona_devolucion);
+          this.idPersona = res[0].id_persona_prestamo;
+          console.log(res[0].id_persona_prestamo);
           this.idDev=res[0].id;
+          
           //console.log(res.id_persona_devolucion);
         } else {
           alert('No se a podido optener datos');
@@ -165,7 +163,7 @@ export class PrestamosComponent implements OnInit {
     this.Prestamos = result;
 
   }
-  idPersona: string = '';
+  idPersona: string = "";
   onClickSelecPersona(id: string, nom: string) {
     var persona = (<HTMLInputElement>document.getElementById('txt_IdPersonaNS'))
     persona.value = nom;
