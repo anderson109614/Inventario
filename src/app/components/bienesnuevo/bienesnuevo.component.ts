@@ -47,6 +47,7 @@ export class BienesnuevoComponent implements OnInit {
     this.cargarActas();
     this.cargarEncargados();
     this.cargarBodegas();
+    this.cargarFechaHora();
 
   }
 
@@ -586,6 +587,36 @@ export class BienesnuevoComponent implements OnInit {
 
   //
   
+     //Cargar fecha
+     cargarFechaHora() {
+      var hoy = new Date();
+      var dd = hoy.getDate();
+      var mm = hoy.getMonth() + 1;
+      var yyyy = hoy.getFullYear();
+      var d=dd.toString();
+      var m=mm.toString();
+      if(dd<10){
+        d='0'+dd;
+      }
+      if(mm<10){
+        m='0'+mm;
+      }
+      var h=yyyy+'-'+m+'-'+d;
+      var ho=hoy.getHours();
+      var mi=hoy.getMinutes();
+      var hos=ho.toString();
+      var mis=mi.toString();
+      if(ho<10){
+        hos='0'+hos;
+      }
+      if(mi<10){
+        mis='0'+mis;
+      }
+      var hora= hos+':'+mis;
+     
+      (<HTMLInputElement>document.getElementById("txt_FechaIngreso")).value =h;
+      
+    }
 
 }
 

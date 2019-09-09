@@ -17,6 +17,10 @@ export class BienesService {
     return this.http.get(this.ip + 'Bienes/Bienes.php')
   }
 
+  getBienCondigo(codigo:string){
+    return this.http.get(this.ip + 'Bienes/Bienes.php?codigo='+codigo)
+  }
+
   getBienId(id:number){
     return this.http.get(this.ip + 'Bienes/Bienes.php?id='+id)
   }

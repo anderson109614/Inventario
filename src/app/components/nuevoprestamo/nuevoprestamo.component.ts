@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import {Persona} from '../../models/Persona';
 import { ServiciossuministrosService } from '../../servicios/serviciossuministros.service';
 import {BienesService} from '../../servicios/bienes.service';
 import {Prestamo} from '../../models/Prestamo';
 import {PrestamosService} from '../../servicios/prestamos.service'
+import { QrScannerComponent } from 'angular2-qrscanner';
+
 @Component({
   selector: 'app-nuevoprestamo',
   templateUrl: './nuevoprestamo.component.html',
@@ -11,6 +13,7 @@ import {PrestamosService} from '../../servicios/prestamos.service'
 })
 export class NuevoprestamoComponent implements OnInit {
 
+  @ViewChild(QrScannerComponent, null) qrScannerComponent: QrScannerComponent;
   constructor(private siministrosService: ServiciossuministrosService,private bienesService:BienesService,private prestamosService:PrestamosService) { }
   personas: any = [];
   personasAux: any = [];
@@ -25,6 +28,8 @@ export class NuevoprestamoComponent implements OnInit {
     this.cargarPersonas();
     this.cargarEncargados();
     this.cargarBienes();
+    this.iniciarCamara();
+    this.cargarFechaHora();
   }
 
   checkBien($event: KeyboardEvent) {
@@ -235,7 +240,7 @@ export class NuevoprestamoComponent implements OnInit {
               console.log(res);
               this.limpiar();
               alert('Datos Guardados correctamente');
-              
+              this.cargarFechaHora();
             },
             err => {
               alert('Error al guardar los datos del prestamo... intentelo nuevamente');
@@ -281,4 +286,104 @@ export class NuevoprestamoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('txt_IdPersonaNS')).value='';
   }
 
+  //Cargar fecha
+  cargarFechaHora() {
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth() + 1;
+    var yyyy = hoy.getFullYear();
+    var d=dd.toString();
+    var m=mm.toString();
+    if(dd<10){
+      d='0'+dd;
+    }
+    if(mm<10){
+      m='0'+mm;
+    }
+    var h=yyyy+'-'+m+'-'+d;
+    var ho=hoy.getHours();
+    var mi=hoy.getMinutes();
+    var hos=ho.toString();
+    var mis=mi.toString();
+    if(ho<10){
+      hos='0'+hos;
+    }
+    if(mi<10){
+      mis='0'+mis;
+    }
+    var hora= hos+':'+mis;
+   
+    (<HTMLInputElement>document.getElementById("txt_FechaNS")).value =h;
+    (<HTMLInputElement>document.getElementById("txt_HoraNS")).value =hora;
+  }
+
+  //Iniciar camara
+  iniciarCamara() {
+    this.qrScannerComponent.getMediaDevices().then(devices => {
+      console.log(devices);
+      const videoDevices: MediaDeviceInfo[] = [];
+      for (const device of devices) {
+        if (device.kind.toString() === 'videoinput') {
+          videoDevices.push(device);
+        }
+      }
+      if (videoDevices.length > 0) {
+        let choosenDev;
+        for (const dev of videoDevices) {
+          if (dev.label.includes('front')) {
+            choosenDev = dev;
+            break;
+          }
+        }
+        if (choosenDev) {
+          this.qrScannerComponent.chooseCamera.next(choosenDev);
+        } else {
+          this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
+        }
+      }
+    });
+
+    this.qrScannerComponent.capturedQr.subscribe(result => {
+      console.log(result);
+      this.cargarDatos(result);
+    });
+  }
+
+  //Cargar datos bien
+  cargarDatos(codigo: string) {
+    //alert(bien);
+
+    this.bienesService.getBienCondigo(codigo.toString()).subscribe(
+      res => {
+        this.limpiarPersona();
+        console.log(res);
+        // console.log(res[0].id_persona_devolucion);
+        //console.log( );
+        if (Object.keys(res).length != 0) {
+         // (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = false;
+          (<HTMLInputElement>document.getElementById("txt_IdBien")).value = codigo;
+        // (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = res[0].nombrePersonas + ' ' + res[0].apellidosPersona;
+          this.idBien = res[0].id;
+          console.log(res[0].id);
+          //console.log(res.id_persona_devolucion);
+        } else {
+          alert('Bien no disponible');
+         // (<HTMLButtonElement>document.getElementById("btn_guargarQR")).disabled = true;
+         // (<HTMLInputElement>document.getElementById("txt_CodigoBienQR")).value = '';
+         // (<HTMLInputElement>document.getElementById("txt_IdPersonaQR")).value = '';
+         // this.idPersona = '';
+        }
+
+
+
+      },
+      err => {
+        alert('Error al intentar extraer datos del prestamo... intentelo nuevamente');
+        //this.limpiarDevolucion();
+        console.log(err)
+      }
+
+    );
+
+  }
 }
