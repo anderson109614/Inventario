@@ -139,8 +139,6 @@ export class LaboratoriosnuevoComponent implements OnInit {
   }
 
   //
-
-
   //Limpiar TXT
   limpiarTxtLaboratorista(){
     (<HTMLInputElement>document.getElementById("txt_CedulaNL")).value = "";
@@ -246,7 +244,7 @@ export class LaboratoriosnuevoComponent implements OnInit {
   //
 
   //Busqueda
-  
+     
   checkLaboratoristas($event: KeyboardEvent){
     this.laboratoristas=this.laboratoristasAux;
     
