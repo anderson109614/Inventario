@@ -24,6 +24,7 @@ export class MantenimientosComponent implements OnInit {
   ngOnInit() {
     this.cargarBienes();
     this.cargarMantenimientos();
+    (<HTMLButtonElement>document.getElementById("btn_NuevoMantenimiento")).disabled=true;
   }
 
   cargarMantenimientos(){
@@ -48,6 +49,7 @@ export class MantenimientosComponent implements OnInit {
   }
 
   onClickMantenimiento(id: string) {
+    (<HTMLButtonElement>document.getElementById("btn_NuevoMantenimiento")).disabled=false;
     this.idBienSeleccionado=id;
     //this.existenciaAnterior=existencia;
 
@@ -68,7 +70,7 @@ export class MantenimientosComponent implements OnInit {
     if(this.idBienSeleccionado!='-1'){
       this.router.navigate(['/mantenimientonuevo/',this.idBienSeleccionado]);
     }else{
-      alert('Seleccionar Bien');
+      alert('Seleccionar un Bien');
     }
   }
 
