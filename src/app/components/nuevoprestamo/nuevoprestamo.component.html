@@ -87,7 +87,7 @@
                     </div>
                     <div class="card-footer text-right">
 
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        <button type="button" class="btn btn-primary" id="btn_guardarPrestado" data-dismiss="modal"
                             (click)="onClickGuardarNuevoPrestamo()">Guardar</button>
                     </div>
                 </div>
@@ -399,7 +399,7 @@
                                                 <td>
 
 
-                                                    <button type="button"
+                                                    <button type="button" 
                                                         (click)="onClickSeleccionaBien(prestamo.id,prestamo.codigo)"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <i class="fa fa-check-circle">

@@ -222,6 +222,7 @@ export class NuevoprestamoComponent implements OnInit {
   }
 
   onClickGuardarNuevoPrestamo(){
+      (<HTMLButtonElement>document.getElementById("btn_guardarPrestado")).disabled = true;
         let pre:Prestamo={
           id:'',
           id_persona_devolucion :'',
@@ -249,6 +250,8 @@ export class NuevoprestamoComponent implements OnInit {
     
           );
         }
+        (<HTMLButtonElement>document.getElementById("btn_guardarPrestado")).disabled = false;
+
 
   }
   validarNuevoPrestamo(pre:Prestamo){
