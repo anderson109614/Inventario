@@ -17,7 +17,7 @@ export class GenerarcodigoqrComponent implements OnInit {
   download : string = this.codigoBien;
 
   
-  constructor(private rutaActiva: ActivatedRoute,) { }
+  constructor(private rutaActiva: ActivatedRoute) { }
 
   
   ngOnInit() {
