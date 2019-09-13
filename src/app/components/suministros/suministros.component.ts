@@ -105,7 +105,8 @@ export class SuministrosComponent implements OnInit {
       res => {
         this.suministros = res;
         this.suministroAuxs = res;
-        this.notificarcionSuministros(res);
+       // this.notificarcionSuministros(res);
+       this.notificacionSuministros(res);
       },
       err => console.log(err)
     );
@@ -372,15 +373,22 @@ export class SuministrosComponent implements OnInit {
     var movi = (<HTMLSelectElement>document.getElementById("cbx_MovimientoND")).value;
 
 
-    var c = Number.parseInt((<HTMLInputElement>document.getElementById("txt_CantidadND")).value);
+    var c = (<HTMLInputElement>document.getElementById("txt_CantidadND")).value;
     let uni = (<HTMLSelectElement>document.getElementById("cbx_UnidadNuevoND")).value;
     let sep = uni.split(':');
     let can = Number.parseInt(sep[1]);
     let exisA = Number.parseInt(this.existenciaAnterior);
-    let uniAu = c * can;
+    
     let exis = 0;
 
-    console.log(c);
+    var cant = 0;
+    if(c.toString() == ""){
+      cant = 0;
+    }else{
+      cant = Number.parseInt(c);
+    }
+    console.log(c)
+    let uniAu = cant * can;
 
     if (movi == 'Ingreso') {
       exis = exisA + uniAu;
@@ -399,7 +407,7 @@ export class SuministrosComponent implements OnInit {
       detalle: (<HTMLSelectElement>document.getElementById("txt_delatalleND")).value,
       tipo_movimiento: movi,
       id_tipo_unidad: sep[0],
-      cantidad: c,
+      cantidad: cant,
       existencia: exis,
       id_persona: this.idPersonaSelec
     };
@@ -428,7 +436,7 @@ export class SuministrosComponent implements OnInit {
 
   //Verificar Detalle
   VerificarDetalle(det: DetalleSuministro) {
-    if (det.cantidad.toString() == "" || det.cantidad < 0) {
+    if (det.cantidad == 0 || det.cantidad < 0) {
       alert('Ingrese una cantidad valida');
       return false;
     }else
@@ -507,7 +515,7 @@ export class SuministrosComponent implements OnInit {
         }
       });
     }
-  }
+  } 
 
   notificarcionSuministros(res: any) {
     var a = 0;
@@ -517,9 +525,36 @@ export class SuministrosComponent implements OnInit {
       }
     });
     if (a > 0) {
-      this.notifycacion(a + ' Suministros se encuentran con menos de 10 unidades');
+     // this.notifycacion(a + ' Suministros se encuentran con menos de 10 unidades');
+    
     }
 
+  }
+  
+  mensaje = ";"
+  notificacionSuministros(res: any) {
+    var a = 0;
+    res.forEach(function (value) {
+      if (value.existencia < 10) {
+        a++;
+      }
+    });
+
+    if(a > 0){
+      (<HTMLButtonElement>document.getElementById("btn_Notificacion")).style.display = "block";
+      if(a == 1){
+        this.mensaje = a + ' Suministro se encuentran con menos de 10 unidades';
+      }else{
+        this.mensaje = a + ' Suministros se encuentran con menos de 10 unidades';
+      }     
+    }else{
+      (<HTMLButtonElement>document.getElementById("btn_Notificacion")).style.display = "none";
+    }
+
+  /*  if (a > 0) {
+     // this.notifycacion(a + ' Suministros se encuentran con menos de 10 unidades');
+     this.mensaje = a + ' Suministros se encuentran con menos de 10 unidades';
+    } */
   }
   //
 
