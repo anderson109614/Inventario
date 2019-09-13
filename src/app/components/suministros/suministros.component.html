@@ -34,23 +34,21 @@
                                         <td>{{suministro.nombre}}</td>
                                         <td>{{suministro.existencia}}</td>
                                         <td>
-                                                <button style="margin-right: 15px;" type="button"
+                                            <button style="margin-right: 15px;" type="button"
                                                 (click)="onClickEditarsuministros(suministro.nombre,suministro.id)"
-                                                data-toggle="modal"
-                                                data-target=".modalEditarSuministro"
-                                                >
+                                                data-toggle="modal" data-target=".modalEditarSuministro">
                                                 <i class="fa fa fa-pencil">
                                                 </i>
-                                                
+
                                             </button>
                                             <button type="button"
-                                                (click)="onClickSuministro(suministro.id,suministro.existencia)">
+                                                (click)="onClickSuministro(suministro.id,suministro.existencia, suministro.nombre)">
                                                 <i class="fa fa-arrow-right">
                                                 </i>
                                             </button>
-                                            
+
                                         </td>
-                                        
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -71,8 +69,7 @@
                         </div>
                         <div class="col-lg-6 text-right">
                             <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target=".modalNuevoDetalleSuministro"
-                                >Añadir</button>
+                                data-target=".modalNuevoDetalleSuministro">Añadir</button>
                         </div>
                     </div>
                 </div>
@@ -201,7 +198,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title">Nuevo Detalle Suministro</h5>
+                <h5 id="exampleModalLabel" class="modal-title">Ingreso/Egreso Suministro</h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                         aria-hidden="true">×</span></button>
             </div>
@@ -210,19 +207,19 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label class="col-sm-3">Detalle</label>
+                                <label class="col-sm-3">Suministro</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_delatalleND" type="text" placeholder="Detalle"
+                                    <input disabled="true" type="text" value="{{nombresuministro}}"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3">Fecha de Ingreso</label>
-                                <div class="col-sm-9">
-                                    <input id="txt_FechaND" type="date" placeholder="Nombre"
-                                        class="form-control form-control-warning">
+                                    <label class="col-sm-3">Existencia</label>
+                                    <div class="col-sm-9">
+                                        <input disabled="true" type="text" value="{{ existenciaSuministro}}"
+                                            class="form-control form-control-warning">
+                                    </div>
                                 </div>
-                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">Tipo de Movimiento</label>
                                 <div class="col-sm-9">
@@ -230,6 +227,13 @@
                                         <option value="Ingreso">Ingreso</option>
                                         <option value="Egreso">Egreso</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Fecha de Transacción</label>
+                                <div class="col-sm-9">
+                                    <input id="txt_FechaND" type="date" placeholder="Nombre"
+                                        class="form-control form-control-warning">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -250,7 +254,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3">Cantidad</label>
                                 <div class="col-sm-9">
-                                    <input id="txt_CantidadND" type="number" placeholder="Cantidad"
+                                    <input id="txt_CantidadND" type="text" placeholder="Cantidad"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -269,17 +273,21 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
+                            <div class="form-group row">
+                                <label class="col-sm-3">Detalle</label>
+                                <div class="col-sm-9">
+                                    <input id="txt_delatalleND" type="text" placeholder="Detalle"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
 
-                <button type="button" id="btn_GuarDetalleSumi" class="btn btn-primary"
-                    data-dismiss="modal" (click)="onClickGuardarDetalleSuministros()">Guardar</button>
+                <button type="button" id="btn_GuarDetalleSumi" class="btn btn-primary" data-dismiss="modal"
+                    (click)="onClickGuardarDetalleSuministros()">Guardar</button>
             </div>
         </div>
     </div>
@@ -497,7 +505,7 @@
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
-                            
+
 
 
                         </div>

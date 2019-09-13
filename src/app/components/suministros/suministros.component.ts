@@ -123,10 +123,18 @@ export class SuministrosComponent implements OnInit {
   //
 
   //Seleccionar 
-
-  onClickSuministro(id: string, existencia: string) {
+  nombresuministro = "";
+  existenciaSuministro = "";
+  onClickSuministro(id: string, existencia: string, nombre: string) {
     (<HTMLButtonElement>document.getElementById("btn_add")).disabled = false;
     this.idSuministroSeleccionado = id; this.existenciaAnterior = existencia;
+    this.nombresuministro = nombre;
+    if(existencia == "1"){
+      this.existenciaSuministro = existencia + " Unidad";
+    }else{
+      this.existenciaSuministro = existencia + " Unidades";
+    }
+   
     this.siministrosService.getDetallesId(id).subscribe(
       res => {
         //console.log(res);
@@ -372,6 +380,8 @@ export class SuministrosComponent implements OnInit {
     let uniAu = c * can;
     let exis = 0;
 
+    console.log(c);
+
     if (movi == 'Ingreso') {
       exis = exisA + uniAu;
     } else {
@@ -401,7 +411,7 @@ export class SuministrosComponent implements OnInit {
           this.limpiadoSuministr();
           console.log(res);
           this.cargarSuministros();
-          this.onClickSuministro(res.id_suministro, res.existencia.toString());
+          this.onClickSuministro(res.id_suministro, res.existencia.toString(), "");
 
 
         },
@@ -418,16 +428,16 @@ export class SuministrosComponent implements OnInit {
 
   //Verificar Detalle
   VerificarDetalle(det: DetalleSuministro) {
-    if (det.detalle.length == 0) {
-      alert('Ingrese un nombre de unidad');
+    if (det.cantidad.toString() == "" || det.cantidad < 0) {
+      alert('Ingrese una cantidad valida');
       return false;
-    }
+    }else
     if (det.id_persona.length == 0) {
       alert('Seleccione una persona');
       return false;
-    }
-    if (det.cantidad.toString().length == 0 || det.cantidad < 0) {
-      alert('Ingrese una cantidad valida');
+    }else
+    if (det.detalle.length == 0) {
+     alert("Ingresar detalle")
       return false;
     }
 
