@@ -65,31 +65,31 @@
                                     <button id="btn_Tecnico" type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target=".modalInformacion">Seleccionar</button>
 
-                                        <table class="table table-striped table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Id</th>
-    
-                                                        <th>Nombre</th>
-    
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr *ngFor="let informacion of InformacionesSelecionadas">
-                                                        <td>{{informacion.id}}</td>
-                                                        <td>{{informacion.nombre}}</td>
-    
-                                                        <td><button type="button"
-                                                                (click)="onClickQuitarInformacion(informacion.id, informacion.nombre)"
-                                                                data-dismiss="modal" aria-label="Close">
-                                                                <i class="fa fa-times">
-                                                                </i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                    
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+
+                                                <th>Nombre</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let informacion of InformacionesSelecionadas">
+                                                <td>{{informacion.id}}</td>
+                                                <td>{{informacion.nombre}}</td>
+
+                                                <td><button type="button"
+                                                        (click)="onClickQuitarInformacion(informacion.id, informacion.nombre)"
+                                                        data-dismiss="modal" aria-label="Close">
+                                                        <i class="fa fa-times">
+                                                        </i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
 
 
 
@@ -98,7 +98,7 @@
                             </div>
                             <!---->
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">Laboratorista</label>
+                                <label class="col-sm-3 form-control-label">Encargado</label>
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -203,7 +203,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 id="exampleModalLabel" class="modal-title">Nuevo
-                    Laboratorista
+                        Encargado
                 </h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                         aria-hidden="true">×</span></button>
@@ -234,6 +234,13 @@
                                     <input id="txt_ApellidosNL" type="text"
                                         onkeypress='return event.charCode >= 65 && event.charCode <= 122 || event.charCode==32'
                                         maxlength="40" placeholder="Apellidos"
+                                        class="form-control form-control-warning">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">Telefono</label>
+                                <div class="col-sm-9">
+                                    <input id="txt_Telefono" type="text" placeholder="Telefono"
                                         class="form-control form-control-warning">
                                 </div>
                             </div>
@@ -388,16 +395,16 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                               
+
                                                 <th>Nombres</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let informacion of informaciones">
                                                 <td>{{informacion.id}}</td>
                                                 <td>{{informacion.Nombre}}</td>
-                                               
+
 
                                                 <td><button type="button"
                                                         (click)="onClickInformacion(informacion.id, informacion.Nombre)"
@@ -443,7 +450,7 @@
                                         maxlength="40" placeholder="Nombres" class="form-control form-control-warning">
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </form>

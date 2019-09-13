@@ -12,7 +12,7 @@ import { Eventos } from '../../models/Eventos';
   styleUrls: ['./horarios.component.css']
 })
 export class HorariosComponent implements OnInit {
-
+  laboratorioNom:string='';
   calendarPlugins = [dayGridPlugin, interactionPlugin];
   eventosCalendario: any = [];
   horarios: any = [];
@@ -28,9 +28,10 @@ export class HorariosComponent implements OnInit {
     this.asignarActivacionBotones();
     //this.cargarHorarios();
     this.cargarPrestados();
-    this.cargarHOras();
+    this.cargarHOras(); 
     this.cargarEventosCalendario();
     // this.asignacionClickEliminar();
+    this.cargarLaboratorio();
 
   }
   quitarliminar() {
@@ -41,9 +42,19 @@ export class HorariosComponent implements OnInit {
       (<HTMLButtonElement>btns[i]).style.display = 'none';
     }
   }
-
+  cargarLaboratorio(){
+    this.labSer.getLaboratorioId(this.idLab).subscribe(
+      res => {
+        //console.log(res[0].nombre);
+        this.laboratorioNom=res[0].nombre;
+        
+      },
+      err => console.log(err)
+    );
+  }
   del($event) {
     console.log(<HTMLButtonElement>$event.path[0].classList);
+    
     var idHor = (<HTMLButtonElement>$event.path[0]).classList[4];
     var idPre = (<HTMLButtonElement>$event.path[0]).classList[3];
     if (confirm('Seguro que desea eliminar...!!')) {
@@ -210,6 +221,7 @@ export class HorariosComponent implements OnInit {
       btns[i].classList.remove("zoom");
       btns[i].classList.remove("active");
       btns[i].classList.remove("activeR");
+      (<HTMLButtonElement>btns[i]).style.pointerEvents = "auto";
       (<HTMLButtonElement>btns[i]).innerHTML = '';
 
     }
@@ -248,7 +260,16 @@ export class HorariosComponent implements OnInit {
     var vi = this.sumarDias(ju, 1);
     (<HTMLInputElement>document.getElementById("lblViernes")).innerHTML = "Viernes <br> " + this.armarFecha(vi);
     (<HTMLInputElement>document.getElementById("lblViernes")).value = this.armarFecha(vi);
+    var sa = this.sumarDias(vi, 1);
+    (<HTMLInputElement>document.getElementById("lblSabado")).innerHTML = "Sabado <br> " + this.armarFecha(sa);
+    (<HTMLInputElement>document.getElementById("lblSabado")).value = this.armarFecha(sa);
+    var dom = this.sumarDias(sa, 1);
+    (<HTMLInputElement>document.getElementById("lblDomingo")).innerHTML = "Domingo <br> " + this.armarFecha(dom);
+    (<HTMLInputElement>document.getElementById("lblDomingo")).value = this.armarFecha(dom);
+
+
   }
+
   sumarDias(fecha, dias) {
     fecha.setDate(fecha.getDate() + dias);
     return fecha;
