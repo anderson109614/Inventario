@@ -3,24 +3,30 @@ import { LaboratoriosService } from 'src/app/servicios/laboratorios.service';
 import { Persona } from 'src/app/models/Persona';
 import { Laboratorio } from 'src/app/models/Laboratorio';
 import { Router } from '@angular/router';
-import {DependeciasService} from 'src/app/servicios/dependecias.service'
-
+import {DependeciasService} from 'src/app/servicios/dependecias.service';
+import {Dependencia} from 'src/app/models/Dependencia';
+import {InformacionService} from 'src/app/servicios/informacion.service';
+import {Informacion} from 'src/app/models/Informacion';
+import {Infor} from 'src/app/models/Inf';
 @Component({
   selector: 'app-laboratoriosnuevo',
   templateUrl: './laboratoriosnuevo.component.html',
   styleUrls: ['./laboratoriosnuevo.component.css']
 })
 export class LaboratoriosnuevoComponent implements OnInit {
-
+  
   laboratoristas : any = [];
   laboratoristasAux : any = [];
   dependencias: any=[];
   dependenciasAux: any=[];
-  constructor(private labServicio: LaboratoriosService, public router: Router,private depService:DependeciasService) { }
+  informaciones:any=[];
+  informacionesAux:any=[];
+  constructor(private labServicio: LaboratoriosService, public router: Router,private depService:DependeciasService,private InfService:InformacionService) { }
 
   ngOnInit() {
     this.cargarLaboratoristas();
     this.cargarDependencias();
+    this.cargarInformacion();
   }
 
   //Cargar datos Laboratoristas
@@ -114,6 +120,9 @@ export class LaboratoriosnuevoComponent implements OnInit {
     }else if(laboratoristaN.toString() == ""){
       alert("Seleccionar Laboratorista");
       (<HTMLInputElement>document.getElementById("txt_Laboratorista")).focus();
+    }else if(this.idDependencia.toString() == ""){
+      alert("Seleccionar Dependencia");
+      
     }else{
       let laboratorio:Laboratorio = {
         id: 0,
@@ -121,17 +130,19 @@ export class LaboratoriosnuevoComponent implements OnInit {
         descripcion : descripcionLaboratorioN,
         capacidad : Number.parseInt(capacidadLaboratorioN),
         ubicacion : ubicacionLaboratorioN,
-        id_laboratorista : Number.parseInt(laboratoristaN)
+        id_laboratorista : Number.parseInt(laboratoristaN),
+        id_dependencia: Number.parseInt(this.idDependencia)
       }
-
+      
       console.log(laboratorio);
       this.labServicio.guardarLaboratorio(laboratorio).subscribe(
         //res => console.log(res),
         res => {
           //this.limpiartxt();
           console.log(res);
-          
+          this.guardarInformaciones(res.id);
           alert("Se guardo con éxito");
+
           this.limpiarTxtLaboratorio();
           this.router.navigate(['/laboratorios']);
         },
@@ -140,6 +151,32 @@ export class LaboratoriosnuevoComponent implements OnInit {
     }
 
   }
+  guardarInformaciones(id:number){
+    var  len= this.InformacionesSelecionadas.length;
+    
+    for (var i = 0; i < len; i++) {
+
+      this.guardadoinf(id.toString(), this.InformacionesSelecionadas[i].id);
+   }
+
+
+  }
+  guardadoinf(idLab:string,idInf:string){
+    let ing:Infor={
+        lab:idLab,
+        infId:idInf
+    }
+    
+    this.InfService.GuardarInformacionLaboratorios(ing).subscribe(
+      //res => console.log(res),
+      res => {
+        //this.limpiartxt();
+        console.log(res);
+        
+      },
+      err => console.log(err)
+    );
+  }
 
   //
   //Limpiar TXT
@@ -147,6 +184,8 @@ export class LaboratoriosnuevoComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("txt_CedulaNL")).value = "";
     (<HTMLInputElement>document.getElementById("txt_NombresNL")).value = "";
     (<HTMLInputElement>document.getElementById("txt_ApellidosNL")).value = "";
+    (<HTMLInputElement>document.getElementById("txt_NombreDE")).value="";
+    (<HTMLInputElement>document.getElementById("txt_DescripcionDE")).value="";
   }
 
   limpiarTxtLaboratorio(){
@@ -263,9 +302,17 @@ export class LaboratoriosnuevoComponent implements OnInit {
     let value = (<HTMLInputElement>event.target).value;
     const result = this.dependencias.filter(dependencia => dependencia.nombre.toUpperCase().search(value.toUpperCase())==0 
                                            || dependencia.Descripcion.toUpperCase().search(value.toUpperCase())==0 );
-    this.laboratoristas=result;
+    this.dependencias=result;
     
   } 
+  checkInformacion($event: KeyboardEvent){
+    this.informaciones=this.informacionesAux;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.informaciones.filter(informacion => informacion.Nombre.toUpperCase().search(value.toUpperCase())==0 );
+    this.informaciones=result;
+    
+  }
   //
 
   //Confirmar
@@ -296,6 +343,113 @@ export class LaboratoriosnuevoComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+  cargarInformacion(){
+    this.InfService.getInformacion().subscribe(
+      res => {
+        this.informaciones=res;
+        //console.log('res');
+        this.informacionesAux=res;
+
+        ;
+      },
+      err => console.log(err)
+    );
+  }
+  guardarDependencia(){
+    var nombreD = (<HTMLInputElement>document.getElementById("txt_NombreDE")).value;
+    var DescripcionD = (<HTMLInputElement>document.getElementById("txt_DescripcionDE")).value;
+    
+
+    if(nombreD.toString() == ""){
+      alert("Ingresar Cédula");
+    }else if(DescripcionD.toString() == ""){
+      alert("Ingresar Nombres");
+    }else{
+      let laboratorista:Dependencia = {
+        id : 0,
+        nombre: nombreD,
+        descripcion: DescripcionD
+        
+      }
+
+      console.log(laboratorista);
+      this.depService.GuardarDependencia(laboratorista).subscribe(
+        //res => console.log(res),
+        res => {
+          //this.limpiartxt();
+          console.log(res);
+          this.nombreDependencia=res.nombre;
+          this.idDependencia = res.id.toString();
+          this.cargarDependencias();
+          this.limpiarTxtLaboratorista();
+          alert("Se guardo con éxito");
+        },
+        err => {
+          console.log(err);
+          alert("Se produjo un error al guardar los datos");
+        }
+      );
+
+
+
+    }
+  }
+  InformacionesSelecionadas:Informacion[]=[];
+  onClickInformacion(id:string,nombre:string){
+    let a:Informacion={
+      id:id,
+      nombre:nombre
+    };
+    this.InformacionesSelecionadas.push(a);
+  }
+  onClickQuitarInformacion(id:string,nombre:string){
+    var n=0;
+    var i=0;
+    this.InformacionesSelecionadas.forEach(function (value) {
+      if(value.id==id && value.nombre==nombre){
+        n=i;
+      }
+      i++;
+    }); 
+    //console.log(n);
+    this.InformacionesSelecionadas.splice(n,1);
+  }
+  guardarInformacion(){
+    var nombreD = (<HTMLInputElement>document.getElementById("txt_NombreIN")).value;
+    
+    
+
+    if(nombreD.toString() == ""){
+      alert("Ingresar Cédula");
+    }else{
+      let laboratorista:Informacion = {
+        id : '',
+        nombre: nombreD,
+       
+        
+      }
+
+      console.log(laboratorista);
+      this.InfService.GuardarInformacion(laboratorista).subscribe(
+        //res => console.log(res),
+        res => {
+          //this.limpiartxt();
+          console.log(res);
+          this.cargarInformacion();
+          this.limpiarTxtLaboratorista();
+          this.InformacionesSelecionadas.push(res);
+          alert("Se guardo con éxito");
+        },
+        err => {
+          console.log(err);
+          alert("Se produjo un error al guardar los datos");
+        }
+      );
+
+
+
+    }
   }
 
 }

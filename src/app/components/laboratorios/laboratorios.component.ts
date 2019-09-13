@@ -287,7 +287,8 @@ export class LaboratoriosComponent implements OnInit {
         descripcion : descripcionLaboratorioN,
         capacidad : Number.parseInt(capacidadLaboratorioN),
         ubicacion : ubicacionLaboratorioN,
-        id_laboratorista : Number.parseInt(laboratoristaN)
+        id_laboratorista : Number.parseInt(laboratoristaN),
+        id_dependencia:0
       }
 
       console.log(laboratorio);
