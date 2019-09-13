@@ -4,5 +4,6 @@ export interface Laboratorio{
     descripcion : string,
     capacidad : number,
     ubicacion : string,
-    id_laboratorista : number
+    id_laboratorista : number,
+    id_dependencia : number
 }
