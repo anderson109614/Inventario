@@ -31,7 +31,7 @@ export class MantenimientosComponent implements OnInit {
     this.mantenimientosService.getProximosMantenimientos().subscribe(
       res => {
         console.log(res);
-        this.notificarMantenimientos(res);
+        this.notificacionMantenimientos(res);
       },
       err => console.log(err)
     );
@@ -142,5 +142,32 @@ export class MantenimientosComponent implements OnInit {
     }
    
   }
+
+  mensaje = ""
+  notificacionMantenimientos(res: any) {
+    var a=  0;
+   res.forEach(function() {
+      a++;
+  }); 
+
+    if(a > 0){
+      (<HTMLButtonElement>document.getElementById("btn_Notificacion")).style.display = "block";
+      if(a == 1){
+        this.mensaje = 'Tiene ' + a + ' bien próximo ha realizar mantenimiento';
+      }else{
+        this.mensaje = 'Tiene ' + a + ' bienes próximos ha realizar mantenimiento';
+      }     
+    }else{
+      (<HTMLButtonElement>document.getElementById("btn_Notificacion")).style.display = "none";
+    }
+
+  /*  if (a > 0) {
+     // this.notifycacion(a + ' Suministros se encuentran con menos de 10 unidades');
+     this.mensaje = a + ' Suministros se encuentran con menos de 10 unidades';
+    } */
+  }
+
+
+
   //
 }
