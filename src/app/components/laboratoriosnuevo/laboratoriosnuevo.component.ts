@@ -3,6 +3,7 @@ import { LaboratoriosService } from 'src/app/servicios/laboratorios.service';
 import { Persona } from 'src/app/models/Persona';
 import { Laboratorio } from 'src/app/models/Laboratorio';
 import { Router } from '@angular/router';
+import {DependeciasService} from 'src/app/servicios/dependecias.service'
 
 @Component({
   selector: 'app-laboratoriosnuevo',
@@ -13,11 +14,13 @@ export class LaboratoriosnuevoComponent implements OnInit {
 
   laboratoristas : any = [];
   laboratoristasAux : any = [];
-
-  constructor(private labServicio: LaboratoriosService, public router: Router) { }
+  dependencias: any=[];
+  dependenciasAux: any=[];
+  constructor(private labServicio: LaboratoriosService, public router: Router,private depService:DependeciasService) { }
 
   ngOnInit() {
     this.cargarLaboratoristas();
+    this.cargarDependencias();
   }
 
   //Cargar datos Laboratoristas
@@ -254,6 +257,15 @@ export class LaboratoriosnuevoComponent implements OnInit {
                                            || laboratorista.apellidos.toUpperCase().search(value.toUpperCase())==0 );
     this.laboratoristas=result;
   }   
+  checkDependencias($event: KeyboardEvent){
+    this.dependencias=this.dependenciasAux;
+    
+    let value = (<HTMLInputElement>event.target).value;
+    const result = this.dependencias.filter(dependencia => dependencia.nombre.toUpperCase().search(value.toUpperCase())==0 
+                                           || dependencia.Descripcion.toUpperCase().search(value.toUpperCase())==0 );
+    this.laboratoristas=result;
+    
+  } 
   //
 
   //Confirmar
@@ -267,4 +279,23 @@ export class LaboratoriosnuevoComponent implements OnInit {
   }
 
   //
+  nombreDependencia='';
+  idDependencia='';
+  onClickDependencia(id:string,nombre:string){
+    this.nombreDependencia=nombre;
+    this.idDependencia=id;
+  }
+  cargarDependencias(){
+    this.depService.getDependencias().subscribe(
+      res => {
+        this.dependencias=res;
+        //console.log('res');
+        this.dependenciasAux=res;
+
+        ;
+      },
+      err => console.log(err)
+    );
+  }
+
 }
