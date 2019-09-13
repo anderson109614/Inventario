@@ -115,7 +115,7 @@ export class LaboratoriosComponent implements OnInit {
     var cedulaN = (<HTMLInputElement>document.getElementById("txt_CedulaNL")).value;
     var nombresN = (<HTMLInputElement>document.getElementById("txt_NombresNL")).value;
     var apellidosN = (<HTMLInputElement>document.getElementById("txt_ApellidosNL")).value;
-
+    var telefono=(<HTMLInputElement>document.getElementById("txt_Telefono")).value
     if (cedulaN.toString() == "") {
       alert("Ingresar Cédula");
     } else if (!this.validarCedula(cedulaN.toString())) {
@@ -124,13 +124,15 @@ export class LaboratoriosComponent implements OnInit {
       alert("Ingresar Nombres");
     } else if (apellidosN.toString() == "") {
       alert("Ingresar Apellidos");
-    } else {
+    }else if(telefono.toString() == ""){
+      alert("Ingresar Telefono");
+    }else {
       let laboratorista: Persona = {
         id: "",
         cedula: cedulaN,
         nombres: nombresN,
         apellidos: apellidosN,
-        telefono: "",
+        telefono: telefono,
         direccion: ""
       }
 

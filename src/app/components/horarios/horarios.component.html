@@ -4,7 +4,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-10">
-                        
+
                         <div class="form-group row">
                             <label class="col-sm-3">Descripcion</label>
                             <div class="col-sm-9">
@@ -28,6 +28,11 @@
             </div>
 
             <div class="card-body" style="text-align: center;width: 100%;">
+                    <div class="row">
+                            <div class="col-lg-12" style="text-align: center">
+                                <h1>{{laboratorioNom}}</h1>
+                            </div>
+                        </div>
                 <div class="row">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-secondary" (click)="VerSemana()">Semana</button>
@@ -40,544 +45,803 @@
                 <div id="Horario">
                     <div class="row" style="margin-top: 20px">
                         <div class="col-lg-4">
-                                <div class="form-group row" style="text-align: left;">
-                                        <label class="col-sm-3">Fecha</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" name="" id="semana" class="form-control form-control-warning"
-                                                (input)="onSearchChange($event.target.value)">
-                                        </div>
-                                    </div>
+                            <div class="form-group row" style="text-align: left;">
+                                <label class="col-sm-3">Fecha</label>
+                                <div class="col-sm-9">
+                                    <input type="date" name="" id="semana" class="form-control form-control-warning"
+                                        (input)="onSearchChange($event.target.value)">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-12">
-                                <table style="border: black;width: 80%;margin:0px auto;">
-                                        <tr>
-                                            <td style="width: 5%;">
-                
-                                            </td>
-                                            <td style="width: 19%;">
-                                                <label id="lblLunes">Lunes</label>
-                                            </td>
-                                            <td style="width: 19%;">
-                                                <label id="lblMartes">Martes</label>
-                                            </td>
-                                            <td style="width: 19%;">
-                                                <label id="lblMiercoles">Miercoles</label>
-                                            </td>
-                                            <td style="width: 19%;">
-                                                <label id="lblJueves">Jueves</label>
-                                            </td>
-                                            <td style="width: 19%;">
-                                                <label id="lblViernes">Viernes</label>
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                07-08
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 7-8 btnA"> </button>
-                                                    <button class="badge Lunes 7-8" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 7-8 btnA"></button>
-                                                    <button class="badge Martes 7-8" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 7-8 btnA"></button>
-                                                    <button class="badge Miercoles 7-8" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 7-8 btnA"> </button>
-                                                    <button class="badge Jueves 7-8" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 7-8 btnA"></button>
-                                                    <button class="badge Viernes 7-8" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                08-09
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 8-9 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 8-9" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 8-9 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 8-9" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 8-9 btnA successC zoom">
-                                                    </button>
-                                                    <button class="badge Miercoles 8-9" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative;">
-                                                    <button class="Jueves 8-9 btnA successC zoom"></button>
-                                                    <button class="badge Jueves 8-9" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 8-9 btnA successC zoom"></button>
-                                                    <button class="badge Viernes 8-9" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                09-10
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 9-10 btnA  successC zoom "> </button>
-                                                    <button class="badge Lunes 9-10" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 9-10 btnA  successC zoom"> </button>
-                                                    <button class="badge Martes 9-10" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 9-10 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 9-10" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 9-10 btnA successC zoom"></button>
-                                                    <button class="badge Jueves 9-10" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 9-10 btnA successC zoom"></button>
-                                                    <button class="badge Viernes 9-10" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                10-11
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 10-11 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 10-11" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative;">
-                                                    <button class="Martes 10-11 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 10-11" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 10-11 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 10-11" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 10-11 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 10-11" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 10-11 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 10-11" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                11-12
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 11-12 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 11-12" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 11-12 btnA  successC zoom"> </button>
-                                                    <button class="badge Martes 11-12" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 11-12 btnA successC zoom"> </button>
-                                                    <button class="badge Miercoles 11-12" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 11-12 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 11-12" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 11-12 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 11-12" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                12-13
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 12-13 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 12-13" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 12-13 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 12-13" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 12-13 btnA successC zoom"> </button>
-                                                    <button class="badge Miercoles 12-13" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 12-13 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 12-13" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 12-13 btnA successC zoom"></button>
-                                                    <button class="badge Viernes 12-13" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td colspan="6" style="text-align: center">
-                                                Descanso
-                                            </td>
-                
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                14-15
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 14-15 btnA  successC zoom "> </button>
-                                                    <button class="badge Lunes 14-15" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 14-15 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 14-15" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 14-15 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 14-15" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 14-15 btnA successC zoom"></button>
-                                                    <button class="badge Jueves 14-15" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 14-15 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 14-15" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                15-16
-                                            </td>
-                                            <td>
-                                                <div style="position: relative;">
-                                                    <button class="Lunes 15-16 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 15-16" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 15-16 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 15-16" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 15-16 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 15-16" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 15-16 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 15-16" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 15-16 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 15-16" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                16-17
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 16-17 btnA  successC zoom "> </button>
-                                                    <button class="badge Lunes 16-17" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 16-17 btnA  successC zoom"> </button>
-                                                    <button class="badge Martes 16-17" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 16-17 btnA successC zoom"> </button>
-                                                    <button class="badge Miercoles 16-17" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 16-17 btnA successC zoom"> </button>
-                                                    <div class="badge Jueves 16-17" style="display: none;" (click)="del($event)">X</div>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 16-17 btnA successC zoom"></button>
-                                                    <button class="badge Viernes 16-17" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                17-18
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 17-18 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 17-18" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 17-18 btnA  successC zoom"> </button>
-                                                    <button class="badge Martes 17-18" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 17-18 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 17-18" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 17-18 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 17-18" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 17-18 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 17-18" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                18-19
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 18-19 btnA  successC zoom "> </button>
-                                                    <button class="badge Lunes 18-19" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 18-19 btnA  successC zoom"> </button>
-                                                    <button class="badge Martes 18-19" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 18-19 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 18-19" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 18-19 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 18-19" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Viernes 18-19 btnA successC zoom"> </button>
-                                                    <button class="badge Viernes 18-19" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                19-20
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Lunes 19-20 btnA  successC zoom "></button>
-                                                    <button class="badge Lunes 19-20" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Martes 19-20 btnA  successC zoom"></button>
-                                                    <button class="badge Martes 19-20" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Miercoles 19-20 btnA successC zoom"></button>
-                                                    <button class="badge Miercoles 19-20" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">
-                                                    <button class="Jueves 19-20 btnA successC zoom"> </button>
-                                                    <button class="badge Jueves 19-20" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                
-                                            </td>
-                                            <td>
-                                                <div style="position: relative">   
-                                                        <button class="Viernes 19-20 btnA successC zoom"> </button>
-                                                        <button class="badge Viernes 19-20" style="display: none;" (click)="del($event)">X</button>
-                                                </div>
-                                                
-                                            </td>
-                
-                                        </tr>
-                                    </table>
+                            <table style="border: black;width: 80%;margin:0px auto;">
+                                <tr>
+                                    <td style="width: 10%;">
+
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblLunes">Lunes</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblMartes">Martes</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblMiercoles">Miercoles</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblJueves">Jueves</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblViernes">Viernes</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblSabado">Sabado</label>
+                                    </td>
+                                    <td style="width: 13%;">
+                                        <label id="lblDomingo">Domingo</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        07-08
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 7-8 btnA"> </button>
+                                            <button class="badge Lunes 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 7-8 btnA"></button>
+                                            <button class="badge Martes 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 7-8 btnA"></button>
+                                            <button class="badge Miercoles 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 7-8 btnA"> </button>
+                                            <button class="badge Jueves 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 7-8 btnA"></button>
+                                            <button class="badge Viernes 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Sabado 7-8 btnA"></button>
+                                            <button class="badge Sabado 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Domingo 7-8 btnA"></button>
+                                            <button class="badge Domingo 7-8" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        08-09
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 8-9 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 8-9 btnA  successC zoom"></button>
+                                            <button class="badge Martes 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 8-9 btnA successC zoom">
+                                            </button>
+                                            <button class="badge Miercoles 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative;">
+                                            <button class="Jueves 8-9 btnA successC zoom"></button>
+                                            <button class="badge Jueves 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 8-9 btnA successC zoom"></button>
+                                            <button class="badge Viernes 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Sabado 8-9 btnA"></button>
+                                            <button class="badge Sabado 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Domingo 8-9 btnA"></button>
+                                            <button class="badge Domingo 8-9" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        09-10
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 9-10 btnA  successC zoom "> </button>
+                                            <button class="badge Lunes 9-10" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 9-10 btnA  successC zoom"> </button>
+                                            <button class="badge Martes 9-10" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 9-10 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 9-10" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 9-10 btnA successC zoom"></button>
+                                            <button class="badge Jueves 9-10" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 9-10 btnA successC zoom"></button>
+                                            <button class="badge Viernes 9-10" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 9-10 btnA"></button>
+                                                <button class="badge Sabado 9-10" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 9-10 btnA"></button>
+                                                <button class="badge Domingo 9-10" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        10-11
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 10-11 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 10-11" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative;">
+                                            <button class="Martes 10-11 btnA  successC zoom"></button>
+                                            <button class="badge Martes 10-11" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 10-11 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 10-11" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 10-11 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 10-11" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 10-11 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 10-11" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 10-11 btnA"></button>
+                                                <button class="badge Sabado 10-11" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 10-11 btnA"></button>
+                                                <button class="badge Domingo 10-11" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        11-12
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 11-12 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 11-12" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 11-12 btnA  successC zoom"> </button>
+                                            <button class="badge Martes 11-12" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 11-12 btnA successC zoom"> </button>
+                                            <button class="badge Miercoles 11-12" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 11-12 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 11-12" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 11-12 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 11-12" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 11-12 btnA"></button>
+                                                <button class="badge Sabado 11-12" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 11-12 btnA"></button>
+                                                <button class="badge Domingo 11-12" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        12-13
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 12-13 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 12-13" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 12-13 btnA  successC zoom"></button>
+                                            <button class="badge Martes 12-13" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 12-13 btnA successC zoom"> </button>
+                                            <button class="badge Miercoles 12-13" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 12-13 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 12-13" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 12-13 btnA successC zoom"></button>
+                                            <button class="badge Viernes 12-13" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 12-13 btnA"></button>
+                                                <button class="badge Sabado 12-13" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 12-13 btnA"></button>
+                                                <button class="badge Domingo 12-13" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="8" style="text-align: center">
+                                        Descanso
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        14-15
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 14-15 btnA  successC zoom "> </button>
+                                            <button class="badge Lunes 14-15" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 14-15 btnA  successC zoom"></button>
+                                            <button class="badge Martes 14-15" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 14-15 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 14-15" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 14-15 btnA successC zoom"></button>
+                                            <button class="badge Jueves 14-15" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 14-15 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 14-15" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 14-15 btnA"></button>
+                                                <button class="badge Sabado 14-15" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 14-15 btnA"></button>
+                                                <button class="badge Domingo 14-15" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        15-16
+                                    </td>
+                                    <td>
+                                        <div style="position: relative;">
+                                            <button class="Lunes 15-16 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 15-16" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 15-16 btnA  successC zoom"></button>
+                                            <button class="badge Martes 15-16" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 15-16 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 15-16" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 15-16 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 15-16" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 15-16 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 15-16" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 15-16 btnA"></button>
+                                                <button class="badge Sabado 15-16" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 15-16 btnA"></button>
+                                                <button class="badge Domingo 15-16" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        16-17
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 16-17 btnA  successC zoom "> </button>
+                                            <button class="badge Lunes 16-17" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 16-17 btnA  successC zoom"> </button>
+                                            <button class="badge Martes 16-17" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 16-17 btnA successC zoom"> </button>
+                                            <button class="badge Miercoles 16-17" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 16-17 btnA successC zoom"> </button>
+                                            <div class="badge Jueves 16-17" style="display: none;"
+                                                (click)="del($event)">X</div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 16-17 btnA successC zoom"></button>
+                                            <button class="badge Viernes 16-17" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 16-17 btnA"></button>
+                                                <button class="badge Sabado 16-17" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 16-17 btnA"></button>
+                                                <button class="badge Domingo 16-17" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        17-18
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 17-18 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 17-18" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 17-18 btnA  successC zoom"> </button>
+                                            <button class="badge Martes 17-18" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 17-18 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 17-18" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 17-18 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 17-18" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 17-18 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 17-18" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 17-18 btnA"></button>
+                                                <button class="badge Sabado 17-18" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 17-18 btnA"></button>
+                                                <button class="badge Domingo 17-18" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        18-19
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 18-19 btnA  successC zoom "> </button>
+                                            <button class="badge Lunes 18-19" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 18-19 btnA  successC zoom"> </button>
+                                            <button class="badge Martes 18-19" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 18-19 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 18-19" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 18-19 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 18-19" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 18-19 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 18-19" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 18-19 btnA"></button>
+                                                <button class="badge Sabado 18-19" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 18-19 btnA"></button>
+                                                <button class="badge Domingo 18-19" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        19-20
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Lunes 19-20 btnA  successC zoom "></button>
+                                            <button class="badge Lunes 19-20" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Martes 19-20 btnA  successC zoom"></button>
+                                            <button class="badge Martes 19-20" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Miercoles 19-20 btnA successC zoom"></button>
+                                            <button class="badge Miercoles 19-20" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Jueves 19-20 btnA successC zoom"> </button>
+                                            <button class="badge Jueves 19-20" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="position: relative">
+                                            <button class="Viernes 19-20 btnA successC zoom"> </button>
+                                            <button class="badge Viernes 19-20" style="display: none;"
+                                                (click)="del($event)">X</button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                            <div style="position: relative">
+                                                <button class="Sabado 19-20 btnA"></button>
+                                                <button class="badge Sabado 19-20" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+                                        <td>
+                                            <div style="position: relative">
+                                                <button class="Domingo 19-20 btnA"></button>
+                                                <button class="badge Domingo 19-20" style="display: none;"
+                                                    (click)="del($event)">X</button>
+                                            </div>
+    
+                                        </td>
+
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                       
 
-                    
+
+
                 </div>
 
                 <div class="row" id="calendario" style="display: none; width: 100%;height: 5000px;">
