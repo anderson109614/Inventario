@@ -1,7 +1,7 @@
 <br>
 <div class="row">
     <div class="col-lg-2"></div>
-    <div class="col-lg-8" style="text-align: center">
+    <div id="imprimible" class="col-lg-8" style="text-align: center">
         <h1>Código: {{download}}</h1>
         <br>
     <qr-code [value]="value" [size]="250"></qr-code>
@@ -11,10 +11,10 @@
 <br>
 <div class="row">
         <div class="col-lg-2"></div>
-        <div class="col-lg-8" style="text-align: center">
+        <div class="col-lg-8" style="text-align: center">        
            <!-- <button type="button" class="btn btn-primary">Descargar</button> -->
            <a class="btn btn-primary" [href]="href" (click)="downloadImage()" [download]="download">Descargar Código QR</a>
-           
+           <a class="btn btn-primary" style="margin-left: 10px; color: mintcream" (click)="imprimir()">Imprimir</a>
         </div>
         <div class="col-lg-2"></div>
     </div>
