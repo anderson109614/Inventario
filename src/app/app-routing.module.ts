@@ -13,6 +13,7 @@ import {LaboratoriosComponent} from './components/laboratorios/laboratorios.comp
 import {HorariosComponent} from './components/horarios/horarios.component';
 import {MantenimientoproximoComponent} from './components/mantenimientoproximo/mantenimientoproximo.component';
 import { LaboratoriosnuevoComponent } from './components/laboratoriosnuevo/laboratoriosnuevo.component';
+import {ReportesComponent} from './components/reportes/reportes.component';
 const routes: Routes = [
   {path:'listabienes', component: ListabienesComponent},
   {path:'bienesactualizar/:id', component: BienesactualizarComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:'laboratorios', component: LaboratoriosComponent},
   {path:'horarios/:idLab', component: HorariosComponent},
   {path:'mantenimientoproximo', component: MantenimientoproximoComponent},
-  {path:'laboratoriosnuevo', component: LaboratoriosnuevoComponent}
+  {path:'laboratoriosnuevo', component: LaboratoriosnuevoComponent},
+  {path:'reportes', component: ReportesComponent}
 ];
 
 @NgModule({

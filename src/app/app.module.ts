@@ -16,6 +16,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { LaboratoriosComponent } from './components/laboratorios/laboratorios.component';
 import { HorariosComponent } from './components/horarios/horarios.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MantenimientosComponent,
     NuevoprestamoComponent,
     LaboratoriosComponent,
-    HorariosComponent
+    HorariosComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
