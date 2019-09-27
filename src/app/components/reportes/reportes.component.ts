@@ -8,7 +8,7 @@ import { ServiciossuministrosService } from '../../servicios/serviciossuministro
   styleUrls: ['./reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
- $:any;
+ 
   bienes: any = [];
   bienesAux: any = [];
   encargados: any = [];
@@ -17,6 +17,7 @@ export class ReportesComponent implements OnInit {
   repoSEleccionado:number;
   suministros: any = [];
   suministroAuxs: any = [];
+
   constructor(private bienesService: BienesService,private siministrosService: ServiciossuministrosService) { }
 
   ngOnInit() {
@@ -63,6 +64,9 @@ export class ReportesComponent implements OnInit {
     );
   }
 
+
+
+  
   onClickEnlace(id:number){
       console.log(id);
       var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
@@ -113,8 +117,9 @@ export class ReportesComponent implements OnInit {
     }
   }
 
-
-
+ 
 
 
 }
+
+
