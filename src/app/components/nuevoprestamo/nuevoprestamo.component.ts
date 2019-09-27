@@ -322,6 +322,7 @@ export class NuevoprestamoComponent implements OnInit {
 
   //Iniciar camara
   iniciarCamara() {
+    console.log('Camara');
     this.qrScannerComponent.getMediaDevices().then(devices => {
       console.log(devices);
       const videoDevices: MediaDeviceInfo[] = [];
