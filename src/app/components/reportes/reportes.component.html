@@ -25,16 +25,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!--*ngFor="let lab of laboratorios" -->
+                                    <!--*ngFor="let lab of laboratorios" <a href="reportes#visor"> -->
                                     <tr>
                                         <th>Listado Bienes</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" (click)="onClickEnlace(1)">
-                                                    <i class="fa fa-hand-o-left"></i>
-                                                </button>
 
-                                            </a>
+                                            <button class="btn btn-primary" style="margin-right: 30px;width: 60px;"
+                                                (click)="onClickEnlace(1)">
+                                                <i class="fa fa-hand-o-left"></i>
+                                            </button>
+
+
 
                                         </th>
 
@@ -42,12 +43,13 @@
                                     <tr>
                                         <th>Listado de Prestamos de los Bienes</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" data-toggle="modal"
-                                                    (click)="onClickEnlace(2)" data-target=".modalBienes">
-                                                    <i class="fa fa-hand-o-left"></i>
-                                                </button>
-                                            </a>
+
+                                            <button class="btn btn-primary" style="margin-right: 30px;width: 60px;"
+                                                data-toggle="modal" (click)="onClickEnlace(2)"
+                                                data-target=".modalBienes">
+                                                <i class="fa fa-hand-o-left"></i>
+                                            </button>
+
 
                                         </th>
 
@@ -55,90 +57,85 @@
                                     <tr>
                                         <th>Listado de Bienes Hijos</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" data-toggle="modal"
-                                                    (click)="onClickEnlace(3)" data-target=".modalBienes">
+                                            <button class="btn btn-primary" style="margin-right: 30px;width: 60px;"
+                                                    data-toggle="modal" (click)="onClickEnlace(3)"
+                                                    data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado de Codigos Anteriores</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
-                                                    (click)="onClickEnlace(4)" data-target=".modalBienes">
+                                           
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    data-toggle="modal" (click)="onClickEnlace(4)"
+                                                    data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado de Mantenimientos del Bien</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
-                                                    (click)="onClickEnlace(5)" data-target=".modalBienes">
+                                           
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    data-toggle="modal" (click)="onClickEnlace(5)"
+                                                    data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
+                                          
                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado de Encargado-Bienes</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
-                                                    (click)="onClickEnlace(6)" data-target=".modalEncargados">
+                                           
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    data-toggle="modal" (click)="onClickEnlace(6)"
+                                                    data-target=".modalEncargados">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
+                                            
                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado Tipo de Bienes</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
-                                                    (click)="onClickEnlace(7)" data-target=".modalTipoBienes">
+                                           
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    data-toggle="modal" (click)="onClickEnlace(7)"
+                                                    data-target=".modalTipoBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
-                                        </th>
+                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado Suministros</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" (click)="onClickEnlace(8)">
+                                            
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    (click)="onClickEnlace(8)">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
                                         </th>
 
                                     </tr>
                                     <tr>
                                         <th>Listado Movimientos del Suministro</th>
                                         <th>
-                                            <a href="reportes#visor">
-                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" (click)="onClickEnlace(9)"
-                                                    data-toggle="modal" data-target=".modalSuministros">
+                                            
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px"
+                                                    (click)="onClickEnlace(9)" data-toggle="modal"
+                                                    data-target=".modalSuministros">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
-                                            </a>
-
+                                            
                                         </th>
 
                                     </tr>
@@ -155,12 +152,13 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-9">
-                            <h1>Vista del Reporte</h1>
+                        <h1>Vista del Reporte</h1>
                     </div>
-                    
+
 
                     <div class="col-lg-3" style="text-align: right">
-                        <button class="btn btn-primary" (click)="mostrar(false)"><i class="fa fa-arrow-left"></i> Regresar </button>
+                        <button class="btn btn-primary" (click)="mostrar(false)"><i class="fa fa-arrow-left"></i>
+                            Regresar </button>
                     </div>
                 </div>
 
@@ -263,10 +261,8 @@
                                             <tr *ngFor="let bien of bienes">
                                                 <td>{{bien.id}}</td>
                                                 <td>{{bien.codigo}}</td>
-                                                <td>{{bien.identificador}}
-                                                </td>
-                                                <td>{{bien.serie_identificacion}}
-                                                </td>
+                                                <td>{{bien.identificador}}</td>
+                                                <td>{{bien.serie_identificacion}}</td>
                                                 <td>{{bien.modelo}}</td>
                                                 <td>{{bien.marca}}</td>
                                                 <td>{{bien.color}}</td>
