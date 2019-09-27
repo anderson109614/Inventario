@@ -1,8 +1,14 @@
 <div class="roe">
     <div class="col-lg-12">
-        <div class="card" style="height: 1000px">
+        <div class="card" style="height: 1000px" id="visor1">
             <div class="card-header">
-                <h1>Reportes</h1>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h1>Listado de Reportes</h1>
+                    </div>
+
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="col-lg-12" id="divTodo">
@@ -16,8 +22,6 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -26,7 +30,7 @@
                                         <th>Listado Bienes</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" (click)="onClickEnlace(1)">
+                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" (click)="onClickEnlace(1)">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
 
@@ -39,7 +43,7 @@
                                         <th>Listado de Prestamos de los Bienes</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" data-toggle="modal"
                                                     (click)="onClickEnlace(2)" data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -52,7 +56,7 @@
                                         <th>Listado de Bienes Hijos</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px;width: 60px;" data-toggle="modal"
                                                     (click)="onClickEnlace(3)" data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -65,7 +69,7 @@
                                         <th>Listado de Codigos Anteriores</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
                                                     (click)="onClickEnlace(4)" data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -78,7 +82,7 @@
                                         <th>Listado de Mantenimientos del Bien</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
                                                     (click)="onClickEnlace(5)" data-target=".modalBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -91,7 +95,7 @@
                                         <th>Listado de Encargado-Bienes</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
                                                     (click)="onClickEnlace(6)" data-target=".modalEncargados">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -104,7 +108,7 @@
                                         <th>Listado Tipo de Bienes</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" data-toggle="modal"
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" data-toggle="modal"
                                                     (click)="onClickEnlace(7)" data-target=".modalTipoBienes">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
@@ -117,7 +121,7 @@
                                         <th>Listado Suministros</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" (click)="onClickEnlace(8)">
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" (click)="onClickEnlace(8)">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
                                             </a>
@@ -129,7 +133,8 @@
                                         <th>Listado Movimientos del Suministro</th>
                                         <th>
                                             <a href="reportes#visor">
-                                                <button style="margin-right: 30px" (click)="onClickEnlace(9)" data-toggle="modal" data-target=".modalSuministros">
+                                                <button class="btn btn-primary" style="margin-right: 30px; width: 60px" (click)="onClickEnlace(9)"
+                                                    data-toggle="modal" data-target=".modalSuministros">
                                                     <i class="fa fa-hand-o-left"></i>
                                                 </button>
                                             </a>
@@ -148,7 +153,17 @@
         </div>
         <div class="card" id="visor2" style="display: none;">
             <div class="card-header">
-                <h1>Vista del Reporte</h1>
+                <div class="row">
+                    <div class="col-lg-9">
+                            <h1>Vista del Reporte</h1>
+                    </div>
+                    
+
+                    <div class="col-lg-3" style="text-align: right">
+                        <button class="btn btn-primary" (click)="mostrar(false)"><i class="fa fa-arrow-left"></i> Regresar </button>
+                    </div>
+                </div>
+
             </div>
             <div class="card-body">
 

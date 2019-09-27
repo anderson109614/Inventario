@@ -63,19 +63,31 @@ export class ReportesComponent implements OnInit {
       err => console.log(err)
     );
   }
-
-
-
-  
+  mostrar(estado:boolean){
+    if(estado){
+      (<HTMLDivElement>document.getElementById('visor2')).style.display='block';
+      (<HTMLDivElement>document.getElementById('visor1')).style.display='none';
+    }else{
+      (<HTMLDivElement>document.getElementById('visor2')).style.display='none';
+      (<HTMLDivElement>document.getElementById('visor1')).style.display='block';
+      var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
+      iframe.src='';
+    }
+    
+  }
   onClickEnlace(id:number){
       console.log(id);
       var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
       if(id==1){
         iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteBienesPrestados&rpredirect=true&prpeo=pdf&prptit=';
+        this.mostrar(true);
+        
       }else if(id==8){
         iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteSuministros&rpredirect=true&prpeo=pdf&prptit=';
+        this.mostrar(true);
       }
       this.repoSEleccionado=id;
+      
   }
 
   onClickMeBien(idBien:String){
@@ -93,6 +105,7 @@ export class ReportesComponent implements OnInit {
       iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteMantenimientos&rpredirect=true&prpeo=pdf&prptit=&id='+idBien;
 
     }
+    this.mostrar(true);
   }
   onClickMeEncargado(cedula:String){
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
@@ -100,6 +113,7 @@ export class ReportesComponent implements OnInit {
       iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteEncargadoBien&rpredirect=true&prpeo=pdf&prptit=&cedula='+cedula;
       
     }
+    this.mostrar(true);
   }
   onClickMeTipoBien(nombre:String){
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
@@ -107,6 +121,7 @@ export class ReportesComponent implements OnInit {
       iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=TipoBien&rpredirect=true&prpeo=pdf&prptit=&tipoBien='+nombre;
       
     }
+    this.mostrar(true);
 
   }
   onClickMeSuministro(id:string){
@@ -115,6 +130,7 @@ export class ReportesComponent implements OnInit {
       iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteSuministroMovimientos&rpredirect=true&prpeo=pdf&prptit=&id='+id;
       
     }
+    this.mostrar(true);
   }
 
  
