@@ -26,6 +26,7 @@ export class ReportesComponent implements OnInit {
     this.cargarTipoBienes();
     this.cargarSuministros();
   }
+  
   cargarBienes() {
     this.bienesService.getData().subscribe(
       res => {
