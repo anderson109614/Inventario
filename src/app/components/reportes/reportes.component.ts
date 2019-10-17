@@ -133,7 +133,16 @@ export class ReportesComponent implements OnInit {
     }
     this.mostrar(true);
   }
-
+  generarReporteSuministrosCantidad(){
+    var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
+    if(this.repoSEleccionado==10){
+      var cantidad=(<HTMLInputElement>document.getElementById('txt_CantidadBuscar')).value;
+     
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reportePrestamoDevolucionBienes&rpredirect=true&prpeo=pdf&prptit=&cantidad='+cantidad;
+      
+    }
+    this.mostrar(true);
+  }
  
 
 
