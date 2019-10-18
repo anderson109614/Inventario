@@ -1,6 +1,43 @@
-<app-menu></app-menu>
-<div class="page">
-  <app-nav></app-nav>
-  <router-outlet></router-outlet>
+<div id="DivPagina">
+    <app-menu ng-if="log"></app-menu>
+    <div class="page">
+      <app-nav ng-if="log"></app-nav>
+      <router-outlet></router-outlet>
+    </div>
+    
 </div>
 
+<div id="DivLogin" class="estiloBloqueo">
+    <div class="page login-page">
+        <div class="container">
+          <div class="form-outer text-center d-flex align-items-center">
+            <div class="form-inner" style="width: 100%;">
+              <div class="logo text-uppercase"><strong class="text-primary">DEADV</strong></div>
+             
+              <form method="get" class="text-left form-validate">
+                <div class="form-group-material">
+                  <input id="txt-login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
+                  <label for="login-username" class="label-material">Usuario</label>
+                </div>
+                <div class="form-group-material">
+                  <input id="txt-login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                  <label for="login-password" class="label-material">Password</label>
+                </div>
+                <div class="form-group text-center">
+                    <label id="lbl_error"   style="color: red;display: none;" ></label>
+                </div>
+                <div class="form-group text-center">
+                    
+                    <button type="button" id="btn_Login" style="width: 50%;" class="btn btn-primary" 
+                    (click)="onClickLogin()">Ingresar</button>
+                </div>
+                
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+</div>
+  
+ 
