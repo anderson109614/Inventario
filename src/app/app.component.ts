@@ -37,6 +37,7 @@ export class AppComponent {
     
   }
   onClickLogin(){
+    
     var usr= (<HTMLInputElement>document.getElementById("txt-login-username")).value;
     var cont= (<HTMLInputElement>document.getElementById("txt-login-password")).value;
     let log:Login={

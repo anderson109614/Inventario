@@ -11,15 +11,8 @@ export class NavComponent implements OnInit {
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
-   
-
   }
   onClickSalir(){
-    /*
-    let log:Login=  this.storage.get('Usuario');
-   alert(log);
-   */
-  this.storage.set('Usuario',null);
-  
+    this.storage.set('Usuario',null);
   }
 }
