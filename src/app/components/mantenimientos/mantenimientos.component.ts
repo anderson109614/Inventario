@@ -30,7 +30,7 @@ export class MantenimientosComponent implements OnInit {
   cargarMantenimientos(){
     this.mantenimientosService.getProximosMantenimientos().subscribe(
       res => {
-        console.log(res);
+       // console.log(res);
         this.notificacionMantenimientos(res);
       },
       err => console.log(err)

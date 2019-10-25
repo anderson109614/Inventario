@@ -295,7 +295,7 @@ export class BienesactualizarComponent implements OnInit {
       descripcion: descripcionN
     }
 
-    console.log(acta);
+    //console.log(acta);
     this.bienesService.guardarNuevaActa(acta).subscribe(
       //res => console.log(res),
       res => {
@@ -326,7 +326,7 @@ export class BienesactualizarComponent implements OnInit {
       direccion: ""
     };
 
-    console.log(encargado);
+    //console.log(encargado);
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);
@@ -351,7 +351,7 @@ export class BienesactualizarComponent implements OnInit {
       ubicacion: ubicacionN
     }
 
-    console.log(bodega);
+    //console.log(bodega);
     this.bienesService.guardarNuevaBodega(bodega).subscribe(
       res => {
         //this.limpiartxt();

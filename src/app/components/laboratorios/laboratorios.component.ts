@@ -44,7 +44,7 @@ export class LaboratoriosComponent implements OnInit {
     this.labServicio.getLaboratorios().subscribe(
       res => {
         this.laboratorios = res;
-        console.log(res);
+        //console.log(res);
         this.laboratoriosAux = res;
         ;
       },
@@ -56,7 +56,7 @@ export class LaboratoriosComponent implements OnInit {
     this.labServicio.getLaboratoristas().subscribe(
       res => {
         this.laboratoristas = res;
-        console.log(res);
+        //console.log(res);
         this.laboratoristasAux = res;
         ;
       },
@@ -87,7 +87,7 @@ export class LaboratoriosComponent implements OnInit {
     this.labServicio.getLaboratorioId(id).subscribe(
       res => {
         this.laboratoriosA = res;
-        console.log(res);
+        //console.log(res);
         (<HTMLInputElement>document.getElementById("txt_NombreLaboratorio")).value = this.laboratoriosA[0].nombre;
         (<HTMLInputElement>document.getElementById("txt_DescripcionLaboratorio")).value = this.laboratoriosA[0].descripcion;
         (<HTMLInputElement>document.getElementById("txt_CapacidadLaboratorio")).value = this.laboratoriosA[0].capacidad;
@@ -136,7 +136,7 @@ export class LaboratoriosComponent implements OnInit {
         direccion: ""
       }
 
-      console.log(laboratorista);
+      //console.log(laboratorista);
       this.labServicio.guardarLaboratorista(laboratorista).subscribe(
         //res => console.log(res),
         res => {
@@ -293,12 +293,12 @@ export class LaboratoriosComponent implements OnInit {
         id_dependencia:0
       }
 
-      console.log(laboratorio);
+      //console.log(laboratorio);
       this.labServicio.actualizarLaboratorio(laboratorio).subscribe(
         //res => console.log(res),
         res => {
           //this.limpiartxt();
-          console.log(res);
+         // console.log(res);
           
           alert("Se actualizó con éxito");
           this.limpiarTxtLaboratorio();

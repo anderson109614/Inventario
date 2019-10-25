@@ -42,7 +42,7 @@ export class MantenimientonuevoComponent implements OnInit {
       res => {
         this.tecnicos = res;
         this.tecnicosAux = res;    
-        console.log(res);    
+        //console.log(res);    
       },
       err => console.log(err)
     );
@@ -53,7 +53,7 @@ export class MantenimientonuevoComponent implements OnInit {
       res => {
         this.empresas = res;    
         this.empresasAux = res;
-        console.log(res);    
+       // console.log(res);    
       },
       err => console.log(err)
     );
@@ -63,7 +63,7 @@ export class MantenimientonuevoComponent implements OnInit {
     this.mantenimientosService.getTipoMantenimiento().subscribe(
       res => {
         this.tipomantenimientos = res;
-        console.log(res);    
+        //console.log(res);    
       },
       err => console.log(err)
     );
@@ -96,7 +96,7 @@ export class MantenimientonuevoComponent implements OnInit {
     var rbno = (<HTMLInputElement>document.getElementById("txt_Mno"));
     rbno.checked = false;
    
-    console.log( (<HTMLInputElement>document.getElementById("txt_Mno")).checked);
+    //console.log( (<HTMLInputElement>document.getElementById("txt_Mno")).checked);
     this.bloquearTxt(true);
     
   }
@@ -146,7 +146,7 @@ export class MantenimientonuevoComponent implements OnInit {
         correo_electronico: correo_electronicoN
       }
   
-      console.log(empresa);
+     // console.log(empresa);
       this.empresasService.guardarNuevaEmpresa(empresa).subscribe(
         //res => console.log(res),
         res => {
@@ -197,7 +197,7 @@ export class MantenimientonuevoComponent implements OnInit {
         correo : correoN
       }
   
-      console.log(tecnico);
+      //console.log(tecnico);
       this.tecnicosService.guardarNuevoTecnico(tecnico).subscribe(
         //res => console.log(res),
         res => {
@@ -249,7 +249,7 @@ export class MantenimientonuevoComponent implements OnInit {
           programado : "SI"
         }
 
-        console.log(mantenimiento);
+        //console.log(mantenimiento);
         this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
           res => {
             alert("Se guardo con éxito");
@@ -293,7 +293,7 @@ export class MantenimientonuevoComponent implements OnInit {
           programado : "NO"
         }
     
-        console.log(mantenimiento);
+        //console.log(mantenimiento);
         this.mantenimientosService.guardarNuevoMantenimiento(mantenimiento).subscribe(
           //res => console.log(res),
           res => {

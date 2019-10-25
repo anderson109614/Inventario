@@ -186,7 +186,7 @@ export class NuevoprestamoComponent implements OnInit {
       direccion: ""
     };
 
-    console.log(encargado);
+    //console.log(encargado);
     this.bienesService.guardarNuevoEncargado(encargado).subscribe(
       res => {
         //console.log(res);

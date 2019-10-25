@@ -53,7 +53,7 @@ export class HorariosComponent implements OnInit {
     );
   }
   del($event) {
-    console.log(<HTMLButtonElement>$event.path[0].classList);
+    //console.log(<HTMLButtonElement>$event.path[0].classList);
     
     var idHor = (<HTMLButtonElement>$event.path[0]).classList[4];
     var idPre = (<HTMLButtonElement>$event.path[0]).classList[3];
@@ -91,7 +91,7 @@ export class HorariosComponent implements OnInit {
   cargarHorarios() {
     this.labSer.getHorarioLab(this.idLab).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.horarios = res;
         this.marcarHOrarios(res);
       },
@@ -117,7 +117,7 @@ export class HorariosComponent implements OnInit {
   }
   marcarHOrarios(res: any) {
     res.forEach(function (value) {
-      console.log(value);
+      //console.log(value);
       var btns = document.getElementsByClassName(value.nombre + ' ' + value.horario);
       btns[0].classList.add("activeR");
       btns[0].classList.remove("active");
@@ -177,10 +177,10 @@ export class HorariosComponent implements OnInit {
     }
     lunHoy.setHours(0, 0, 0, 0);
     selec.setHours(0, 0, 0, 0);
-    console.log(selec);
-    console.log(lunHoy);
+    //console.log(selec);
+    //console.log(lunHoy);
     if (selec.getTime() == lunHoy.getTime()) {
-      console.log('si');
+      //console.log('si');
       this.estadoInicial();
       this.asignacionDeClases();
 
@@ -195,7 +195,7 @@ export class HorariosComponent implements OnInit {
 
       }
     } else {
-      console.log('no');
+     // console.log('no');
       this.estadoInicial();
       this.asignacionDeClases();
       var btns = document.getElementsByClassName("btnA");
@@ -307,7 +307,7 @@ export class HorariosComponent implements OnInit {
 
         this.serHorarios.guardarCabecera(det).subscribe(
           res => {
-            console.log('res');
+            //console.log('res');
 
             idCab = res.id;
             this.guardarDetalle(res.id);
@@ -335,8 +335,8 @@ export class HorariosComponent implements OnInit {
     if (Number.parseInt(idCab) > 0) {
       var btns = document.getElementsByClassName("active");
       for (var i = 0; i < btns.length; i++) {
-        console.log(i);
-        console.log((<HTMLButtonElement>btns[i]).classList[0]);
+        //console.log(i);
+        //console.log((<HTMLButtonElement>btns[i]).classList[0]);
         var dia = (<HTMLButtonElement>btns[i]).classList[0];
         var hor = (<HTMLButtonElement>btns[i]).classList[1];
         var fec = (<HTMLInputElement>document.getElementById('lbl' + dia)).value;
@@ -359,7 +359,7 @@ export class HorariosComponent implements OnInit {
         //GUardado
         this.serHorarios.guardarDetalles(d).subscribe(
           res => {
-            console.log('res');
+            //console.log('res');
             (<HTMLInputElement>document.getElementById('txtDescripcion')).value = '';
             //this.marcarFechaActual();
 
@@ -382,7 +382,7 @@ export class HorariosComponent implements OnInit {
   cargarHOras() {
     this.serHorarios.getHoras().subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.horas = res;
         this.horasE = res;
       },
@@ -418,14 +418,14 @@ export class HorariosComponent implements OnInit {
     this.cargarFechasDias(ds);
     this.bloquearAnteriores(ds);
     this.cargarPrestados();
-    console.log(ds);
+    //console.log(ds);
     this.VerSemana();
   }
   cargarEventosCalendario() {
     this.serHorarios.getTodosPRestamos(this.idLab).subscribe(
       res => {
 
-        console.log(res);
+        //console.log(res);
         this.eventosCalendario = res;
       },
       err => console.log(err)

@@ -80,11 +80,11 @@ export class ReportesComponent implements OnInit {
       console.log(id);
       var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
       if(id==1){
-        iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteBienesPrestados&rpredirect=true&prpeo=pdf&prptit=';
+        iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteBienesPrestados&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios';
         this.mostrar(true);
         
       }else if(id==8){
-        iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteSuministros&rpredirect=true&prpeo=pdf&prptit=';
+        iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteSuministros&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios';
         this.mostrar(true);
       }
       this.repoSEleccionado=id;
@@ -95,15 +95,15 @@ export class ReportesComponent implements OnInit {
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
     if(this.repoSEleccionado==2){
       
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reportePrestamoDevolucionBienes&rpredirect=true&prpeo=pdf&prptit=&id='+idBien;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reportePrestamoDevolucionBienes&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&id='+idBien;
       
     }else if(this.repoSEleccionado==3){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteBienesHijos&rpredirect=true&prpeo=pdf&prptit=&id='+idBien;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteBienesHijos&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&id='+idBien;
       
     }else if(this.repoSEleccionado==4){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteCodigosBienes&rpredirect=true&prpeo=pdf&prptit=&id_bien='+idBien;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteCodigosBienes&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&id_bien='+idBien;
     }else if(this.repoSEleccionado==5){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteMantenimientos&rpredirect=true&prpeo=pdf&prptit=&id='+idBien;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteMantenimientos&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&id='+idBien;
 
     }
     this.mostrar(true);
@@ -111,7 +111,7 @@ export class ReportesComponent implements OnInit {
   onClickMeEncargado(cedula:String){
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
     if(this.repoSEleccionado==6){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteEncargadoBien&rpredirect=true&prpeo=pdf&prptit=&cedula='+cedula;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteEncargadoBien&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&cedula='+cedula;
       
     }
     this.mostrar(true);
@@ -119,7 +119,7 @@ export class ReportesComponent implements OnInit {
   onClickMeTipoBien(nombre:String){
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
     if(this.repoSEleccionado==7){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=TipoBien&rpredirect=true&prpeo=pdf&prptit=&tipoBien='+nombre;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=TipoBien&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&tipoBien='+nombre;
       
     }
     this.mostrar(true);
@@ -128,7 +128,7 @@ export class ReportesComponent implements OnInit {
   onClickMeSuministro(id:string){
     var iframe=<HTMLIFrameElement>document.getElementById('visorReportes');
     if(this.repoSEleccionado==9){
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reporteSuministroMovimientos&rpredirect=true&prpeo=pdf&prptit=&id='+id;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reporteSuministroMovimientos&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&id='+id;
       
     }
     this.mostrar(true);
@@ -138,7 +138,7 @@ export class ReportesComponent implements OnInit {
     if(this.repoSEleccionado==10){
       var cantidad=(<HTMLInputElement>document.getElementById('txt_CantidadBuscar')).value;
      
-      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvreng/visor.xhtml?prpnm=reportePrestamoDevolucionBienes&rpredirect=true&prpeo=pdf&prptit=&cantidad='+cantidad;
+      iframe.src='http://educaciononline.uta.edu.ec:8080/deadvrengex/visor.xhtml?prpnm=reportSunistrosCantidad&rpredirect=true&prpeo=pdf&prptit=&cn=inventarios&cantidad='+cantidad;
       
     }
     this.mostrar(true);

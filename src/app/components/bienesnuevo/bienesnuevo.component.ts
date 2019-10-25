@@ -212,7 +212,7 @@ export class BienesnuevoComponent implements OnInit {
         direccion: ""
       };
 
-      console.log(encargado);
+      //console.log(encargado);
       this.bienesService.guardarNuevoEncargado(encargado).subscribe(
         res => {
           //console.log(res);
@@ -255,7 +255,7 @@ export class BienesnuevoComponent implements OnInit {
         descripcion: descripcionN
       }
 
-      console.log(acta);
+      //console.log(acta);
       this.bienesService.guardarNuevaActa(acta).subscribe(
         //res => console.log(res),
         res => {
@@ -288,11 +288,11 @@ export class BienesnuevoComponent implements OnInit {
         ubicacion: ubicacionN
       }
 
-      console.log(bodega);
+      //console.log(bodega);
       this.bienesService.guardarNuevaBodega(bodega).subscribe(
         res => {
           //this.limpiartxt();
-          console.log(res);
+          //console.log(res);
           this.cargarBodegas();
           this.clickMessageBodega = res.nombre.toString();
           this.idBodega = res.id.toString();
@@ -420,13 +420,13 @@ export class BienesnuevoComponent implements OnInit {
         img_bien: img_bienO
       };
 
-      console.log(bien);
+      //console.log(bien);
 
       this.bienesService.guardarBiene(bien).subscribe(
         //res => console.log(res),
         res => {
           this.limpiartxt();
-          console.log(res)
+          //console.log(res)
           alert("Se guardo con éxito");
           this.router.navigate(['/generarcodigoqr/', res.codigo]);
         },

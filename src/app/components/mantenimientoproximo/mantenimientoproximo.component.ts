@@ -19,7 +19,7 @@ export class MantenimientoproximoComponent implements OnInit {
   cargarMantenimientosProximos(){
     this.mantenimientosService.getProximosMantenimientos().subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.mantenimientos = res;
       },
       err => console.log(err)
